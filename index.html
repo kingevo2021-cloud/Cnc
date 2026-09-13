@@ -717,7 +717,7 @@ return `<div class="grid gap-4"><div class="bg-white dark:bg-slate-900 rounded-3
 }
 function openAdminAccountModal(id){
 const item=(DB.admins||[]).find(a=>a.id===id)||{id:'',name:'',email:'',pass:''};
-showModal(`<div class="p-6" dir="rtl"><div class="flex items-center justify-between mb-5"><h3 class="font-black text-lg">${id?'✏️ تعديل حساب المدير':'＋ إضافة مدير جديد'}</h3><button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-slate-100">✕</button></div><div class="grid gap-3"><div><label class="text-xs font-black text-slate-500">اسم المستخدم / اسم المدير</label><input id="adm-name" value="${esc(item.name||'')}" class="input mt-1"></div><div><label class="text-xs font-black text-slate-500">البريد الإلكتروني المستخدم للدخول</label><input id="adm-email" type="email" value="${esc(item.email||'')}" class="input mt-1" dir="ltr"></div><div><label class="text-xs font-black text-slate-500">كلمة المرور ${id?'(اتركها فارغة للإبقاء على القديمة)':'*'}</label><input id="adm-pass" type="password" value="" class="input mt-1" dir="ltr" ${id?'':'required'}></div></div><div class="p-3 mt-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs font-bold text-amber-800">⚠️ هذه نسخة HTML مستقلة؛ بيانات المدير تُحفظ في LocalStorage على نفس المتصفح. عند تشغيل Backend حقيقي يجب ربط تغيير كلمة المرور بواجهة API.</div><div class="flex gap-2 mt-5"><button onclick="saveAdminAccount('${id||''}')" class="btn-p flex-1 py-3 rounded-2xl font-black">💾 حفظ التغييرات</button><button onclick="closeModal()" class="px-6 py-3 rounded-2xl bg-slate-100 font-black">إلغاء</button></div></div>`,'max-w-xl');
+showModal(`<div class="p-6" dir="rtl"><div class="flex items-center justify-between mb-5"><h3 class="font-black text-lg">${id?'✏️ تعديل حساب المدير':'＋ إضافة مدير جديد'}</h3><button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-slate-100">✕</button></div><div class="grid gap-3"><div><label class="text-xs font-black text-slate-500">اسم المستخدم / اسم المدير</label><input id="adm-name" value="${esc(item.name||'')}" class="input mt-1"></div><div><label class="text-xs font-black text-slate-500">البريد الإلكتروني المستخدم للدخول</label><input id="adm-email" type="email" value="${esc(item.email||'')}" class="input mt-1" dir="ltr"></div><div><label class="text-xs font-black text-slate-500">كلمة المرور ${id?'(اتركها فارغة للإبقاء على القديمة)':'*'}</label><input id="adm-pass" type="password" value="" class="input mt-1" dir="ltr" ${id?'':'required'}></div></div><div class="p-3 mt-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs font-bold text-amber-800">🔐 إذا كان الخادم متصلاً فسيتم حفظ بيانات المدير في MySQL بشكل حقيقي. إذا فتحت HTML مباشرة بدون الخادم فسيتم حفظها محليًا في هذا المتصفح فقط.</div><div class="flex gap-2 mt-5"><button onclick="saveAdminAccount('${id||''}')" class="btn-p flex-1 py-3 rounded-2xl font-black">💾 حفظ التغييرات</button><button onclick="closeModal()" class="px-6 py-3 rounded-2xl bg-slate-100 font-black">إلغاء</button></div></div>`,'max-w-xl');
 }
 function saveAdminAccount(id){const name=$('#adm-name')?.value.trim(),email=$('#adm-email')?.value.trim().toLowerCase(),pass=$('#adm-pass')?.value||'';if(!name||!email||(!id&&!pass)){toast('أكمل بيانات المدير المطلوبة','error');return}if((DB.admins||[]).some(a=>a.email===email&&a.id!==id)){toast('هذا البريد مستخدم بالفعل','error');return}if(id){const a=DB.admins.find(x=>x.id===id);if(!a)return;a.name=name;a.email=email;if(pass)a.pass=pass}else DB.admins.push({id:uid(),name,email,pass});const current=currentAdminEmail();if(id&&current&&DB.admins.find(a=>a.id===id)?.email!==current){localStorage.removeItem('az_token');}saveDB();closeModal();renderAdmin();toast('تم حفظ بيانات المدير ✅')}
 function deleteAdminAccount(id){if(!confirm('هل تريد حذف حساب المدير؟'))return;if((DB.admins||[]).length<=1){toast('لا يمكن حذف آخر مدير','error');return}const target=DB.admins.find(a=>a.id===id);if(!target)return;DB.admins=DB.admins.filter(a=>a.id!==id);if(target.email===currentAdminEmail())adminLogout();else{saveDB();renderAdmin();toast('تم حذف المدير')}}
@@ -976,9 +976,33 @@ setTimeout(()=>{const p=$('#preloader');p.style.opacity='0';setTimeout(()=>p.rem
     try{if(tk.split('.').length===3){let b=tk.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');b+='='.repeat((4-b.length%4)%4);const p=JSON.parse(atob(b));return !p.exp||Date.now()<p.exp*1000}const d=JSON.parse(atob(tk));return Date.now()<d.exp}catch(e){return false}
   };
   window.adminLogin=async function(e){
-    e.preventDefault();const em=$('#al-email').value.trim().toLowerCase(),pw=$('#al-pass').value;
-    try{await serverLogin(em,pw);toast(t('login_success'));location.hash='#/admin';render()}
-    catch(err){toast(err.message||t('login_error'),'error')}
+    e.preventDefault();
+    const em=($('#al-email')?.value||'').trim().toLowerCase(),pw=$('#al-pass')?.value||'';
+    if(!em||!pw){toast('أدخل البريد وكلمة المرور','error');return}
+    try{
+      if(window.azServerReady){
+        await serverLogin(em,pw);
+      }else{
+        // وضع HTML المحلي: يسمح بالدخول عند فتح الملف مباشرة، مع إجبار تغيير كلمة المرور الافتراضية.
+        DB.admins=Array.isArray(DB.admins)?DB.admins:[];
+        let a=DB.admins.find(x=>String(x.email||'').toLowerCase()===em);
+        if(!a && em==='admin@appzone.com'){
+          a={id:'local-admin',name:'مدير المتجر',email:em,pass:'ChangeMe_123!',active:true};
+          DB.admins=[a];saveDB();
+        }
+        if(!a || a.active===false || String(a.pass||'')!==pw){toast('بيانات الدخول غير صحيحة. إذا كان الخادم متصلاً استخدم حساب MySQL الصحيح.','error');return}
+        localStorage.setItem('az_token',btoa(JSON.stringify({email:a.email,name:a.name,exp:Date.now()+7*864e5,local:true})));
+      }
+      toast(t('login_success'));location.hash='#/admin';render();
+    }catch(err){
+      // إذا تعذر الاتصال بالخادم، جرّب الحساب المحلي الموجود في المتصفح.
+      const a=(DB.admins||[]).find(x=>String(x.email||'').toLowerCase()===em);
+      if(a && a.active!==false && String(a.pass||'')===pw){
+        localStorage.setItem('az_token',btoa(JSON.stringify({email:a.email,name:a.name,exp:Date.now()+7*864e5,local:true})));
+        toast(t('login_success'));location.hash='#/admin';render();return;
+      }
+      toast(err.message||t('login_error'),'error');
+    }
   };
   window.adminLogout=function(){localStorage.removeItem('az_jwt');localStorage.removeItem('az_token');location.hash='#/';render()};
 
