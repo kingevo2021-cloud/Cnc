@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APPZONE | منصة التطبيقات والفيديوهات والمواقع والأدوات الرقمية</title>
+<meta name="description" content="APPZONE منصة عربية حديثة لعرض وإدارة التطبيقات والألعاب والفيديوهات والمواقع وأدوات الذكاء الاصطناعي.">
+<meta name="keywords" content="تطبيقات, العاب, فيديوهات, مواقع, ذكاء اصطناعي, أدوات, APPZONE">
+<meta property="og:title" content="APPZONE | منصة التطبيقات والفيديوهات والمواقع">
+<meta property="og:description" content="اكتشف أفضل التطبيقات والألعاب والفيديوهات والمواقع والأدوات الرقمية.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80&auto=format&fit=crop">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%236366f1'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script><script src="/api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{cairo:['Cairo','Inter','sans-serif']},boxShadow:{soft:'0 10px 40px -10px rgba(99,102,241,.25)',card:'0 8px 30px -8px rgba(0,0,0,.12)'}}}}
+</script>
+<style>
+:root{--primary:#6366f1;--secondary:#a855f7;--btn:#4f46e5;--bg-glass:rgba(255,255,255,.75)}
+.dark{--bg-glass:rgba(15,23,42,.75)}
+*{font-family:'Cairo','Inter',sans-serif;scroll-behavior:smooth}
+body{background:#f6f7fb;transition:background .3s,color .3s}
+.dark body,.dark{background:#0b1020;color:#e2e8f0}
+.grad-bg{background:linear-gradient(135deg,var(--primary),var(--secondary))}
+.grad-text{background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent}
+.glass{background:var(--bg-glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.card-hover{transition:all .35s cubic-bezier(.2,.8,.3,1)}
+.card-hover:hover{transform:translateY(-7px);box-shadow:0 20px 45px -12px rgba(99,102,241,.35)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.anim{animation:fadeUp .6s ease both}
+.anim-1{animation-delay:.05s}.anim-2{animation-delay:.12s}.anim-3{animation-delay:.2s}.anim-4{animation-delay:.28s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.float{animation:float 5s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.4)}50%{box-shadow:0 0 0 14px rgba(99,102,241,0)}}
+.glow{animation:pulseGlow 2.2s infinite}
+::-webkit-scrollbar{width:9px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--primary),var(--secondary));border-radius:99px}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+.line-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.line-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.star-btn{transition:.2s}.star-btn:hover{transform:scale(1.25)}
+.chip{transition:.25s}.chip:hover{transform:translateY(-2px)}
+.hero-pattern{background-image:radial-gradient(circle at 20% 30%,rgba(255,255,255,.15) 0,transparent 40%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.12) 0,transparent 40%),url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.toggle{width:44px;height:24px;border-radius:99px;background:#cbd5e1;position:relative;cursor:pointer;transition:.3s;flex-shrink:0}
+.toggle.on{background:linear-gradient(135deg,var(--primary),var(--secondary))}
+.toggle::after{content:'';position:absolute;top:3px;inset-inline-start:3px;width:18px;height:18px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.toggle.on::after{transform:translateX(-20px)}[dir="ltr"] .toggle.on::after{transform:translateX(20px)}
+input,select,textarea{outline:none}
+.input{width:100%;padding:.7rem 1rem;border-radius:.85rem;border:1.5px solid #e2e8f0;background:#fff;transition:.25s;font-size:.9rem}
+.dark .input{background:#0f172a;border-color:#1e293b;color:#e2e8f0}
+.input:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(99,102,241,.12)}
+.btn-p{background:var(--btn);color:#fff;transition:.3s;box-shadow:0 8px 20px -6px rgba(79,70,229,.5)}
+.btn-p:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 14px 28px -6px rgba(79,70,229,.55)}
+.toast{animation:fadeUp .35s ease both}
+.modal-bg{background:rgba(2,6,23,.65);backdrop-filter:blur(6px)}
+table.admin-table th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:#64748b;white-space:nowrap}
+.dark table.admin-table th{color:#94a3b8}
+.video-thumb::after{content:'▶';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.6);opacity:.9}
+.badge-hot{background:linear-gradient(135deg,#ef4444,#f97316)}
+.badge-new{background:linear-gradient(135deg,#10b981,#06b6d4)}
+.badge-feat{background:linear-gradient(135deg,#f59e0b,#eab308)}
+.skel{background:linear-gradient(90deg,#e2e8f0 25%,#f1f5f9 50%,#e2e8f0 75%);background-size:200% 100%;animation:sk 1.2s infinite}
+@keyframes sk{to{background-position:-200% 0}}
+#preloader{transition:opacity .4s}
+.marquee{display:flex;gap:1rem;animation:mq 22s linear infinite;width:max-content}
+@keyframes mq{to{transform:translateX(50%)}}[dir="ltr"] .marquee{animation-name:mq2}@keyframes mq2{to{transform:translateX(-50%)}}
+.bottom-nav{box-shadow:0 -8px 30px rgba(0,0,0,.12)}
+.prose-ar p{margin-bottom:.8rem;line-height:1.9}
+</style>
+</head>
+<body class="font-cairo text-slate-800 dark:text-slate-100">
+<div id="preloader" class="fixed inset-0 z-[100] grad-bg flex flex-col items-center justify-center gap-4">
+<div class="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center text-5xl font-black text-white backdrop-blur float">A</div>
+<div class="text-white font-800 font-extrabold text-2xl tracking-wide">APPZONE</div>
+<div class="w-48 h-1.5 bg-white/25 rounded-full overflow-hidden"><div class="h-full w-1/2 bg-white rounded-full animate-pulse"></div></div>
+</div>
+<div id="header-root"></div>
+<main id="view" class="min-h-[70vh]"></main>
+<div id="footer-root"></div>
+<nav id="mobile-bottom" class="md:hidden fixed bottom-0 inset-x-0 z-40 glass border-t border-slate-200 dark:border-slate-800 bottom-nav"></nav>
+<div id="modal-root"></div>
+<div id="lightbox" class="fixed inset-0 z-[90] hidden items-center justify-center modal-bg p-4" onclick="closeLightbox()"><img id="lightbox-img" class="max-w-full max-h-[88vh] rounded-2xl shadow-2xl" src="" alt=""></div>
+<div id="toast-root" class="fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 z-[95] flex flex-col gap-2 items-center md:items-end"></div>
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-20 md:bottom-6 left-4 z-40 w-11 h-11 rounded-full grad-bg text-white shadow-lg hidden items-center justify-center font-bold">↑</button>
+
+<script>
+/* ============================================================
+APPZONE - Full-Stack Simulation in Single File
+Frontend SPA + Simulated REST API + LocalStorage MySQL-like DB
+Real project structure documented in README modal.
+============================================================ */
+const DB_KEY='appzone_db_v4';
+let LANG=localStorage.getItem('az_lang')||'ar';
+let THEME=localStorage.getItem('az_theme')||'light';
+let ADMIN_TAB='dashboard';
+let ADMIN_SEARCH='';
+let CHARTS={};
+const $=s=>document.querySelector(s);
+
+/* ---------- I18N ---------- */
+const I18N={
+ar:{home:'الرئيسية',apps:'التطبيقات',games:'الألعاب',videos:'الفيديوهات',websites:'المواقع',ai_tools:'الذكاء الاصطناعي',tools:'الأدوات',search_ph:'ابحث عن تطبيق، لعبة، فيديو، موقع...',search:'بحث',admin:'لوحة الإدارة',hero_badge:'🚀 المنصة العربية الأولى للمحتوى الرقمي',hero_search_ph:'ما الذي تبحث عنه اليوم؟',explore:'استكشف الآن',latest:'أحدث المحتويات',most_viewed:'الأكثر مشاهدة',most_downloaded:'الأكثر تحميلاً',featured:'المحتوى المميز',view_all:'عرض الكل',downloads:'التحميلات',views:'المشاهدات',rating:'التقييم',version:'الإصدار',size:'الحجم',os:'النظام',developer:'المطور',updated:'آخر تحديث',download_now:'تحميل الآن',visit_site:'زيارة الموقع',watch_now:'مشاهدة الآن',similar:'محتوى مشابه',share:'مشاركة',fav:'إضافة للمفضلة',unfav:'إزالة من المفضلة',desc:'الوصف',details:'التفاصيل',all:'الكل',type:'النوع',category:'التصنيف',sort:'الترتيب',sort_newest:'الأحدث',sort_views:'الأكثر مشاهدة',sort_rating:'الأعلى تقييماً',sort_downloads:'الأكثر تحميلاً',results:'نتيجة',no_results:'لا توجد نتائج مطابقة',favorites:'المفضلة',clear_favs:'مسح الكل',empty_favs:'لا توجد عناصر في المفضلة بعد',login:'تسجيل الدخول',email:'البريد الإلكتروني',password:'كلمة المرور',login_btn:'دخول',dashboard:'لوحة التحكم',m_apps:'التطبيقات',m_videos:'الفيديوهات',m_websites:'المواقع',m_cats:'التصنيفات',m_ratings:'التقييمات',m_settings:'الإعدادات',m_messages:'الرسائل',m_api:'توثيق API',m_db:'قاعدة البيانات',logout:'تسجيل الخروج',view_site:'عرض الموقع',add_new:'إضافة جديد',edit:'تعديل',delete:'حذف',save:'حفظ',cancel:'إلغاء',active:'مفعّل',actions:'إجراءات',confirm_delete:'هل أنت متأكد من الحذف؟',total_apps:'التطبيقات',total_videos:'الفيديوهات',total_websites:'المواقع',total_views:'المشاهدات',total_downloads:'التحميلات',total_ratings:'التقييمات',recent:'الأحدث',top_content:'الأعلى مشاهدة',privacy:'سياسة الخصوصية',terms:'شروط الاستخدام',contact:'اتصل بنا',about:'عن المنصة',quick_links:'روابط سريعة',rights:'جميع الحقوق محفوظة',subscribe:'اشتراك',subscribed:'تم الاشتراك بنجاح! 🎉',rated_success:'شكراً! تم إرسال تقييمك ⭐',already_rated:'لقد قيّمت هذا المحتوى مسبقاً',fav_added:'تمت الإضافة للمفضلة ❤️',fav_removed:'تمت الإزالة من المفضلة',link_copied:'تم نسخ الرابط بنجاح ✅',login_success:'مرحباً بك في لوحة الإدارة 🎉',login_error:'بيانات الدخول غير صحيحة',saved:'تم الحفظ بنجاح ✅',deleted:'تم الحذف بنجاح',back_home:'العودة للرئيسية',published:'تاريخ النشر',duration:'المدة',trending:'الرائج الآن',free:'مجاني',verified:'موثوق',new:'جديد',categories:'التصنيفات',external_links:'روابط خارجية',screenshots:'لقطات الشاشة',app_info:'معلومات التطبيق',contact_title:'تواصل معنا',send:'إرسال',msg_sent:'تم إرسال رسالتك بنجاح! سنرد عليك قريباً ✅',your_name:'الاسم',your_email:'البريد',your_msg:'رسالتك',filter:'تصفية',reset:'إعادة تعيين',menu:'القائمة',close:'إغلاق',top_apps:'أفضل التطبيقات',top_games:'أفضل الألعاب',top_videos:'أحدث الفيديوهات',top_sites:'مواقع مميزة',top_ai:'أدوات الذكاء الاصطناعي',top_tools:'أدوات مفيدة',visits:'الزيارات',messages:'رسائل التواصل',no_messages:'لا توجد رسائل',sender:'المرسل',message:'الرسالة',date:'التاريخ',general:'عام',colors:'الألوان',social:'التواصل',seo:'تحسين SEO',ads:'الإعلانات',pages:'الصفحات',export:'تصدير نسخة',import:'استيراد',reset_data:'إعادة تعيين البيانات',name:'الاسم',title:'العنوان',status:'الحالة',thumb:'الصورة',url:'الرابط',welcome:'مرحباً',overview:'نظرة عامة',content_dist:'توزيع المحتوى',views_week:'المشاهدات آخر 7 أيام',manage_all:'إدارة شاملة لكل المحتوى',quick_add:'إضافة سريعة',db_desc:'إدارة قاعدة البيانات والنسخ الاحتياطي',sql:'هيكل SQL',api_desc:'نقاط النهاية RESTful',readme:'دليل التشغيل README',sitemap:'خريطة الموقع',robots:'ملف robots',visit:'زيارة',rate_now:'قيّم الآن',your_rating:'تقييمك',share_text:'شارك مع أصدقائك',related_videos:'فيديوهات مشابهة',all_rights:'© 2026 APPZONE - جميع الحقوق محفوظة',made:'صُنع بـ ❤️ للوطن العربي'},
+en:{home:'Home',apps:'Apps',games:'Games',videos:'Videos',websites:'Websites',ai_tools:'AI Tools',tools:'Tools',search_ph:'Search apps, games, videos, sites...',search:'Search',admin:'Admin Panel',hero_badge:'🚀 The #1 Arabic Digital Content Platform',hero_search_ph:'What are you looking for today?',explore:'Explore Now',latest:'Latest Content',most_viewed:'Most Viewed',most_downloaded:'Most Downloaded',featured:'Featured',view_all:'View All',downloads:'Downloads',views:'Views',rating:'Rating',version:'Version',size:'Size',os:'OS',developer:'Developer',updated:'Updated',download_now:'Download Now',visit_site:'Visit Website',watch_now:'Watch Now',similar:'Similar Content',share:'Share',fav:'Add to Favorites',unfav:'Remove Favorite',desc:'Description',details:'Details',all:'All',type:'Type',category:'Category',sort:'Sort',sort_newest:'Newest',sort_views:'Most Viewed',sort_rating:'Top Rated',sort_downloads:'Most Downloaded',results:'results',no_results:'No matching results',favorites:'Favorites',clear_favs:'Clear All',empty_favs:'No favorites yet',login:'Login',email:'Email',password:'Password',login_btn:'Login',dashboard:'Dashboard',m_apps:'Apps',m_videos:'Videos',m_websites:'Websites',m_cats:'Categories',m_ratings:'Ratings',m_settings:'Settings',m_messages:'Messages',m_api:'API Docs',m_db:'Database',logout:'Logout',view_site:'View Site',add_new:'Add New',edit:'Edit',delete:'Delete',save:'Save',cancel:'Cancel',active:'Active',actions:'Actions',confirm_delete:'Are you sure?',total_apps:'Apps',total_videos:'Videos',total_websites:'Websites',total_views:'Views',total_downloads:'Downloads',total_ratings:'Ratings',recent:'Recent',top_content:'Top Viewed',privacy:'Privacy Policy',terms:'Terms of Use',contact:'Contact',about:'About',quick_links:'Quick Links',rights:'All rights reserved',subscribe:'Subscribe',subscribed:'Subscribed successfully! 🎉',rated_success:'Thanks! Rating submitted ⭐',already_rated:'You already rated this',fav_added:'Added to favorites ❤️',fav_removed:'Removed from favorites',link_copied:'Link copied ✅',login_success:'Welcome to admin panel 🎉',login_error:'Invalid credentials',saved:'Saved successfully ✅',deleted:'Deleted successfully',back_home:'Back Home',published:'Published',duration:'Duration',trending:'Trending Now',free:'Free',verified:'Verified',new:'New',categories:'Categories',external_links:'External Links',screenshots:'Screenshots',app_info:'App Info',contact_title:'Contact Us',send:'Send',msg_sent:'Message sent successfully! ✅',your_name:'Name',your_email:'Email',your_msg:'Your message',filter:'Filter',reset:'Reset',menu:'Menu',close:'Close',top_apps:'Top Apps',top_games:'Top Games',top_videos:'Latest Videos',top_sites:'Featured Sites',top_ai:'AI Tools',top_tools:'Useful Tools',visits:'Visits',messages:'Messages',no_messages:'No messages',sender:'Sender',message:'Message',date:'Date',general:'General',colors:'Colors',social:'Social',seo:'SEO',ads:'Ads',pages:'Pages',export:'Export Backup',import:'Import',reset_data:'Reset Data',name:'Name',title:'Title',status:'Status',thumb:'Image',url:'URL',welcome:'Welcome',overview:'Overview',content_dist:'Content Distribution',views_week:'Views Last 7 Days',manage_all:'Full content management',quick_add:'Quick Add',db_desc:'Database & backup management',sql:'SQL Schema',api_desc:'RESTful Endpoints',readme:'README Guide',sitemap:'Sitemap',robots:'robots.txt',visit:'Visit',rate_now:'Rate Now',your_rating:'Your rating',share_text:'Share with friends',related_videos:'Related Videos',all_rights:'© 2026 APPZONE - All rights reserved',made:'Made with ❤️ for the Arab world'}
+};
+const t=k=>(I18N[LANG]&&I18N[LANG][k])||I18N.ar[k]||k;
+
+/* ---------- HELPERS ---------- */
+const uid=()=>'id'+Math.random().toString(36).slice(2,10);
+const slugify=s=>s.toString().toLowerCase().trim().replace(/[\s_]+/g,'-').replace(/[^\w\u0600-\u06FF-]+/g,'').replace(/--+/g,'-');
+const fmt=n=>{n=+n||0;if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n.toString()};
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const L=(o,f)=>LANG==='ar'?(o[f+'_ar']||o[f+'_en']||''):(o[f+'_en']||o[f+'_ar']||'');
+const todayStr=()=>new Date().toISOString().slice(0,10);
+function timeAgo(d){const s=(Date.now()-new Date(d).getTime())/1e3;if(s<60)return LANG==='ar'?'الآن':'now';if(s<3600)return Math.floor(s/60)+(LANG==='ar'?' د':'m');if(s<86400)return Math.floor(s/3600)+(LANG==='ar'?' س':'h');if(s<2592000)return Math.floor(s/86400)+(LANG==='ar'?' يوم':'d');return new Date(d).toLocaleDateString(LANG==='ar'?'ar-EG':'en-US')}
+function stars(avg,sz='text-sm'){let h='<span class="inline-flex items-center gap-[2px] '+sz+'">';for(let i=1;i<=5;i++){h+=`<span class="${i<=Math.round(avg)?'text-amber-400':'text-slate-300 dark:text-slate-600'}">★</span>`}return h+` <span class="text-slate-500 text-xs font-bold ms-1">${(+avg||0).toFixed(1)}</span></span>`}
+function toast(msg,type='success'){const c=document.createElement('div');c.className='toast glass border border-slate-200 dark:border-slate-700 px-5 py-3 rounded-2xl shadow-xl text-sm font-bold flex items-center gap-2 '+(type==='success'?'text-emerald-600 dark:text-emerald-400':'text-rose-500');c.innerHTML=(type==='success'?'✅ ':'⚠️ ')+esc(msg);$('#toast-root').appendChild(c);setTimeout(()=>{c.style.opacity='0';c.style.transform='translateY(10px)';setTimeout(()=>c.remove(),400)},2800)}
+function showModal(html,max='max-w-2xl'){ $('#modal-root').innerHTML=`<div class="fixed inset-0 z-[80] modal-bg flex items-center justify-center p-3 overflow-y-auto" onclick="if(event.target===this)closeModal()"><div class="anim bg-white dark:bg-slate-900 rounded-3xl shadow-2xl w-full ${max} max-h-[92vh] overflow-y-auto border border-slate-100 dark:border-slate-800">${html}</div></div>`}
+function closeModal(){$('#modal-root').innerHTML=''}
+function openLightbox(src){$('#lightbox-img').src=src;$('#lightbox').classList.remove('hidden');$('#lightbox').classList.add('flex')}
+function closeLightbox(){$('#lightbox').classList.add('hidden');$('#lightbox').classList.remove('flex')}
+
+/* ---------- SEED DATA ---------- */
+const U=id=>`https://images.unsplash.com/${id}?w=700&q=80&auto=format&fit=crop`;
+function seedDB(){return{
+categories:[
+{id:'c1',slug:'social',name_ar:'تواصل اجتماعي',name_en:'Social',icon:'💬',color:'#10b981',type:'app'},
+{id:'c2',slug:'media',name_ar:'صور وفيديو',name_en:'Photo & Video',icon:'🎨',color:'#ec4899',type:'app'},
+{id:'c3',slug:'productivity',name_ar:'إنتاجية',name_en:'Productivity',icon:'📋',color:'#6366f1',type:'app'},
+{id:'c4',slug:'action',name_ar:'أكشن ومغامرات',name_en:'Action',icon:'🔥',color:'#ef4444',type:'game'},
+{id:'c5',slug:'puzzle',name_ar:'ألغاز وذكاء',name_en:'Puzzle',icon:'🧩',color:'#f59e0b',type:'game'},
+{id:'c6',slug:'sports',name_ar:'رياضة',name_en:'Sports',icon:'⚽',color:'#06b6d4',type:'game'},
+{id:'c7',slug:'ai-chat',name_ar:'دردشة ذكية',name_en:'AI Chat',icon:'🤖',color:'#8b5cf6',type:'ai'},
+{id:'c8',slug:'ai-image',name_ar:'توليد الصور',name_en:'AI Image',icon:'🖼️',color:'#d946ef',type:'ai'},
+{id:'c9',slug:'devtools',name_ar:'أدوات المطورين',name_en:'Dev Tools',icon:'💻',color:'#0ea5e9',type:'tool'},
+{id:'c10',slug:'utility',name_ar:'أدوات عامة',name_en:'Utilities',icon:'🧰',color:'#64748b',type:'tool'},
+{id:'c11',slug:'tech-videos',name_ar:'شروحات تقنية',name_en:'Tech Tutorials',icon:'🎬',color:'#ef4444',type:'video'},
+{id:'c12',slug:'edu-videos',name_ar:'تعليمية',name_en:'Educational',icon:'📚',color:'#10b981',type:'video'},
+{id:'c13',slug:'entertainment',name_ar:'ترفيه',name_en:'Entertainment',icon:'🎭',color:'#f59e0b',type:'video'},
+{id:'c14',slug:'web-ai',name_ar:'مواقع ذكاء اصطناعي',name_en:'AI Websites',icon:'🌐',color:'#8b5cf6',type:'website'},
+{id:'c15',slug:'web-learn',name_ar:'مواقع تعليمية',name_en:'Learning Sites',icon:'🎓',color:'#06b6d4',type:'website'},
+{id:'c16',slug:'web-tools',name_ar:'مواقع أدوات',name_en:'Tools Sites',icon:'⚙️',color:'#6366f1',type:'website'}],
+apps:[
+{id:'a1',slug:'whatsapp-plus',type:'app',name_ar:'واتساب بلس الذهبي',name_en:'WhatsApp Plus Gold',desc_ar:'نسخة معدلة من واتساب بمميزات رائعة: إخفاء الظهور، ثيمات مخصصة، إرسال ملفات بحجم كبير، خطوط متنوعة، وخصوصية كاملة. التطبيق آمن وسريع ويتم تحديثه باستمرار ليواكب أحدث المميزات.',desc_en:'Modified WhatsApp with amazing features: hide online status, custom themes, large file sharing, and full privacy.',category:'social',icon:'💬',color:'from-green-500 to-emerald-600',screenshots:[U('photo-1512941937669-90a1b58e7e9c'),U('photo-1551650975-87deedd944c3')],version:'18.20.0',size:'78 MB',os:'Android 8.0+',developer:'PlusMods Team',updatedAt:'2026-08-20',downloads:1254300,views:2345000,ratingAvg:4.6,ratingsCount:18234,featured:true,active:true,downloadUrl:'https://example.com/dl/whatsapp-plus.apk',externalLinks:[{label:'الموقع الرسمي',url:'https://example.com'}],createdAt:'2026-01-10'},
+{id:'a2',slug:'tiktok-pro-editor',type:'app',name_ar:'محرر الفيديو الاحترافي',name_en:'Pro Video Editor',desc_ar:'أقوى محرر فيديو للهاتف: قص ودمج، فلاتر سينمائية، نصوص متحركة، إزالة الخلفية بالذكاء الاصطناعي، وتصدير بجودة 4K بدون علامة مائية.',desc_en:'Powerful mobile video editor with AI effects, 4K export and no watermark.',category:'media',icon:'🎥',color:'from-pink-500 to-rose-600',screenshots:[U('photo-1492691527719-9d1e07e534b4'),U('photo-1611162617474-5b21e879e113')],version:'5.4.1',size:'145 MB',os:'Android / iOS',developer:'PixelLab',updatedAt:'2026-09-01',downloads:890200,views:1500000,ratingAvg:4.8,ratingsCount:22100,featured:true,active:true,downloadUrl:'https://example.com/dl/video-editor.apk',externalLinks:[],createdAt:'2026-02-14'},
+{id:'a3',slug:'snapseed-ai',type:'app',name_ar:'سناب سيد لتحرير الصور',name_en:'SnapSeed Photo Editor',desc_ar:'حرر صورك مثل المحترفين: إزالة العناصر غير المرغوبة، تحسين تلقائي بالذكاء الاصطناعي، أكثر من 200 فلتر، وأدوات تعديل دقيقة للإضاءة والألوان.',desc_en:'Edit photos like a pro with AI enhance and 200+ filters.',category:'media',icon:'📸',color:'from-amber-500 to-orange-600',screenshots:[U('photo-1554048612-b6a482bc67e5'),U('photo-1563986768609-322da13575f3')],version:'3.2.0',size:'92 MB',os:'Android / iOS',developer:'CreativeSoft',updatedAt:'2026-07-15',downloads:640500,views:980000,ratingAvg:4.5,ratingsCount:9800,featured:false,active:true,downloadUrl:'https://example.com/dl/snapseed.apk',externalLinks:[],createdAt:'2026-03-02'},
+{id:'a4',slug:'notion-arabic',type:'app',name_ar:'نوشن - نظم حياتك',name_en:'Notion Organizer',desc_ar:'تطبيق الإنتاجية الأول: ملاحظات، مهام، قواعد بيانات، تقويم، وتعاون مع الفريق. يدعم العربية بالكامل مع قوالب جاهزة للدراسة والعمل.',desc_en:'All-in-one productivity: notes, tasks, wiki and calendar with Arabic support.',category:'productivity',icon:'📝',color:'from-slate-600 to-slate-900',screenshots:[U('photo-1460925895917-afdab827c52f'),U('photo-1555066931-4365d14bab8c')],version:'0.6.9',size:'65 MB',os:'Android / iOS / Web',developer:'Notion Labs',updatedAt:'2026-08-28',downloads:420000,views:720000,ratingAvg:4.7,ratingsCount:7600,featured:false,active:true,downloadUrl:'https://example.com/dl/notion.apk',externalLinks:[{label:'نسخة الويب',url:'https://notion.so'}],createdAt:'2026-04-11'},
+{id:'a5',slug:'pubg-mobile-2026',type:'game',name_ar:'ببجي موبايل 2026',name_en:'PUBG Mobile 2026',desc_ar:'لعبة الباتل رويال الأشهر عالمياً: خرائط جديدة، أسلحة متطورة، طور 120 لاعب، جرافيك واقعي يدعم 120 فريم، وفعاليات حصرية للموسم الجديد.',desc_en:'World-famous battle royale with new maps, 120FPS support and exclusive season events.',category:'action',icon:'🔫',color:'from-orange-600 to-red-700',screenshots:[U('photo-1542751371-adc38448a05e'),U('photo-1550745165-9bc0b252726f')],version:'3.5.0',size:'1.2 GB',os:'Android 9.0+ / iOS',developer:'Tencent Games',updatedAt:'2026-09-05',downloads:2100000,views:4800000,ratingAvg:4.4,ratingsCount:45000,featured:true,active:true,downloadUrl:'https://example.com/dl/pubg.apk',externalLinks:[],createdAt:'2026-01-20'},
+{id:'a6',slug:'candy-puzzle',type:'game',name_ar:'كاندي كراش - ألغاز الحلوى',name_en:'Candy Puzzle Saga',desc_ar:'أكثر من 5000 مستوى من الألغاز الممتعة! تحدَّ أصدقاءك، اجمع الجوائز اليومية، والعب بدون إنترنت. مناسبة لجميع الأعمار.',desc_en:'5000+ fun puzzle levels, offline play and daily rewards.',category:'puzzle',icon:'🍬',color:'from-pink-400 to-fuchsia-600',screenshots:[U('photo-1493711662062-fa541adb3fc8'),U('photo-1511512578047-dfb367046420')],version:'2.8.3',size:'110 MB',os:'Android / iOS',developer:'SweetGames',updatedAt:'2026-08-10',downloads:980000,views:1600000,ratingAvg:4.3,ratingsCount:15400,featured:false,active:true,downloadUrl:'https://example.com/dl/candy.apk',externalLinks:[],createdAt:'2026-02-28'},
+{id:'a7',slug:'fifa-2026',type:'game',name_ar:'فيفا 2026 - كرة القدم',name_en:'FIFA 2026 Football',desc_ar:'عش أجواء كأس العالم: أكثر من 700 فريق مرخص، أطوار أونلاين، بناء فريق الأحلام Ultimate Team، وتعليق عربي بصوت أشهر المعلقين.',desc_en:'World Cup vibes: 700+ licensed teams, Ultimate Team and Arabic commentary.',category:'sports',icon:'⚽',color:'from-green-600 to-teal-700',screenshots:[U('photo-1579952363873-27f3bade9f55'),U('photo-1522778119026-d647f0596c20')],version:'12.0.1',size:'2.1 GB',os:'Android 10+ / iOS',developer:'EA Sports',updatedAt:'2026-09-08',downloads:1340000,views:2900000,ratingAvg:4.5,ratingsCount:28900,featured:true,active:true,downloadUrl:'https://example.com/dl/fifa.apk',externalLinks:[],createdAt:'2026-05-01'},
+{id:'a8',slug:'chatgpt-arabic',type:'ai',name_ar:'شات عربي ذكي GPT',name_en:'Arabic Smart Chat GPT',desc_ar:'مساعد ذكاء اصطناعي يتحدث العربية بطلاقة: إجابات فورية، كتابة مقالات، ترجمة، حل مسائل رياضية، كتابة أكواد برمجية، وتلخيص النصوص الطويلة.',desc_en:'Arabic-fluent AI assistant: writing, coding, translation and instant answers.',category:'ai-chat',icon:'🤖',color:'from-violet-500 to-purple-700',screenshots:[U('photo-1677442136019-21780ecad995'),U('photo-1620712943543-bcc4688e7485')],version:'4.0.2',size:'48 MB',os:'Android / iOS / Web',developer:'ArabAI Labs',updatedAt:'2026-09-10',downloads:760000,views:1800000,ratingAvg:4.9,ratingsCount:31200,featured:true,active:true,downloadUrl:'https://example.com/dl/aichat.apk',externalLinks:[{label:'تجربة الويب',url:'https://chat.openai.com'}],createdAt:'2026-06-05'},
+{id:'a9',slug:'midart-generator',type:'ai',name_ar:'ميد آرت - توليد الصور',name_en:'MidArt Image Generator',desc_ar:'حوّل كلماتك إلى لوحات فنية مذهلة بالذكاء الاصطناعي! أكثر من 50 أسلوباً فنياً: واقعي، أنمي، سينمائي، كرتوني. يدعم الوصف بالعربية.',desc_en:'Turn words into stunning art: 50+ styles with Arabic prompt support.',category:'ai-image',icon:'🎨',color:'from-fuchsia-500 to-purple-600',screenshots:[U('photo-1686191128892-3b37add4c844'),U('photo-1620712943543-bcc4688e7485')],version:'2.1.0',size:'88 MB',os:'Android / iOS',developer:'ArtAI Studio',updatedAt:'2026-08-25',downloads:510000,views:1100000,ratingAvg:4.7,ratingsCount:12400,featured:true,active:true,downloadUrl:'https://example.com/dl/midart.apk',externalLinks:[],createdAt:'2026-06-20'},
+{id:'a10',slug:'code-mobile',type:'tool',name_ar:'محرر الأكواد المتنقل',name_en:'Mobile Code Editor',desc_ar:'بيئة تطوير متكاملة على هاتفك: دعم 40+ لغة برمجة، إكمال تلقائي، تشغيل الأكواد، اتصال GitHub، وثيم داكن مريح للعين.',desc_en:'Full IDE on your phone: 40+ languages, autocomplete and GitHub sync.',category:'devtools',icon:'💻',color:'from-sky-500 to-blue-700',screenshots:[U('photo-1555066931-4365d14bab8c'),U('photo-1461749280684-dccba630e2f6')],version:'1.9.4',size:'56 MB',os:'Android',developer:'DevTools Inc',updatedAt:'2026-09-02',downloads:230000,views:480000,ratingAvg:4.6,ratingsCount:5400,featured:false,active:true,downloadUrl:'https://example.com/dl/code.apk',externalLinks:[],createdAt:'2026-07-01'},
+{id:'a11',slug:'file-compressor',type:'tool',name_ar:'ضاغط الملفات برو',name_en:'File Compressor Pro',desc_ar:'ضغط الملفات والصور والفيديوهات حتى 90% بدون فقدان الجودة! دعم ZIP وRAR و7Z، حماية بكلمة مرور، ومشاركة سريعة.',desc_en:'Compress files up to 90% without quality loss. ZIP/RAR/7Z support.',category:'utility',icon:'🗜️',color:'from-cyan-500 to-teal-600',screenshots:[U('photo-1551650975-87deedd944c3'),U('photo-1512941937669-90a1b58e7e9c')],version:'3.0.7',size:'32 MB',os:'Android / iOS',developer:'UtilityPro',updatedAt:'2026-07-30',downloads:340000,views:590000,ratingAvg:4.4,ratingsCount:6800,featured:false,active:true,downloadUrl:'https://example.com/dl/compress.apk',externalLinks:[],createdAt:'2026-07-12'}],
+videos:[
+{id:'v1',slug:'learn-flutter-2026',title_ar:'تعلم فلاتر من الصفر حتى الاحتراف 2026',title_en:'Learn Flutter From Zero to Hero 2026',desc_ar:'كورس شامل لتعلم تطوير تطبيقات الموبايل باستخدام Flutter: من التثبيت حتى نشر التطبيق على المتاجر. 12 ساعة من الشرح العملي بالعربية مع مشاريع حقيقية.',desc_en:'Complete Flutter course in Arabic: from setup to Play Store publishing.',category:'tech-videos',thumbnail:U('photo-1555066931-4365d14bab8c'),youtubeUrl:'https://www.youtube.com/embed/fq4N0hgOWzU',videoUrl:'',duration:'12:45:30',views:145000,ratingAvg:4.8,ratingsCount:3200,featured:true,active:true,createdAt:'2026-08-15'},
+{id:'v2',slug:'top-10-apps-2026',title_ar:'أفضل 10 تطبيقات أندرويد لعام 2026 🔥',title_en:'Top 10 Android Apps 2026',desc_ar:'اكتشف أفضل التطبيقات التي يجب أن تكون على هاتفك هذا العام: تطبيقات مخفية ستبهرك، أدوات ذكاء اصطناعي، وتطبيقات ستغير طريقة استخدامك للهاتف!',desc_en:'Discover must-have apps of the year including hidden gems and AI tools.',category:'tech-videos',thumbnail:U('photo-1512941937669-90a1b58e7e9c'),youtubeUrl:'https://www.youtube.com/embed/dQw4w9WgXcQ',videoUrl:'',duration:'15:20',views:89000,ratingAvg:4.6,ratingsCount:1800,featured:true,active:true,createdAt:'2026-09-01'},
+{id:'v3',slug:'ai-course-arabic',title_ar:'شرح الذكاء الاصطناعي للمبتدئين بالعربية',title_en:'AI Explained for Beginners',desc_ar:'كل ما تحتاج معرفته عن الذكاء الاصطناعي: ما هو؟ كيف يعمل؟ وكيف تستفيد منه في عملك ودراستك؟ شرح مبسط بدون تعقيد مع أمثلة عملية.',desc_en:'Everything about AI in simple Arabic with practical examples.',category:'edu-videos',thumbnail:U('photo-1677442136019-21780ecad995'),youtubeUrl:'https://www.youtube.com/embed/Sq8QYB4PvYs',videoUrl:'',duration:'22:10',views:67000,ratingAvg:4.9,ratingsCount:2100,featured:false,active:true,createdAt:'2026-08-22'},
+{id:'v4',slug:'iphone-17-review',title_ar:'مراجعة آيفون 17 برو - هل يستحق الشراء؟',title_en:'iPhone 17 Pro Review',desc_ar:'مراجعة شاملة لآيفون الجديد: الكاميرات، الأداء، البطارية، والمميزات الجديدة. مقارنة مع المنافسين ونصيحة: اشترِ أم انتظر؟',desc_en:'Full iPhone review: cameras, performance, battery and buying advice.',category:'tech-videos',thumbnail:U('photo-1592750475338-74b7b21085ab'),youtubeUrl:'',videoUrl:'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',duration:'18:35',views:112000,ratingAvg:4.5,ratingsCount:1500,featured:false,active:true,createdAt:'2026-09-05'},
+{id:'v5',slug:'python-full-course',title_ar:'دورة بايثون كاملة من الصفر - 6 ساعات',title_en:'Python Full Course 6 Hours',desc_ar:'تعلم لغة بايثون من الصفر حتى بناء مشاريع حقيقية: أساسيات، OOP، قواعد بيانات، وذكاء اصطناعي. مع ملفات وشهادة إتمام مجانية.',desc_en:'Learn Python from zero to real projects with free certificate.',category:'edu-videos',thumbnail:U('photo-1526379095098-d400fd0bf935'),youtubeUrl:'https://www.youtube.com/embed/_uQrJ0TkZlc',videoUrl:'',duration:'6:00:00',views:203000,ratingAvg:4.9,ratingsCount:5400,featured:true,active:true,createdAt:'2026-07-10'},
+{id:'v6',slug:'make-money-online',title_ar:'7 طرق حقيقية للربح من الإنترنت 2026 💰',title_en:'7 Real Ways to Make Money Online',desc_ar:'طرق مجربة وحقيقية للربح من الإنترنت بدون رأس مال: العمل الحر، صناعة المحتوى، التسويق بالعمولة، والمزيد مع خطوات عملية للبدء اليوم.',desc_en:'Proven online income methods with zero capital and practical steps.',category:'entertainment',thumbnail:U('photo-1460925895917-afdab827c52f'),youtubeUrl:'https://www.youtube.com/embed/aVSf46AvpJo',videoUrl:'',duration:'19:45',views:178000,ratingAvg:4.4,ratingsCount:2900,featured:false,active:true,createdAt:'2026-08-28'}],
+websites:[
+{id:'w1',slug:'openai',name_ar:'أوبن إيه آي - ChatGPT',name_en:'OpenAI - ChatGPT',desc_ar:'الموقع الرسمي لأقوى نماذج الذكاء الاصطناعي في العالم: ChatGPT للمحادثة، DALL-E لتوليد الصور، وAPI للمطورين. أدوات ستغير طريقة عملك.',desc_en:'Home of the world\'s most powerful AI: ChatGPT, DALL-E and developer APIs.',category:'web-ai',logo:'🤖',image:U('photo-1677442136019-21780ecad995'),url:'https://openai.com',ratingAvg:4.9,ratingsCount:12000,views:890000,featured:true,active:true,createdAt:'2026-01-05'},
+{id:'w2',slug:'canva',name_ar:'كانفا - صمم بسهولة',name_en:'Canva Design',desc_ar:'منصة التصميم الأشهر: صمم منشورات، عروض، سير ذاتية وفيديوهات بسهولة مع آلاف القوالب الجاهزة بالعربية. مجاني مع خطة احترافية.',desc_en:'Design anything easily with thousands of Arabic-ready templates.',category:'web-tools',logo:'🎨',image:U('photo-1561070791-2526d30994b5'),url:'https://canva.com',ratingAvg:4.8,ratingsCount:9800,views:650000,featured:true,active:true,createdAt:'2026-02-01'},
+{id:'w3',slug:'udemy',name_ar:'يوديمي - تعلم أي شيء',name_en:'Udemy Learning',desc_ar:'أكبر منصة كورسات أونلاين: أكثر من 200 ألف كورس في البرمجة، التصميم، التسويق واللغات. خصومات تصل لـ 90% وعروض مستمرة.',desc_en:'Largest course marketplace: 200K+ courses with huge discounts.',category:'web-learn',logo:'🎓',image:U('photo-1501504905252-473c47e087f8'),url:'https://udemy.com',ratingAvg:4.6,ratingsCount:7600,views:430000,featured:false,active:true,createdAt:'2026-03-15'},
+{id:'w4',slug:'github',name_ar:'جيت هب - مجتمع المبرمجين',name_en:'GitHub',desc_ar:'أكبر مجتمع للمبرمجين في العالم: استضف مشاريعك، تعاون مع ملايين المطورين، واكتشف مشاريع مفتوحة المصدر. أساسي لكل مبرمج.',desc_en:'World\'s largest dev community: host code and collaborate globally.',category:'web-tools',logo:'🐙',image:U('photo-1555066931-4365d14bab8c'),url:'https://github.com',ratingAvg:4.9,ratingsCount:15000,views:720000,featured:true,active:true,createdAt:'2026-01-12'},
+{id:'w5',slug:'fiverr',name_ar:'فايفر - سوق العمل الحر',name_en:'Fiverr Freelance',desc_ar:'ابدأ الربح من مهاراتك: اعرض خدماتك في التصميم، البرمجة، الكتابة والترجمة لملايين العملاء حول العالم. ابدأ من 5$ وحقق دخلاً حقيقياً.',desc_en:'Sell your skills to millions: design, coding, writing and more.',category:'web-tools',logo:'💼',image:U('photo-1460925895917-afdab827c52f'),url:'https://fiverr.com',ratingAvg:4.5,ratingsCount:5400,views:380000,featured:false,active:true,createdAt:'2026-04-20'},
+{id:'w6',slug:'coursera',name_ar:'كورسيرا - شهادات معتمدة',name_en:'Coursera',desc_ar:'كورسات من أفضل جامعات العالم: ستانفورد، جوجل، ميتا. احصل على شهادات معتمدة في الذكاء الاصطناعي وعلوم البيانات ترفع قيمة سيرتك الذاتية.',desc_en:'Courses from top universities with accredited certificates.',category:'web-learn',logo:'📜',image:U('photo-1523050854058-8df90110c9f1'),url:'https://coursera.org',ratingAvg:4.7,ratingsCount:6800,views:310000,featured:false,active:true,createdAt:'2026-05-10'}],
+ratings:[],messages:[],
+admins:[{id:'admin1',name:'Super Admin',email:'admin@appzone.com',pass:'admin123'}],
+settings:{siteName_ar:'APPZONE | آب زون',siteName_en:'APPZONE',logoIcon:'A',heroImage:U('photo-1551650975-87deedd944c3'),heroTitle_ar:'اكتشف أفضل التطبيقات والألعاب والفيديوهات 🚀',heroTitle_en:'Discover Best Apps, Games & Videos 🚀',heroDesc_ar:'منصتك العربية الأولى لتحميل التطبيقات والألعاب، مشاهدة الفيديوهات، واكتشاف أفضل المواقع وأدوات الذكاء الاصطناعي — كل ذلك مجاناً وبشكل آمن.',heroDesc_en:'Your Arabic hub for apps, games, videos, top websites and AI tools — free and safe.',footerDesc_ar:'منصة عربية حديثة تجمع لك أفضل التطبيقات والألعاب والفيديوهات والمواقع والأدوات الرقمية في مكان واحد.',footerDesc_en:'Modern Arabic platform for apps, games, videos, websites and digital tools.',primary:'#6366f1',secondary:'#a855f7',btn:'#4f46e5',facebook:'https://facebook.com',instagram:'https://instagram.com',youtube:'https://youtube.com',telegram:'https://t.me',whatsapp:'https://wa.me/123456789',email:'info@appzone.com',phone:'+201000000000',seoTitle:'APPZONE | منصة التطبيقات والفيديوهات والمواقع',seoDesc:'اكتشف أفضل التطبيقات والألعاب والفيديوهات والمواقع وأدوات الذكاء الاصطناعي.',seoKeywords:'تطبيقات, العاب, فيديوهات, مواقع, ذكاء اصطناعي',ads_header:'',ads_sidebar:'',ads_footer:'',ads_content:'',privacy_ar:'نحترم خصوصيتك. لا نجمع بيانات شخصية دون موافقتك. ملفات تعريف الارتباط تُستخدم لتحسين التجربة فقط.',privacy_en:'We respect your privacy. No personal data collected without consent.',terms_ar:'باستخدامك المنصة فأنت توافق على: الاستخدام الشخصي للمحتوى، عدم إعادة النشر دون إذن، واحترام حقوق الملكية.',terms_en:'By using the platform you agree to personal use and respect of IP rights.'},
+stats:{visits:15234,history:[{date:'2026-09-07',views:1200,downloads:340},{date:'2026-09-08',views:1580,downloads:420},{date:'2026-09-09',views:1320,downloads:380},{date:'2026-09-10',views:1890,downloads:510},{date:'2026-09-11',views:2100,downloads:620},{date:'2026-09-12',views:2450,downloads:700},{date:'2026-09-13',views:980,downloads:290}]}
+}}
+let DB;
+try{DB=JSON.parse(localStorage.getItem(DB_KEY))||seedDB()}catch(e){DB=seedDB()}
+if(!DB.apps)DB=seedDB();
+function saveDB(){try{localStorage.setItem(DB_KEY,JSON.stringify(DB))}catch(e){toast(LANG==='ar'?'مساحة التخزين ممتلئة':'Storage full','error')}}
+saveDB();
+
+/* ---------- SERVER API BRIDGE ---------- */
+async function serverLogin(email,password){const r=await azApi('/auth/login',{method:'POST',body:JSON.stringify({email,password})});localStorage.setItem('az_jwt',r.token);localStorage.setItem('az_token',btoa(JSON.stringify({email:r.admin.email,exp:Date.now()+7*864e5})));return r}
+/* ---------- AUTH (JWT-simulated) ---------- */
+const getToken=()=>localStorage.getItem('az_token');
+function isAdmin(){const tk=getToken();if(!tk)return false;try{const d=JSON.parse(atob(tk));return Date.now()<d.exp}catch(e){return false}}
+async function adminLogin(e){e.preventDefault();const em=$('#al-email').value.trim().toLowerCase(),pw=$('#al-pass').value;try{await serverLogin(em,pw);toast(t('login_success'));location.hash='#/admin';render()}catch(err){const a=DB.admins.find(x=>x.email===em&&x.pass===pw);if(a){localStorage.setItem('az_token',btoa(JSON.stringify({email:em,exp:Date.now()+864e5})));toast(t('login_success'));location.hash='#/admin';render()}else toast(err.message||t('login_error'),'error')}}
+function adminLogout(){localStorage.removeItem('az_token');location.hash='#/';render()}
+
+/* ---------- FAVS / RATINGS / VIEWS ---------- */
+const getFavs=()=>{try{return JSON.parse(localStorage.getItem('az_favs')||'[]')}catch(e){return[]}};
+function isFav(ty,id){return getFavs().some(f=>f.type===ty&&f.id===id)}
+function toggleFav(ty,id){let f=getFavs();const i=f.findIndex(x=>x.type===ty&&x.id===id);if(i>=0){f.splice(i,1);toast(t('fav_removed'))}else{f.push({type:ty,id});toast(t('fav_added'))}localStorage.setItem('az_favs',JSON.stringify(f));renderHeader();render()}
+function clearFavs(){if(confirm(t('confirm_delete'))){localStorage.removeItem('az_favs');render()}}
+function findItem(ty,id){if(ty==='app')return DB.apps.find(x=>x.id===id);if(ty==='video')return DB.videos.find(x=>x.id===id);return DB.websites.find(x=>x.id===id)}
+function incView(ty,id){const it=findItem(ty,id);if(!it)return;it.views=(+it.views||0)+1;const h=DB.stats.history.find(x=>x.date===todayStr());if(h)h.views++;else DB.stats.history.push({date:todayStr(),views:1,downloads:0});if(DB.stats.history.length>30)DB.stats.history.shift();saveDB()}
+function incDownload(id){const it=DB.apps.find(x=>x.id===id);if(!it)return;it.downloads=(+it.downloads||0)+1;const h=DB.stats.history.find(x=>x.date===todayStr());if(h)h.downloads=(+h.downloads||0)+1;saveDB()}
+function rateItem(ty,id,s){const k=`rated_${ty}_${id}`;if(localStorage.getItem(k)){toast(t('already_rated'),'error');return}const it=findItem(ty,id);if(!it)return;DB.ratings.push({id:uid(),itemType:ty,itemId:id,stars:s,createdAt:new Date().toISOString()});const all=DB.ratings.filter(r=>r.itemType===ty&&r.itemId===id);const base=it.ratingsCount||0,avg=it.ratingAvg||0;const newCount=base+1;it.ratingAvg=((avg*base+s)/newCount);it.ratingsCount=newCount;localStorage.setItem(k,s);saveDB();toast(t('rated_success'));render()}
+function shareContent(title,slug){const url=location.origin+location.pathname+'#/'+slug;if(navigator.share){navigator.share({title,url}).catch(()=>{})}else{navigator.clipboard.writeText(url).then(()=>toast(t('link_copied'))).catch(()=>{prompt('Copy:',url)})}}
+function handleDownload(id,url){incDownload(id);toast(LANG==='ar'?'جاري بدء التحميل... ⬇️':'Starting download... ⬇️');setTimeout(()=>window.open(url,'_blank'),600);setTimeout(renderHeader,1200)}
+function visitWebsite(id,url){const w=DB.websites.find(x=>x.id===id);if(w){w.views++;saveDB()}window.open(url,'_blank')}
+function getCat(slug){return DB.categories.find(c=>c.slug===slug)}
+function catName(slug){const c=getCat(slug);return c?(LANG==='ar'?c.name_ar:c.name_en):slug}
+
+/* ---------- THEME / LANG / SETTINGS ---------- */
+function applyTheme(){document.documentElement.classList.toggle('dark',THEME==='dark');localStorage.setItem('az_theme',THEME)}
+function toggleTheme(){THEME=THEME==='dark'?'light':'dark';applyTheme();render()}
+function toggleLang(){LANG=LANG==='ar'?'en':'ar';localStorage.setItem('az_lang',LANG);applyLang();render()}
+function applyLang(){document.documentElement.lang=LANG;document.documentElement.dir=LANG==='ar'?'rtl':'ltr'}
+function applySettings(){const s=DB.settings;document.documentElement.style.setProperty('--primary',s.primary);document.documentElement.style.setProperty('--secondary',s.secondary);document.documentElement.style.setProperty('--btn',s.btn);document.title=s.seoTitle||s.siteName_ar;let m=document.querySelector('meta[name="description"]');if(m)m.content=s.seoDesc;let k=document.querySelector('meta[name="keywords"]');if(k)k.content=s.seoKeywords}
+function siteName(){return LANG==='ar'?DB.settings.siteName_ar:DB.settings.siteName_en}
+
+/* ============================================================ HEADER / FOOTER */
+function renderHeader(){
+const favs=getFavs().length;
+const nav=[['#/','home','🏠'],['#/apps','apps','📱'],['#/games','games','🎮'],['#/videos','videos','🎬'],['#/websites','websites','🌐'],['#/ai','ai_tools','🤖'],['#/tools','tools','🧰']];
+$('#header-root').innerHTML=`
+<div class="grad-bg text-white text-center text-xs md:text-sm py-2 px-3 font-bold">✨ ${esc(LANG==='ar'?DB.settings.heroTitle_ar:DB.settings.heroTitle_en)} ✨</div>
+<header class="sticky top-0 z-50 glass border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-3 md:px-6">
+<div class="flex items-center gap-2 md:gap-4 py-3">
+<button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xl">☰</button>
+<a href="#/" class="flex items-center gap-2 shrink-0"><div class="w-10 h-10 md:w-11 md:h-11 rounded-2xl grad-bg flex items-center justify-center text-white font-black text-xl shadow-lg">${esc(DB.settings.logoIcon||'A')}</div><div class="leading-tight"><div class="font-black text-base md:text-xl grad-text">${esc(siteName().split('|')[0])}</div><div class="text-[10px] text-slate-500 dark:text-slate-400 font-bold tracking-widest">APPS • VIDEOS • SITES</div></div></a>
+<form onsubmit="return headerSearch(event)" class="hidden md:flex flex-1 max-w-xl mx-2"><div class="relative w-full"><input id="h-search" class="input !rounded-full !py-2.5 pe-12" placeholder="${t('search_ph')}"><button class="absolute end-1 top-1 w-9 h-9 rounded-full grad-bg text-white flex items-center justify-center">🔍</button></div></form>
+<div class="flex items-center gap-1.5 md:gap-2 ms-auto">
+<button onclick="toggleTheme()" title="theme" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-lg hover:scale-110 transition">${THEME==='dark'?'☀️':'🌙'}</button>
+<button onclick="toggleLang()" class="h-10 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 font-black text-sm hover:scale-105 transition">${LANG==='ar'?'EN':'ع'}</button>
+<a href="#/favorites" class="relative w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-lg hover:scale-110 transition">❤️${favs?`<span class="absolute -top-1 -end-1 w-5 h-5 rounded-full bg-rose-500 text-white text-[10px] font-black flex items-center justify-center">${favs}</span>`:''}</a>
+<a href="#/admin" class="hidden sm:flex h-10 px-4 rounded-xl btn-p items-center gap-2 text-sm font-black">⚙️ ${t('admin')}</a>
+</div></div>
+<nav class="hidden md:flex items-center gap-1 pb-3 overflow-x-auto no-scrollbar">${nav.map(n=>`<a href="${n[0]}" class="px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap transition hover:bg-slate-100 dark:hover:bg-slate-800 ${location.hash.startsWith(n[0].replace('#',''))&&n[0]!=='#/'?'bg-slate-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400':''}">${n[2]} ${t(n[1])}</a>`).join('')}</nav>
+</div>
+<form onsubmit="return headerSearch(event)" class="md:hidden px-3 pb-3"><div class="relative"><input id="h-search-m" class="input !rounded-full !py-2.5" placeholder="${t('search_ph')}"><button class="absolute end-1 top-1 w-9 h-9 rounded-full grad-bg text-white">🔍</button></div></form>
+<div id="mmenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 py-3 px-3 grid grid-cols-2 gap-2">${nav.map(n=>`<a href="${n[0]}" onclick="toggleMobileMenu(true)" class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 font-bold text-sm">${n[2]} ${t(n[1])}</a>`).join('')}<a href="#/admin" class="p-3 rounded-2xl grad-bg text-white font-bold text-sm col-span-2 text-center">⚙️ ${t('admin')}</a></div>
+</header>
+${DB.settings.ads_header?`<div class="max-w-7xl mx-auto px-4 mt-3"><div class="rounded-2xl overflow-hidden text-center text-xs text-slate-400 p-2 bg-slate-100 dark:bg-slate-800">${DB.settings.ads_header}</div></div>`:''}`;
+$('#mobile-bottom').innerHTML=`
+<div class="grid grid-cols-5 text-center py-1.5">
+<a href="#/" class="flex flex-col items-center gap-0.5 py-1 text-[11px] font-bold ${!location.hash||location.hash==='#/'?'text-indigo-600':'text-slate-500'}"><span class="text-xl">🏠</span>${t('home')}</a>
+<a href="#/apps" class="flex flex-col items-center gap-0.5 py-1 text-[11px] font-bold text-slate-500"><span class="text-xl">📱</span>${t('apps')}</a>
+<a href="#/search" class="flex flex-col items-center -mt-6"><span class="w-14 h-14 rounded-full grad-bg text-white text-2xl flex items-center justify-center shadow-xl border-4 border-white dark:border-slate-900 glow">🔍</span></a>
+<a href="#/videos" class="flex flex-col items-center gap-0.5 py-1 text-[11px] font-bold text-slate-500"><span class="text-xl">🎬</span>${t('videos')}</a>
+<a href="#/favorites" class="flex flex-col items-center gap-0.5 py-1 text-[11px] font-bold text-slate-500"><span class="text-xl">❤️</span>${t('favorites')}</a>
+</div>`;
+}
+function toggleMobileMenu(force){const m=$('#mmenu');if(!m)return;if(force===true)m.classList.add('hidden');else m.classList.toggle('hidden')}
+function headerSearch(e){e.preventDefault();const v=($('#h-search')?.value||$('#h-search-m')?.value||'').trim();location.hash='#/search'+(v?'?q='+encodeURIComponent(v):'');return false}
+function renderFooter(){
+const s=DB.settings;
+$('#footer-root').innerHTML=`
+<footer class="mt-14 bg-slate-900 text-slate-300 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 hero-pattern"></div>
+<div class="max-w-7xl mx-auto px-4 md:px-6 py-12 grid md:grid-cols-4 gap-8 relative">
+<div><div class="flex items-center gap-2 mb-4"><div class="w-11 h-11 rounded-2xl grad-bg flex items-center justify-center text-white font-black text-xl">${esc(s.logoIcon||'A')}</div><div class="font-black text-xl text-white">${esc(siteName())}</div></div>
+<p class="text-sm leading-relaxed mb-4">${esc(LANG==='ar'?s.footerDesc_ar:s.footerDesc_en)}</p>
+<div class="flex gap-2">${[['facebook','f'],['instagram','📸'],['youtube','▶️'],['telegram','✈️'],['whatsapp','💬']].map(x=>s[x[0]]?`<a href="${esc(s[x[0]])}" target="_blank" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-lg transition hover:-translate-y-1">${x[1]}</a>`:'').join('')}</div></div>
+<div><h4 class="text-white font-black mb-4">🔗 ${t('quick_links')}</h4><div class="grid gap-2 text-sm"><a href="#/" class="hover:text-white">🏠 ${t('home')}</a><a href="#/apps" class="hover:text-white">📱 ${t('apps')}</a><a href="#/games" class="hover:text-white">🎮 ${t('games')}</a><a href="#/videos" class="hover:text-white">🎬 ${t('videos')}</a><a href="#/websites" class="hover:text-white">🌐 ${t('websites')}</a><a href="#/favorites" class="hover:text-white">❤️ ${t('favorites')}</a></div></div>
+<div><h4 class="text-white font-black mb-4">📂 ${t('categories')}</h4><div class="grid gap-2 text-sm">${DB.categories.slice(0,6).map(c=>`<a href="#/category/${c.slug}" class="hover:text-white">${c.icon} ${LANG==='ar'?c.name_ar:c.name_en}</a>`).join('')}</div></div>
+<div><h4 class="text-white font-black mb-4">📬 ${t('contact')}</h4><div class="text-sm grid gap-2 mb-4"><div>📧 ${esc(s.email)}</div><div>📞 ${esc(s.phone)}</div></div>
+<form onsubmit="return subscribe(event)" class="flex gap-2"><input required type="email" placeholder="Email" class="input !bg-white/10 !border-white/10 !text-white text-sm"><button class="btn-p px-4 rounded-xl font-bold text-sm whitespace-nowrap">${t('subscribe')}</button></form>
+<div class="flex gap-3 mt-4 text-xs"><a href="#/privacy" class="hover:text-white underline">${t('privacy')}</a><a href="#/terms" class="hover:text-white underline">${t('terms')}</a><a href="#/contact" class="hover:text-white underline">${t('contact')}</a></div>
+<div class="flex gap-2 mt-3"><button onclick="showReadme()" class="text-[11px] px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20">📖 README</button><button onclick="showSitemap()" class="text-[11px] px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20">🗺️ Sitemap</button><button onclick="showRobots()" class="text-[11px] px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20">🤖 robots</button></div>
+</div></div>
+<div class="border-t border-white/10 py-4 text-center text-xs relative">${t('all_rights')} • ${t('made')}</div>
+</footer><div class="h-16 md:hidden"></div>`;
+}
+function subscribe(e){e.preventDefault();e.target.reset();toast(t('subscribed'));return false}
+
+/* ============================================================ CARDS */
+function appCard(a,i=0){const fav=isFav('app',a.id);
+return`<div class="anim anim-${(i%4)+1} card-hover bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-card overflow-hidden group">
+<a href="#/apps/${a.slug}" class="block p-4"><div class="flex gap-3">
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br ${a.color} flex items-center justify-center text-3xl shadow-lg shrink-0 group-hover:scale-110 transition">${a.icon}</div>
+<div class="flex-1 min-w-0"><div class="flex items-start justify-between gap-2"><h3 class="font-black text-[15px] leading-snug truncate">${esc(L(a,'name'))}</h3>${a.featured?'<span class="badge-feat text-white text-[10px] px-2 py-0.5 rounded-full font-black shrink-0">⭐</span>':''}</div>
+<div class="text-xs text-slate-500 font-bold mt-0.5">${esc(a.developer)} • ${esc(catName(a.category))}</div>
+<div class="mt-1.5">${stars(a.ratingAvg)}</div></div></div>
+<div class="flex items-center justify-between mt-3 text-[11px] text-slate-500 font-bold"><span>⬇️ ${fmt(a.downloads)}</span><span>👁️ ${fmt(a.views)}</span><span>📦 ${esc(a.size)}</span><span class="text-emerald-600">🆓 ${t('free')}</span></div></a>
+<div class="flex gap-2 px-4 pb-4"><a href="#/apps/${a.slug}" class="flex-1 btn-p rounded-xl py-2.5 text-center text-sm font-black">⬇️ ${t('download_now')}</a>
+<button onclick="toggleFav('app','${a.id}')" class="w-11 rounded-xl ${fav?'bg-rose-100 text-rose-500':'bg-slate-100 dark:bg-slate-800'} flex items-center justify-center text-lg">${fav?'❤️':'🤍'}</button></div></div>`}
+function videoCard(v,i=0){const fav=isFav('video',v.id);
+return`<div class="anim anim-${(i%4)+1} card-hover bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-card overflow-hidden group">
+<a href="#/videos/${v.slug}" class="block relative video-thumb"><img loading="lazy" src="${esc(v.thumbnail)}" onerror="this.src='https://picsum.photos/seed/${v.id}/600/340'" class="w-full h-44 object-cover group-hover:scale-105 transition duration-500" alt=""><span class="absolute bottom-2 end-2 bg-black/70 text-white text-[11px] px-2 py-0.5 rounded-lg font-bold z-10">⏱️ ${esc(v.duration)}</span>${v.featured?'<span class="absolute top-2 start-2 badge-feat text-white text-[10px] px-2 py-1 rounded-full font-black z-10">⭐ مميز</span>':''}</a>
+<div class="p-4"><a href="#/videos/${v.slug}"><h3 class="font-black text-[14px] line-2 leading-relaxed hover:text-indigo-600 transition">${esc(L(v,'title'))}</h3></a>
+<div class="flex items-center gap-2 mt-2 text-[11px] text-slate-500 font-bold"><span class="px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300">${esc(catName(v.category))}</span><span>👁️ ${fmt(v.views)}</span></div>
+<div class="flex items-center justify-between mt-3"><div>${stars(v.ratingAvg)}</div><button onclick="toggleFav('video','${v.id}')" class="text-xl">${fav?'❤️':'🤍'}</button></div></div></div>`}
+function siteCard(w,i=0){const fav=isFav('website',w.id);
+return`<div class="anim anim-${(i%4)+1} card-hover bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-card overflow-hidden group">
+<a href="#/websites/${w.slug}" class="block relative h-40 overflow-hidden"><img loading="lazy" src="${esc(w.image)}" onerror="this.src='https://picsum.photos/seed/${w.id}/600/340'" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 start-3 flex items-center gap-2"><div class="w-11 h-11 rounded-2xl bg-white flex items-center justify-center text-2xl shadow-xl">${w.logo}</div><div class="text-white font-black text-sm drop-shadow">${esc(L(w,'name'))}</div></div>
+${w.featured?'<span class="absolute top-2 end-2 badge-feat text-white text-[10px] px-2 py-1 rounded-full font-black">⭐</span>':''}</a>
+<div class="p-4"><p class="text-xs text-slate-500 line-2 leading-relaxed">${esc(L(w,'desc'))}</p>
+<div class="flex items-center justify-between mt-3 text-[11px] font-bold text-slate-500"><span>👁️ ${fmt(w.views)}</span><span>${stars(w.ratingAvg)}</span></div>
+<div class="flex gap-2 mt-3"><button onclick="visitWebsite('${w.id}','${esc(w.url)}')" class="flex-1 btn-p rounded-xl py-2.5 text-sm font-black">🚀 ${t('visit_site')}</button><button onclick="toggleFav('website','${w.id}')" class="w-11 rounded-xl ${fav?'bg-rose-100 text-rose-500':'bg-slate-100 dark:bg-slate-800'} text-lg">${fav?'❤️':'🤍'}</button></div></div></div>`}
+function sectionHead(icon,title,sub,link){return`<div class="flex items-end justify-between mb-5"><div><h2 class="text-xl md:text-2xl font-black flex items-center gap-2">${icon} ${title}</h2><p class="text-xs md:text-sm text-slate-500 mt-1">${sub||''}</p></div>${link?`<a href="${link}" class="text-sm font-black text-indigo-600 dark:text-indigo-400 hover:gap-3 gap-1 flex items-center transition-all">${t('view_all')} ←</a>`:''}</div>`}
+
+/* ============================================================ PUBLIC PAGES */
+function renderHome(){
+const s=DB.settings;
+const featApps=DB.apps.filter(a=>a.active&&a.featured);
+const featVids=DB.videos.filter(v=>v.active&&v.featured);
+const featSites=DB.websites.filter(w=>w.active&&w.featured);
+const featured=[...featApps.map(x=>({...x,_t:'app'})),...featVids.map(x=>({...x,_t:'video'})),...featSites.map(x=>({...x,_t:'website'}))].slice(0,4);
+const latest=[...DB.apps.filter(a=>a.active).map(x=>({...x,_t:'app',_d:x.createdAt})),...DB.videos.filter(v=>v.active).map(x=>({...x,_t:'video',_d:x.createdAt})),...DB.websites.filter(w=>w.active).map(x=>({...x,_t:'website',_d:x.createdAt}))].sort((a,b)=>new Date(b._d)-new Date(a._d)).slice(0,8);
+const mostViewed=[...DB.apps.filter(a=>a.active).map(x=>({...x,_t:'app'})),...DB.videos.filter(v=>v.active).map(x=>({...x,_t:'video'})),...DB.websites.filter(w=>w.active).map(x=>({...x,_t:'website'}))].sort((a,b)=>b.views-a.views).slice(0,4);
+const mostDl=DB.apps.filter(a=>a.active).sort((a,b)=>b.downloads-a.downloads).slice(0,4);
+const apps=DB.apps.filter(a=>a.active&&a.type==='app').slice(0,4);
+const games=DB.apps.filter(a=>a.active&&a.type==='game').slice(0,4);
+const ai=DB.apps.filter(a=>a.active&&a.type==='ai').slice(0,4);
+const tools=DB.apps.filter(a=>a.active&&a.type==='tool').slice(0,4);
+const vids=DB.videos.filter(v=>v.active).slice(0,3);
+const sites=DB.websites.filter(w=>w.active).slice(0,3);
+$('#view').innerHTML=`
+<section class="relative overflow-hidden grad-bg hero-pattern">
+<img src="${esc(s.heroImage)}" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover opacity-20" alt="">
+<div class="absolute -top-20 -start-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -end-16 w-96 h-96 bg-black/10 rounded-full blur-3xl"></div>
+<div class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20 relative grid md:grid-cols-2 gap-8 items-center">
+<div class="anim text-center md:text-start">
+<span class="inline-block bg-white/20 backdrop-blur text-white text-xs font-black px-4 py-2 rounded-full border border-white/20">${t('hero_badge')}</span>
+<h1 class="text-3xl md:text-5xl font-black text-white leading-tight mt-4">${esc(LANG==='ar'?s.heroTitle_ar:s.heroTitle_en)}</h1>
+<p class="text-white/85 mt-4 leading-relaxed text-sm md:text-lg">${esc(LANG==='ar'?s.heroDesc_ar:s.heroDesc_en)}</p>
+<form onsubmit="return heroSearch(event)" class="mt-6 flex gap-2 bg-white rounded-2xl p-2 shadow-2xl max-w-lg mx-auto md:mx-0"><input id="hero-q" class="flex-1 px-4 bg-transparent text-slate-800 text-sm font-bold" placeholder="${t('hero_search_ph')}"><button class="grad-bg text-white px-6 py-3 rounded-xl font-black text-sm">🔍 ${t('search')}</button></form>
+<div class="flex flex-wrap justify-center md:justify-start gap-2 mt-4 text-[11px] font-bold text-white/90"><span class="opacity-70">🔥 ${t('trending')}:</span>${['ببجي','ChatGPT','فلاتر','كانفا'].map(k=>`<a href="#/search?q=${encodeURIComponent(k)}" class="bg-white/15 hover:bg-white/30 px-3 py-1 rounded-full border border-white/20 transition">${k}</a>`).join('')}</div>
+<div class="grid grid-cols-4 gap-2 mt-6 max-w-lg mx-auto md:mx-0">${[[DB.apps.length,'📱'],[DB.videos.length,'🎬'],[DB.websites.length,'🌐'],[fmt(DB.apps.reduce((x,a)=>x+a.downloads,0))+'+','⬇️']].map(x=>`<div class="bg-white/15 backdrop-blur border border-white/20 rounded-2xl py-3 text-center text-white"><div class="font-black text-lg">${x[0]}</div><div class="text-xl">${x[1]}</div></div>`).join('')}</div>
+</div>
+<div class="hidden md:grid grid-cols-2 gap-4 anim anim-2">
+<div class="float bg-white/15 backdrop-blur border border-white/20 rounded-3xl p-5 text-white"><div class="text-4xl mb-2">📱</div><div class="font-black">+${DB.apps.length} ${t('apps')}</div><div class="text-xs opacity-80 mt-1">آمنة ومحدثة يومياً</div></div>
+<div class="float bg-white/15 backdrop-blur border border-white/20 rounded-3xl p-5 text-white mt-8" style="animation-delay:1s"><div class="text-4xl mb-2">🤖</div><div class="font-black">${t('ai_tools')}</div><div class="text-xs opacity-80 mt-1">أحدث أدوات الذكاء الاصطناعي</div></div>
+<div class="float bg-white/15 backdrop-blur border border-white/20 rounded-3xl p-5 text-white -mt-4" style="animation-delay:.5s"><div class="text-4xl mb-2">🎬</div><div class="font-black">+${DB.videos.length} ${t('videos')}</div><div class="text-xs opacity-80 mt-1">شروحات ومراجعات حصرية</div></div>
+<div class="float bg-white/15 backdrop-blur border border-white/20 rounded-3xl p-5 text-white mt-4" style="animation-delay:1.5s"><div class="text-4xl mb-2">🌐</div><div class="font-black">+${DB.websites.length} ${t('websites')}</div><div class="text-xs opacity-80 mt-1">نخبة مواقع الويب</div></div>
+</div></div>
+<svg class="block w-full text-[#f6f7fb] dark:text-[#0b1020] -mb-px" viewBox="0 0 1440 60" fill="currentColor"><path d="M0,30 C360,70 1080,-10 1440,30 L1440,60 L0,60 Z"/></svg>
+</section>
+<div class="max-w-7xl mx-auto px-4 md:px-6 -mt-2">
+<div class="flex gap-2 overflow-x-auto no-scrollbar py-4">${DB.categories.map(c=>`<a href="#/category/${c.slug}" class="chip shrink-0 flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-full px-4 py-2.5 text-sm font-bold shadow-sm hover:shadow-lg"><span class="w-7 h-7 rounded-full flex items-center justify-center text-sm" style="background:${c.color}22">${c.icon}</span>${LANG==='ar'?c.name_ar:c.name_en}</a>`).join('')}</div>
+<div class="mt-6">${sectionHead('⭐',t('featured'),t('manage_all'))}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${featured.map((f,i)=>f._t==='app'?appCard(f,i):f._t==='video'?videoCard(f,i):siteCard(f,i)).join('')}</div></div>
+${DB.settings.ads_content?`<div class="mt-8 rounded-2xl p-3 text-center bg-slate-100 dark:bg-slate-800 text-xs">${DB.settings.ads_content}</div>`:''}
+<div class="mt-10">${sectionHead('🆕',t('latest'),'أحدث الإضافات على المنصة')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${latest.map((f,i)=>f._t==='app'?appCard(f,i):f._t==='video'?videoCard(f,i):siteCard(f,i)).join('')}</div></div>
+<div class="grid lg:grid-cols-2 gap-8 mt-10">
+<div>${sectionHead('👁️',t('most_viewed'))}<div class="grid sm:grid-cols-2 gap-4">${mostViewed.map((f,i)=>f._t==='app'?appCard(f,i):f._t==='video'?videoCard(f,i):siteCard(f,i)).join('')}</div></div>
+<div>${sectionHead('⬇️',t('most_downloaded'))}<div class="grid sm:grid-cols-2 gap-4">${mostDl.map((a,i)=>appCard(a,i)).join('')}</div></div>
+</div>
+<div class="mt-10">${sectionHead('📱',t('top_apps'),'','#/apps')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${apps.map((a,i)=>appCard(a,i)).join('')}</div></div>
+<div class="mt-10">${sectionHead('🎮',t('top_games'),'','#/games')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${games.map((a,i)=>appCard(a,i)).join('')||emptyBox()}</div></div>
+<div class="mt-10">${sectionHead('🤖',t('top_ai'),'','#/ai')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${ai.map((a,i)=>appCard(a,i)).join('')}</div></div>
+<div class="mt-10">${sectionHead('🎬',t('top_videos'),'','#/videos')}<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${vids.map((v,i)=>videoCard(v,i)).join('')}</div></div>
+<div class="mt-10">${sectionHead('🌐',t('top_sites'),'','#/websites')}<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${sites.map((w,i)=>siteCard(w,i)).join('')}</div></div>
+<div class="mt-10">${sectionHead('🧰',t('top_tools'),'','#/tools')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${tools.map((a,i)=>appCard(a,i)).join('')}</div></div>
+</div>`;
+setSEO(DB.settings.seoTitle,DB.settings.seoDesc);
+}
+function emptyBox(){return`<div class="col-span-full text-center py-10 text-slate-400 font-bold">📭 ${t('no_results')}</div>`}
+function heroSearch(e){e.preventDefault();const v=$('#hero-q').value.trim();location.hash='#/search'+(v?'?q='+encodeURIComponent(v):'');return false}
+
+/* Listing */
+function renderListing(kind){
+const conf={apps:{icon:'📱',title:t('apps'),filter:a=>a.type==='app'},games:{icon:'🎮',title:t('games'),filter:a=>a.type==='game'},ai:{icon:'🤖',title:t('ai_tools'),filter:a=>a.type==='ai'},tools:{icon:'🧰',title:t('tools'),filter:a=>a.type==='tool'},videos:{icon:'🎬',title:t('videos')},websites:{icon:'🌐',title:t('websites')}}[kind];
+const q=new URLSearchParams((location.hash.split('?')[1]||''));
+const cat=q.get('cat')||'',sort=q.get('sort')||'newest',qq=q.get('q')||'';
+let items=kind==='videos'?DB.videos.filter(v=>v.active).map(x=>({...x,_t:'video'})):kind==='websites'?DB.websites.filter(w=>w.active).map(x=>({...x,_t:'website'})):DB.apps.filter(a=>a.active&&conf.filter(a)).map(x=>({...x,_t:'app'}));
+if(cat)items=items.filter(x=>x.category===cat);
+if(qq)items=items.filter(x=>((L(x,'name')||L(x,'title'))+' '+(L(x,'desc'))).toLowerCase().includes(qq.toLowerCase()));
+if(sort==='views')items.sort((a,b)=>b.views-a.views);else if(sort==='rating')items.sort((a,b)=>b.ratingAvg-a.ratingAvg);else if(sort==='downloads')items.sort((a,b)=>(b.downloads||0)-(a.downloads||0));else items.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+const cats=DB.categories.filter(c=>(kind==='videos'&&c.type==='video')||(kind==='websites'&&c.type==='website')||(kind!=='videos'&&kind!=='websites'&&['app','game','ai','tool'].includes(c.type)));
+$('#view').innerHTML=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+<div class="anim rounded-3xl grad-bg hero-pattern p-8 md:p-10 text-white relative overflow-hidden mb-6"><h1 class="text-2xl md:text-4xl font-black">${conf.icon} ${conf.title}</h1><p class="opacity-85 mt-2 text-sm">${items.length} ${t('results')}</p></div>
+<div class="anim anim-1 bg-white dark:bg-slate-900 rounded-2xl border p-4 flex flex-wrap gap-3 items-end mb-6">
+<div class="flex-1 min-w-[180px]"><label class="text-xs font-black text-slate-500">🔍 ${t('search')}</label><input id="f-q" value="${esc(qq)}" class="input mt-1" placeholder="${t('search_ph')}"></div>
+<div class="min-w-[160px]"><label class="text-xs font-black text-slate-500">📂 ${t('category')}</label><select id="f-cat" class="input mt-1"><option value="">${t('all')}</option>${cats.map(c=>`<option value="${c.slug}" ${cat===c.slug?'selected':''}>${c.icon} ${LANG==='ar'?c.name_ar:c.name_en}</option>`).join('')}</select></div>
+<div class="min-w-[160px]"><label class="text-xs font-black text-slate-500">↕️ ${t('sort')}</label><select id="f-sort" class="input mt-1"><option value="newest" ${sort==='newest'?'selected':''}>${t('sort_newest')}</option><option value="views" ${sort==='views'?'selected':''}>${t('sort_views')}</option><option value="rating" ${sort==='rating'?'selected':''}>${t('sort_rating')}</option><option value="downloads" ${sort==='downloads'?'selected':''}>${t('sort_downloads')}</option></select></div>
+<button onclick="applyListFilter('${kind}')" class="btn-p px-6 py-3 rounded-xl font-black text-sm">✔️ ${t('filter')}</button>
+</div>
+<div class="grid sm:grid-cols-2 ${kind==='videos'||kind==='websites'?'lg:grid-cols-3':'lg:grid-cols-4'} gap-4">${items.map((x,i)=>x._t==='app'?appCard(x,i):x._t==='video'?videoCard(x,i):siteCard(x,i)).join('')||emptyBox()}</div></div>`;
+setSEO(conf.title+' | '+siteName(),conf.title);
+}
+function applyListFilter(kind){const q=$('#f-q').value.trim(),c=$('#f-cat').value,s=$('#f-sort').value;let h='#/'+kind+'?';if(q)h+='q='+encodeURIComponent(q)+'&';if(c)h+='cat='+c+'&';h+='sort='+s;location.hash=h}
+
+/* Category page */
+function renderCategory(slug){const c=getCat(slug);if(!c){return render404()}
+const items=[...DB.apps.filter(a=>a.active&&a.category===slug).map(x=>({...x,_t:'app'})),...DB.videos.filter(v=>v.active&&v.category===slug).map(x=>({...x,_t:'video'})),...DB.websites.filter(w=>w.active&&w.category===slug).map(x=>({...x,_t:'website'}))];
+$('#view').innerHTML=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-8"><div class="anim rounded-3xl p-8 text-white mb-6" style="background:linear-gradient(135deg,${c.color},${c.color}99)"><h1 class="text-2xl md:text-4xl font-black">${c.icon} ${LANG==='ar'?c.name_ar:c.name_en}</h1><p class="opacity-90 mt-2 text-sm">${items.length} ${t('results')}</p></div><div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${items.map((x,i)=>x._t==='app'?appCard(x,i):x._t==='video'?videoCard(x,i):siteCard(x,i)).join('')||emptyBox()}</div></div>`;
+setSEO((LANG==='ar'?c.name_ar:c.name_en)+' | '+siteName());
+}
+
+/* App detail */
+function renderAppDetail(slug){const a=DB.apps.find(x=>x.slug===slug&&x.active);if(!a)return render404();incView('app',a.id);
+const fav=isFav('app',a.id),rated=localStorage.getItem('rated_app_'+a.id);
+const similar=DB.apps.filter(x=>x.active&&x.id!==a.id&&(x.category===a.category||x.type===a.type)).slice(0,4);
+const typeLabel={app:t('apps'),game:t('games'),ai:t('ai_tools'),tool:t('tools')}[a.type];
+$('#view').innerHTML=`<div class="max-w-6xl mx-auto px-4 md:px-6 py-8">
+<div class="anim text-xs font-bold text-slate-500 mb-4"><a href="#/" class="hover:text-indigo-600">${t('home')}</a> / <a href="#/${a.type==='app'?'apps':a.type==='game'?'games':a.type==='ai'?'ai':'tools'}" class="hover:text-indigo-600">${typeLabel}</a> / <span class="text-slate-800 dark:text-slate-200">${esc(L(a,'name'))}</span></div>
+<div class="anim anim-1 bg-white dark:bg-slate-900 rounded-3xl border p-6 md:p-8 shadow-card">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-28 h-28 md:w-36 md:h-36 rounded-3xl bg-gradient-to-br ${a.color} flex items-center justify-center text-6xl md:text-7xl shadow-xl shrink-0 mx-auto md:mx-0">${a.icon}</div>
+<div class="flex-1 text-center md:text-start">
+<div class="flex flex-wrap items-center justify-center md:justify-start gap-2"><h1 class="text-2xl md:text-3xl font-black">${esc(L(a,'name'))}</h1><span class="text-xs bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full font-black">✓ ${t('verified')}</span><span class="text-xs bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 px-2.5 py-1 rounded-full font-black">${esc(catName(a.category))}</span></div>
+<div class="text-sm text-slate-500 font-bold mt-1">${esc(a.developer)} • v${esc(a.version)}</div>
+<div class="flex items-center justify-center md:justify-start gap-3 mt-3">${stars(a.ratingAvg,'text-base')}<span class="text-xs text-slate-500 font-bold">(${fmt(a.ratingsCount)} ${t('rating')})</span></div>
+<div class="grid grid-cols-3 gap-2 mt-4 max-w-md mx-auto md:mx-0 text-center"><div class="bg-slate-50 dark:bg-slate-800 rounded-2xl py-3"><div class="font-black">⬇️ ${fmt(a.downloads)}</div><div class="text-[10px] text-slate-500 font-bold">${t('downloads')}</div></div><div class="bg-slate-50 dark:bg-slate-800 rounded-2xl py-3"><div class="font-black">👁️ ${fmt(a.views)}</div><div class="text-[10px] text-slate-500 font-bold">${t('views')}</div></div><div class="bg-slate-50 dark:bg-slate-800 rounded-2xl py-3"><div class="font-black">📦 ${esc(a.size)}</div><div class="text-[10px] text-slate-500 font-bold">${t('size')}</div></div></div>
+<div class="flex flex-wrap justify-center md:justify-start gap-2 mt-5">
+<button onclick="handleDownload('${a.id}','${esc(a.downloadUrl)}')" class="btn-p px-8 py-3.5 rounded-2xl font-black glow">⬇️ ${t('download_now')} • ${t('free')}</button>
+<button onclick="toggleFav('app','${a.id}')" class="px-5 py-3.5 rounded-2xl font-black text-sm ${fav?'bg-rose-100 text-rose-600':'bg-slate-100 dark:bg-slate-800'}">${fav?'❤️ '+t('unfav'):'🤍 '+t('fav')}</button>
+<button onclick="shareContent('${esc(L(a,'name'))}','apps/${a.slug}')" class="px-5 py-3.5 rounded-2xl font-black text-sm bg-slate-100 dark:bg-slate-800">📤 ${t('share')}</button>
+</div></div></div></div>
+<div class="grid lg:grid-cols-3 gap-6 mt-6">
+<div class="lg:col-span-2 space-y-6">
+<div class="anim anim-2 bg-white dark:bg-slate-900 rounded-3xl border p-6"><h2 class="font-black text-lg mb-3">📸 ${t('screenshots')}</h2><div class="grid grid-cols-2 gap-3">${(a.screenshots||[]).map(s=>`<img src="${esc(s)}" onerror="this.src='https://picsum.photos/seed/${a.id}/400/300'" onclick="openLightbox('${esc(s)}')" class="rounded-2xl h-44 w-full object-cover cursor-zoom-in hover:opacity-90 transition" loading="lazy">`).join('')}</div></div>
+<div class="anim anim-2 bg-white dark:bg-slate-900 rounded-3xl border p-6 prose-ar"><h2 class="font-black text-lg mb-3">📝 ${t('desc')}</h2><p class="text-sm leading-loose text-slate-600 dark:text-slate-300">${esc(L(a,'desc'))}</p></div>
+${(a.externalLinks||[]).length?`<div class="anim bg-white dark:bg-slate-900 rounded-3xl border p-6"><h2 class="font-black text-lg mb-3">🔗 ${t('external_links')}</h2><div class="flex flex-wrap gap-2">${a.externalLinks.map(l=>`<a href="${esc(l.url)}" target="_blank" class="px-4 py-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-black hover:scale-105 transition">🔗 ${esc(l.label)} ↗</a>`).join('')}</div></div>`:''}
+<div class="anim bg-white dark:bg-slate-900 rounded-3xl border p-6"><h2 class="font-black text-lg mb-3">⭐ ${t('rate_now')}</h2>
+${rated?`<div class="text-center py-3 font-black text-emerald-600">✅ ${t('already_rated')} (${rated}★)</div>`:`<div class="flex items-center justify-center gap-2" id="rate-row">${[1,2,3,4,5].map(n=>`<button onclick="rateItem('app','${a.id}',${n})" class="star-btn text-4xl text-slate-300 hover:text-amber-400">★</button>`).join('')}</div><p class="text-center text-xs text-slate-400 mt-2 font-bold">${t('your_rating')}</p>`}</div>
+</div>
+<div class="space-y-6">
+<div class="anim anim-3 bg-white dark:bg-slate-900 rounded-3xl border p-6"><h2 class="font-black mb-4">ℹ️ ${t('app_info')}</h2><div class="grid gap-3 text-sm">${[[t('version'),a.version],[t('size'),a.size],[t('os'),a.os],[t('developer'),a.developer],[t('updated'),a.updatedAt],[t('category'),catName(a.category)]].map(r=>`<div class="flex justify-between py-2.5 border-b border-slate-100 dark:border-slate-800 last:border-0"><span class="text-slate-500 font-bold">${r[0]}</span><span class="font-black">${esc(r[1])}</span></div>`).join('')}</div></div>
+${DB.settings.ads_sidebar?`<div class="rounded-3xl p-3 text-center bg-slate-100 dark:bg-slate-800 text-xs">${DB.settings.ads_sidebar}</div>`:''}
+</div></div>
+<div class="mt-10">${sectionHead('💡',t('similar'))}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${similar.map((x,i)=>appCard(x,i)).join('')||emptyBox()}</div></div></div>`;
+setSEO(L(a,'name')+' | '+siteName(),L(a,'desc').slice(0,150));
+injectLD({"@context":"https://schema.org","@type":"MobileApplication","name":L(a,'name'),"operatingSystem":a.os,"applicationCategory":catName(a.category),"aggregateRating":{"@type":"AggregateRating","ratingValue":a.ratingAvg,"ratingCount":a.ratingsCount}});
+}
+
+/* Video detail */
+function renderVideoDetail(slug){const v=DB.videos.find(x=>x.slug===slug&&x.active);if(!v)return render404();incView('video',v.id);
+const fav=isFav('video',v.id),rated=localStorage.getItem('rated_video_'+v.id);
+const similar=DB.videos.filter(x=>x.active&&x.id!==v.id).slice(0,3);
+let player='';
+if(v.youtubeUrl){let emb=v.youtubeUrl;if(emb.includes('watch?v='))emb=emb.replace('watch?v=','embed/');player=`<iframe src="${esc(emb)}" class="w-full aspect-video rounded-3xl" frameborder="0" allowfullscreen allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>`}
+else if(v.videoUrl){player=`<video src="${esc(v.videoUrl)}" controls class="w-full aspect-video rounded-3xl bg-black"></video>`}
+else player=`<img src="${esc(v.thumbnail)}" class="w-full aspect-video rounded-3xl object-cover">`;
+$('#view').innerHTML=`<div class="max-w-6xl mx-auto px-4 md:px-6 py-8">
+<div class="anim text-xs font-bold text-slate-500 mb-4"><a href="#/">${t('home')}</a> / <a href="#/videos">${t('videos')}</a> / <span class="text-slate-800 dark:text-slate-200">${esc(L(v,'title'))}</span></div>
+<div class="grid lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2">
+<div class="anim shadow-2xl rounded-3xl overflow-hidden">${player}</div>
+<div class="anim anim-1 bg-white dark:bg-slate-900 rounded-3xl border p-6 mt-4">
+<h1 class="text-xl md:text-2xl font-black leading-relaxed">${esc(L(v,'title'))}</h1>
+<div class="flex flex-wrap items-center gap-2 mt-3 text-xs font-bold text-slate-500"><span class="px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600">${esc(catName(v.category))}</span><span>👁️ ${fmt(v.views)} ${t('views')}</span><span>⏱️ ${esc(v.duration)}</span><span>📅 ${esc(v.createdAt)}</span></div>
+<div class="flex items-center gap-3 mt-4">${stars(v.ratingAvg,'text-base')}<span class="text-xs text-slate-500 font-bold">(${fmt(v.ratingsCount)})</span></div>
+<p class="text-sm leading-loose text-slate-600 dark:text-slate-300 mt-4">${esc(L(v,'desc'))}</p>
+<div class="flex flex-wrap gap-2 mt-5">
+<button onclick="toggleFav('video','${v.id}')" class="px-5 py-3 rounded-2xl font-black text-sm ${fav?'bg-rose-100 text-rose-600':'bg-slate-100 dark:bg-slate-800'}">${fav?'❤️ '+t('unfav'):'🤍 '+t('fav')}</button>
+<button onclick="shareContent('${esc(L(v,'title'))}','videos/${v.slug}')" class="px-5 py-3 rounded-2xl font-black text-sm bg-slate-100 dark:bg-slate-800">📤 ${t('share')} • ${t('share_text')}</button>
+</div>
+<div class="mt-5 pt-5 border-t border-slate-100 dark:border-slate-800"><h3 class="font-black mb-3">⭐ ${t('rate_now')}</h3>${rated?`<div class="font-black text-emerald-600 text-sm">✅ ${t('already_rated')} (${rated}★)</div>`:`<div class="flex gap-2">${[1,2,3,4,5].map(n=>`<button onclick="rateItem('video','${v.id}',${n})" class="star-btn text-3xl text-slate-300 hover:text-amber-400">★</button>`).join('')}</div>`}</div>
+</div></div>
+<div><h3 class="font-black text-lg mb-4">🎬 ${t('related_videos')}</h3><div class="grid gap-4">${similar.map((x,i)=>videoCard(x,i)).join('')}</div>${DB.settings.ads_sidebar?`<div class="rounded-3xl p-3 mt-4 text-center bg-slate-100 dark:bg-slate-800 text-xs">${DB.settings.ads_sidebar}</div>`:''}</div>
+</div></div>`;
+setSEO(L(v,'title')+' | '+siteName(),L(v,'desc').slice(0,150));
+injectLD({"@context":"https://schema.org","@type":"VideoObject","name":L(v,'title'),"description":L(v,'desc'),"thumbnailUrl":v.thumbnail,"uploadDate":v.createdAt});
+}
+
+/* Website detail */
+function renderWebsiteDetail(slug){const w=DB.websites.find(x=>x.slug===slug&&x.active);if(!w)return render404();incView('website',w.id);
+const fav=isFav('website',w.id),rated=localStorage.getItem('rated_website_'+w.id);
+const similar=DB.websites.filter(x=>x.active&&x.id!==w.id).slice(0,3);
+$('#view').innerHTML=`<div class="max-w-6xl mx-auto px-4 md:px-6 py-8">
+<div class="anim text-xs font-bold text-slate-500 mb-4"><a href="#/">${t('home')}</a> / <a href="#/websites">${t('websites')}</a> / <span class="text-slate-800 dark:text-slate-200">${esc(L(w,'name'))}</span></div>
+<div class="anim anim-1 bg-white dark:bg-slate-900 rounded-3xl border overflow-hidden shadow-card">
+<img src="${esc(w.image)}" onerror="this.src='https://picsum.photos/seed/${w.id}/1000/400'" onclick="openLightbox('${esc(w.image)}')" class="w-full h-64 md:h-96 object-cover cursor-zoom-in" alt="">
+<div class="p-6 md:p-8">
+<div class="flex flex-col md:flex-row md:items-center gap-4 -mt-14 md:-mt-16 relative">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-white dark:bg-slate-800 shadow-xl flex items-center justify-center text-5xl border-4 border-white dark:border-slate-900">${w.logo}</div>
+<div class="flex-1"><div class="flex flex-wrap items-center gap-2"><h1 class="text-2xl md:text-3xl font-black">${esc(L(w,'name'))}</h1><span class="text-xs bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full font-black">✓ ${t('verified')}</span></div>
+<div class="flex items-center gap-3 mt-2">${stars(w.ratingAvg)}<span class="text-xs text-slate-500 font-bold">👁️ ${fmt(w.views)} • ${esc(catName(w.category))}</span></div></div>
+<button onclick="visitWebsite('${w.id}','${esc(w.url)}')" class="btn-p px-8 py-4 rounded-2xl font-black glow whitespace-nowrap">🚀 ${t('visit_site')} ↗</button>
+</div>
+<p class="mt-6 text-sm leading-loose text-slate-600 dark:text-slate-300">${esc(L(w,'desc'))}</p>
+<div class="flex flex-wrap items-center gap-2 mt-5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 text-sm"><span class="font-black">🔗</span><a href="${esc(w.url)}" target="_blank" class="text-indigo-600 font-bold break-all hover:underline">${esc(w.url)}</a></div>
+<div class="flex flex-wrap gap-2 mt-4">
+<button onclick="toggleFav('website','${w.id}')" class="px-5 py-3 rounded-2xl font-black text-sm ${fav?'bg-rose-100 text-rose-600':'bg-slate-100 dark:bg-slate-800'}">${fav?'❤️ '+t('unfav'):'🤍 '+t('fav')}</button>
+<button onclick="shareContent('${esc(L(w,'name'))}','websites/${w.slug}')" class="px-5 py-3 rounded-2xl font-black text-sm bg-slate-100 dark:bg-slate-800">📤 ${t('share')}</button>
+</div>
+<div class="mt-5 pt-5 border-t border-slate-100 dark:border-slate-800"><h3 class="font-black mb-3">⭐ ${t('rate_now')}</h3>${rated?`<div class="font-black text-emerald-600 text-sm">✅ ${t('already_rated')} (${rated}★)</div>`:`<div class="flex gap-2">${[1,2,3,4,5].map(n=>`<button onclick="rateItem('website','${w.id}',${n})" class="star-btn text-3xl text-slate-300 hover:text-amber-400">★</button>`).join('')}</div>`}</div>
+</div></div>
+<div class="mt-10">${sectionHead('🌐',t('similar'))}<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${similar.map((x,i)=>siteCard(x,i)).join('')}</div></div></div>`;
+setSEO(L(w,'name')+' | '+siteName(),L(w,'desc').slice(0,150));
+}
+
+/* Search */
+function renderSearch(){
+const q=new URLSearchParams((location.hash.split('?')[1]||''));
+const query=q.get('q')||'',type=q.get('type')||'all',cat=q.get('cat')||'',sort=q.get('sort')||'newest';
+let items=[...DB.apps.filter(a=>a.active).map(x=>({...x,_t:'app',_n:L(x,'name')})),...DB.videos.filter(v=>v.active).map(x=>({...x,_t:'video',_n:L(x,'title')})),...DB.websites.filter(w=>w.active).map(x=>({...x,_t:'website',_n:L(x,'name')}))];
+if(query)items=items.filter(x=>(x._n+' '+L(x,'desc')).toLowerCase().includes(query.toLowerCase()));
+if(type!=='all')items=items.filter(x=>type==='video'?x._t==='video':type==='website'?x._t==='website':x.type===type);
+if(cat)items=items.filter(x=>x.category===cat);
+if(sort==='views')items.sort((a,b)=>b.views-a.views);else if(sort==='rating')items.sort((a,b)=>b.ratingAvg-a.ratingAvg);else if(sort==='downloads')items.sort((a,b)=>(b.downloads||0)-(a.downloads||0));else items.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+$('#view').innerHTML=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+<div class="anim rounded-3xl grad-bg hero-pattern p-8 text-white mb-6"><h1 class="text-2xl md:text-3xl font-black">🔍 ${t('search')}</h1><p class="opacity-85 text-sm mt-1">${items.length} ${t('results')}${query?` — "${esc(query)}"`:''}</p></div>
+<div class="anim anim-1 bg-white dark:bg-slate-900 rounded-2xl border p-4 grid md:grid-cols-5 gap-3 mb-6">
+<input id="s-q" value="${esc(query)}" class="input md:col-span-2" placeholder="${t('search_ph')}" onkeyup="if(event.key==='Enter')applySearch()">
+<select id="s-type" class="input"><option value="all">${t('type')}: ${t('all')}</option><option value="app" ${type==='app'?'selected':''}>📱 ${t('apps')}</option><option value="game" ${type==='game'?'selected':''}>🎮 ${t('games')}</option><option value="ai" ${type==='ai'?'selected':''}>🤖 ${t('ai_tools')}</option><option value="tool" ${type==='tool'?'selected':''}>🧰 ${t('tools')}</option><option value="video" ${type==='video'?'selected':''}>🎬 ${t('videos')}</option><option value="website" ${type==='website'?'selected':''}>🌐 ${t('websites')}</option></select>
+<select id="s-cat" class="input"><option value="">${t('category')}: ${t('all')}</option>${DB.categories.map(c=>`<option value="${c.slug}" ${cat===c.slug?'selected':''}>${c.icon} ${LANG==='ar'?c.name_ar:c.name_en}</option>`).join('')}</select>
+<select id="s-sort" class="input"><option value="newest" ${sort==='newest'?'selected':''}>${t('sort_newest')}</option><option value="views" ${sort==='views'?'selected':''}>${t('sort_views')}</option><option value="rating" ${sort==='rating'?'selected':''}>${t('sort_rating')}</option><option value="downloads" ${sort==='downloads'?'selected':''}>${t('sort_downloads')}</option></select>
+<button onclick="applySearch()" class="btn-p rounded-xl font-black md:col-span-5 py-3">🔍 ${t('search')}</button></div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${items.map((x,i)=>x._t==='app'?appCard(x,i):x._t==='video'?videoCard(x,i):siteCard(x,i)).join('')||emptyBox()}</div></div>`;
+setSEO(t('search')+' | '+siteName());
+}
+function applySearch(){const q=$('#s-q').value.trim(),ty=$('#s-type').value,c=$('#s-cat').value,s=$('#s-sort').value;location.hash=`#/search?q=${encodeURIComponent(q)}&type=${ty}&cat=${c}&sort=${s}`}
+
+/* Favorites */
+function renderFavorites(){const f=getFavs();
+const items=f.map(x=>{const it=findItem(x.type,x.id);return it?{...it,_t:x.type}:null}).filter(Boolean);
+$('#view').innerHTML=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+<div class="anim rounded-3xl bg-gradient-to-l from-rose-500 to-pink-600 p-8 text-white mb-6 flex items-center justify-between flex-wrap gap-3"><div><h1 class="text-2xl md:text-3xl font-black">❤️ ${t('favorites')}</h1><p class="opacity-85 text-sm mt-1">${items.length} ${t('results')}</p></div>${items.length?`<button onclick="clearFavs()" class="bg-white/20 hover:bg-white/30 border border-white/30 px-5 py-2.5 rounded-xl font-black text-sm">🗑️ ${t('clear_favs')}</button>`:''}</div>
+${items.length?`<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${items.map((x,i)=>x._t==='app'?appCard(x,i):x._t==='video'?videoCard(x,i):siteCard(x,i)).join('')}</div>`:`<div class="anim text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border"><div class="text-6xl mb-4">💔</div><p class="font-black text-lg">${t('empty_favs')}</p><a href="#/" class="inline-block mt-4 btn-p px-8 py-3 rounded-2xl font-black text-sm">${t('explore')}</a></div>`}</div>`;
+setSEO(t('favorites')+' | '+siteName());
+}
+
+/* Static */
+function renderStatic(page){
+const s=DB.settings;
+if(page==='contact'){$('#view').innerHTML=`<div class="max-w-3xl mx-auto px-4 py-10"><div class="anim bg-white dark:bg-slate-900 rounded-3xl border p-8 shadow-card"><h1 class="text-2xl font-black mb-2">📬 ${t('contact_title')}</h1><p class="text-sm text-slate-500 mb-6">📧 ${esc(s.email)} • 📞 ${esc(s.phone)}</p><form onsubmit="return sendMsg(event)" class="grid gap-4"><input id="c-name" required class="input" placeholder="${t('your_name')}"><input id="c-email" required type="email" class="input" placeholder="${t('your_email')}"><textarea id="c-msg" required rows="5" class="input" placeholder="${t('your_msg')}"></textarea><button class="btn-p py-3.5 rounded-2xl font-black">📤 ${t('send')}</button></form></div></div>`;return}
+const title=page==='privacy'?t('privacy'):t('terms');
+const body=page==='privacy'?(LANG==='ar'?s.privacy_ar:s.privacy_en):(LANG==='ar'?s.terms_ar:s.terms_en);
+$('#view').innerHTML=`<div class="max-w-3xl mx-auto px-4 py-10"><div class="anim bg-white dark:bg-slate-900 rounded-3xl border p-8"><h1 class="text-2xl font-black mb-4">📄 ${title}</h1><div class="prose-ar text-sm leading-loose text-slate-600 dark:text-slate-300"><p>${esc(body)}</p><p class="mt-4 opacity-70">${t('all_rights')}</p></div></div></div>`;
+}
+function sendMsg(e){e.preventDefault();DB.messages.push({id:uid(),name:$('#c-name').value,email:$('#c-email').value,msg:$('#c-msg').value,createdAt:new Date().toISOString()});saveDB();e.target.reset();toast(t('msg_sent'));return false}
+function render404(){$('#view').innerHTML=`<div class="max-w-xl mx-auto px-4 py-20 text-center"><div class="text-8xl mb-4">🔍</div><h1 class="text-4xl font-black grad-text">404</h1><p class="font-bold text-slate-500 mt-2">${t('no_results')}</p><a href="#/" class="inline-block mt-6 btn-p px-8 py-3 rounded-2xl font-black text-sm">🏠 ${t('back_home')}</a></div>`}
+function setSEO(title,desc){document.title=title;const m=document.querySelector('meta[name="description"]');if(m&&desc)m.content=desc}
+function injectLD(obj){let el=document.getElementById('ld-json');if(el)el.remove();el=document.createElement('script');el.id='ld-json';el.type='application/ld+json';el.textContent=JSON.stringify(obj);document.head.appendChild(el)}
+
+/* ============================================================ ADMIN */
+function renderAdmin(){
+if(!isAdmin()){$('#view').innerHTML=`<div class="min-h-[70vh] flex items-center justify-center px-4 py-12 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
+<div class="anim w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl border shadow-2xl p-8">
+<div class="text-center mb-6"><div class="w-16 h-16 grad-bg rounded-3xl mx-auto flex items-center justify-center text-3xl shadow-xl">🔐</div><h1 class="text-2xl font-black mt-4">${t('login')}</h1><p class="text-xs text-slate-500 font-bold mt-1">JWT Protected • admin@appzone.com / admin123</p></div>
+<form onsubmit="return adminLogin(event)" class="grid gap-4"><div><label class="text-xs font-black">📧 ${t('email')}</label><input id="al-email" type="email" required value="admin@appzone.com" class="input mt-1" dir="ltr"></div><div><label class="text-xs font-black">🔑 ${t('password')}</label><input id="al-pass" type="password" required value="admin123" class="input mt-1" dir="ltr"></div><button class="btn-p py-3.5 rounded-2xl font-black">🚀 ${t('login_btn')}</button></form>
+<a href="#/" class="block text-center mt-4 text-xs font-bold text-slate-500 hover:text-indigo-600">← ${t('back_home')}</a></div></div>`;return}
+const tabs=[['dashboard','📊',t('dashboard')],['apps','📱',t('m_apps')],['videos','🎬',t('m_videos')],['websites','🌐',t('m_websites')],['categories','📂',t('m_cats')],['ratings','⭐',t('m_ratings')],['messages','💌',t('m_messages')],['settings','⚙️',t('m_settings')],['api','🔌',t('m_api')],['db','🗄️',t('m_db')]];
+let content='';
+if(ADMIN_TAB==='dashboard')content=adminDashboard();
+else if(ADMIN_TAB==='apps')content=adminApps();
+else if(ADMIN_TAB==='videos')content=adminVideos();
+else if(ADMIN_TAB==='websites')content=adminWebsites();
+else if(ADMIN_TAB==='categories')content=adminCats();
+else if(ADMIN_TAB==='ratings')content=adminRatings();
+else if(ADMIN_TAB==='messages')content=adminMessages();
+else if(ADMIN_TAB==='settings')content=adminSettings();
+else if(ADMIN_TAB==='api')content=adminApi();
+else if(ADMIN_TAB==='db')content=adminDb();
+$('#view').innerHTML=`<div class="max-w-7xl mx-auto px-3 md:px-6 py-6">
+<div class="anim flex flex-wrap items-center gap-3 mb-6 bg-white dark:bg-slate-900 rounded-3xl border p-4">
+<div class="w-12 h-12 rounded-2xl grad-bg flex items-center justify-center text-2xl">👨‍💼</div>
+<div class="flex-1"><h1 class="font-black text-lg">⚙️ ${t('admin')}</h1><p class="text-xs text-slate-500 font-bold">✅ JWT Verified • admin@appzone.com</p></div>
+<input value="${esc(ADMIN_SEARCH)}" oninput="ADMIN_SEARCH=this.value;renderAdminTable()" placeholder="🔍 ${t('search')}..." class="input !w-48 hidden md:block">
+<a href="#/" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-black text-xs">🌐 ${t('view_site')}</a>
+<button onclick="adminLogout()" class="px-4 py-2.5 rounded-xl bg-rose-500 text-white font-black text-xs">🚪 ${t('logout')}</button>
+</div>
+<div class="grid lg:grid-cols-[220px_1fr] gap-5">
+<div class="anim flex lg:flex-col gap-2 overflow-x-auto no-scrollbar lg:sticky lg:top-32 h-fit bg-white dark:bg-slate-900 rounded-3xl border p-3">${tabs.map(x=>`<button onclick="setAdminTab('${x[0]}')" class="flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-black whitespace-nowrap transition ${ADMIN_TAB===x[0]?'grad-bg text-white shadow-lg':'hover:bg-slate-100 dark:hover:bg-slate-800'}">${x[1]} ${x[2]}</button>`).join('')}</div>
+<div id="admin-content" class="min-w-0">${content}</div>
+</div></div>`;
+if(ADMIN_TAB==='dashboard')setTimeout(initCharts,100);
+}
+function setAdminTab(tab){ADMIN_TAB=tab;ADMIN_SEARCH='';renderAdmin();window.scrollTo({top:0,behavior:'smooth'})}
+function renderAdminTable(){renderAdmin()}
+function filterBySearch(arr,fields){if(!ADMIN_SEARCH.trim())return arr;const q=ADMIN_SEARCH.toLowerCase();return arr.filter(o=>fields.some(f=>(o[f]||'').toString().toLowerCase().includes(q)))}
+function adminDashboard(){
+const totalViews=DB.apps.reduce((s,a)=>s+(+a.views||0),0)+DB.videos.reduce((s,v)=>s+(+v.views||0),0)+DB.websites.reduce((s,w)=>s+(+w.views||0),0);
+const totalDl=DB.apps.reduce((s,a)=>s+(+a.downloads||0),0);
+const cards=[[t('total_apps'),DB.apps.length,'📱','from-blue-500 to-indigo-600'],[t('total_videos'),DB.videos.length,'🎬','from-rose-500 to-pink-600'],[t('total_websites'),DB.websites.length,'🌐','from-emerald-500 to-teal-600'],[t('total_views'),fmt(totalViews),'👁️','from-amber-500 to-orange-600'],[t('total_downloads'),fmt(totalDl),'⬇️','from-violet-500 to-purple-600'],[t('total_ratings'),DB.ratings.length+DB.apps.reduce((s,a)=>s+(+a.ratingsCount||0),0),'⭐','from-cyan-500 to-sky-600']];
+const top=[...DB.apps.map(x=>({...x,_t:'📱',_n:L(x,'name')})),...DB.videos.map(x=>({...x,_t:'🎬',_n:L(x,'title')})),...DB.websites.map(x=>({...x,_t:'🌐',_n:L(x,'name')}))].sort((a,b)=>b.views-a.views).slice(0,5);
+return`<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${cards.map((c,i)=>`<div class="anim anim-${(i%3)+1} bg-gradient-to-br ${c[3]} rounded-3xl p-5 text-white shadow-lg"><div class="text-3xl">${c[2]}</div><div class="text-2xl font-black mt-2">${c[1]}</div><div class="text-sm opacity-90 font-bold">${c[0]}</div></div>`).join('')}</div>
+<div class="grid lg:grid-cols-2 gap-4 mt-4">
+<div class="anim bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-3">📈 ${t('views_week')}</h3><div class="h-56"><canvas id="ch-views"></canvas></div></div>
+<div class="anim bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-3">🍩 ${t('content_dist')}</h3><div class="h-56 flex justify-center"><canvas id="ch-dist"></canvas></div></div>
+</div>
+<div class="anim bg-white dark:bg-slate-900 rounded-3xl border p-5 mt-4"><h3 class="font-black mb-3">🔥 ${t('top_content')}</h3><div class="grid gap-2">${top.map((x,i)=>`<div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800"><span class="font-black ${i<3?'text-amber-500':'text-slate-400'}">#${i+1}</span><span class="text-2xl">${x._t}</span><span class="flex-1 font-bold text-sm truncate">${esc(x._n)}</span><span class="text-xs font-black text-slate-500">👁️ ${fmt(x.views)}</span></div>`).join('')}</div></div>
+<div class="grid sm:grid-cols-3 gap-3 mt-4">
+<button onclick="openAddModal('app')" class="p-4 rounded-2xl grad-bg text-white font-black text-sm">＋ 📱 ${t('add_new')}</button>
+<button onclick="openAddModal('video')" class="p-4 rounded-2xl bg-rose-500 text-white font-black text-sm">＋ 🎬 ${t('add_new')}</button>
+<button onclick="openAddModal('website')" class="p-4 rounded-2xl bg-emerald-500 text-white font-black text-sm">＋ 🌐 ${t('add_new')}</button>
+</div>`;
+}
+function initCharts(){try{Object.values(CHARTS).forEach(c=>c.destroy&&c.destroy());const H=DB.stats.history.slice(-7);
+CHARTS.v=new Chart($('#ch-views'),{type:'bar',data:{labels:H.map(h=>h.date.slice(5)),datasets:[{label:t('views'),data:H.map(h=>h.views),backgroundColor:'#6366f1',borderRadius:8},{label:t('downloads'),data:H.map(h=>h.downloads),backgroundColor:'#a855f7',borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}});
+CHARTS.d=new Chart($('#ch-dist'),{type:'doughnut',data:{labels:[t('apps'),t('videos'),t('websites')],datasets:[{data:[DB.apps.length,DB.videos.length,DB.websites.length],backgroundColor:['#6366f1','#ec4899','#10b981']}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}})}catch(e){}}
+function toggleChip(on,fn){return`<div onclick="${fn}" class="toggle ${on?'on':''}"></div>`}
+function rowActions(ty,id){return`<div class="flex gap-1.5 justify-end"><button onclick="openEditModal('${ty}','${id}')" class="px-3 py-1.5 rounded-lg bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-xs font-black">✏️ ${t('edit')}</button><button onclick="delItem('${ty}','${id}')" class="px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-900/40 text-rose-600 text-xs font-black">🗑️</button></div>`}
+function adminApps(){const list=filterBySearch(DB.apps,['name_ar','name_en','slug','developer']);
+return`<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><div class="flex items-center justify-between mb-4 flex-wrap gap-2"><h3 class="font-black">📱 ${t('m_apps')} (${list.length})</h3><button onclick="openAddModal('app')" class="btn-p px-5 py-2.5 rounded-xl font-black text-sm">＋ ${t('add_new')}</button></div>
+<div class="overflow-x-auto"><table class="admin-table w-full text-sm"><thead><tr class="border-b"><th class="text-start p-2">${t('thumb')}</th><th class="text-start p-2">${t('name')}</th><th class="p-2">${t('type')}</th><th class="p-2">⬇️/👁️</th><th class="p-2">⭐</th><th class="p-2">✨</th><th class="p-2">${t('active')}</th><th class="p-2 text-end">${t('actions')}</th></tr></thead><tbody>
+${list.map(a=>`<tr class="border-b border-slate-50 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-2"><div class="w-11 h-11 rounded-xl bg-gradient-to-br ${a.color} flex items-center justify-center text-xl">${a.icon}</div></td><td class="p-2"><div class="font-black text-[13px]">${esc(L(a,'name'))}</div><div class="text-[11px] text-slate-400">${esc(a.slug)}</div></td><td class="p-2 text-center"><span class="text-[11px] px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 font-black">${a.type}</span></td><td class="p-2 text-center text-xs font-black whitespace-nowrap">${fmt(a.downloads)} / ${fmt(a.views)}</td><td class="p-2 text-center text-xs font-black">★${(+a.ratingAvg).toFixed(1)}</td><td class="p-2"><div class="flex justify-center">${toggleChip(a.featured,`toggleFeat('app','${a.id}')`)}</div></td><td class="p-2"><div class="flex justify-center">${toggleChip(a.active,`toggleActive('app','${a.id}')`)}</div></td><td class="p-2">${rowActions('app',a.id)}</td></tr>`).join('')}</tbody></table></div></div>`}
+function adminVideos(){const list=filterBySearch(DB.videos,['title_ar','title_en','slug']);
+return`<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><div class="flex items-center justify-between mb-4 flex-wrap gap-2"><h3 class="font-black">🎬 ${t('m_videos')} (${list.length})</h3><button onclick="openAddModal('video')" class="btn-p px-5 py-2.5 rounded-xl font-black text-sm">＋ ${t('add_new')}</button></div>
+<div class="overflow-x-auto"><table class="admin-table w-full text-sm"><thead><tr class="border-b"><th class="text-start p-2">${t('thumb')}</th><th class="text-start p-2">${t('title')}</th><th class="p-2">👁️</th><th class="p-2">⭐</th><th class="p-2">✨</th><th class="p-2">${t('active')}</th><th class="p-2 text-end">${t('actions')}</th></tr></thead><tbody>
+${list.map(v=>`<tr class="border-b border-slate-50 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-2"><img src="${esc(v.thumbnail)}" onerror="this.src='https://picsum.photos/seed/${v.id}/80/50'" class="w-16 h-10 rounded-lg object-cover"></td><td class="p-2"><div class="font-black text-[13px] max-w-[220px] truncate">${esc(L(v,'title'))}</div><div class="text-[11px] text-slate-400">${esc(v.duration)} • ${esc(catName(v.category))}</div></td><td class="p-2 text-center text-xs font-black">${fmt(v.views)}</td><td class="p-2 text-center text-xs font-black">★${(+v.ratingAvg).toFixed(1)}</td><td class="p-2"><div class="flex justify-center">${toggleChip(v.featured,`toggleFeat('video','${v.id}')`)}</div></td><td class="p-2"><div class="flex justify-center">${toggleChip(v.active,`toggleActive('video','${v.id}')`)}</div></td><td class="p-2">${rowActions('video',v.id)}</td></tr>`).join('')}</tbody></table></div></div>`}
+function adminWebsites(){const list=filterBySearch(DB.websites,['name_ar','name_en','slug']);
+return`<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><div class="flex items-center justify-between mb-4 flex-wrap gap-2"><h3 class="font-black">🌐 ${t('m_websites')} (${list.length})</h3><button onclick="openAddModal('website')" class="btn-p px-5 py-2.5 rounded-xl font-black text-sm">＋ ${t('add_new')}</button></div>
+<div class="overflow-x-auto"><table class="admin-table w-full text-sm"><thead><tr class="border-b"><th class="text-start p-2">Logo</th><th class="text-start p-2">${t('name')}</th><th class="p-2">${t('url')}</th><th class="p-2">👁️</th><th class="p-2">⭐</th><th class="p-2">✨</th><th class="p-2">${t('active')}</th><th class="p-2 text-end">${t('actions')}</th></tr></thead><tbody>
+${list.map(w=>`<tr class="border-b border-slate-50 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-2"><div class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-2xl">${w.logo}</div></td><td class="p-2"><div class="font-black text-[13px]">${esc(L(w,'name'))}</div><div class="text-[11px] text-slate-400">${esc(catName(w.category))}</div></td><td class="p-2 text-center"><a href="${esc(w.url)}" target="_blank" class="text-indigo-600 text-xs font-bold hover:underline">↗ ${t('visit')}</a></td><td class="p-2 text-center text-xs font-black">${fmt(w.views)}</td><td class="p-2 text-center text-xs font-black">★${(+w.ratingAvg).toFixed(1)}</td><td class="p-2"><div class="flex justify-center">${toggleChip(w.featured,`toggleFeat('website','${w.id}')`)}</div></td><td class="p-2"><div class="flex justify-center">${toggleChip(w.active,`toggleActive('website','${w.id}')`)}</div></td><td class="p-2">${rowActions('website',w.id)}</td></tr>`).join('')}</tbody></table></div></div>`}
+function adminCats(){return`<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><div class="flex items-center justify-between mb-4"><h3 class="font-black">📂 ${t('m_cats')} (${DB.categories.length})</h3><button onclick="openAddModal('category')" class="btn-p px-5 py-2.5 rounded-xl font-black text-sm">＋ ${t('add_new')}</button></div>
+<div class="grid sm:grid-cols-2 gap-3">${DB.categories.map(c=>{const n=DB.apps.filter(a=>a.category===c.slug).length+DB.videos.filter(v=>v.category===c.slug).length+DB.websites.filter(w=>w.category===c.slug).length;return`<div class="flex items-center gap-3 p-3 rounded-2xl border border-slate-100 dark:border-slate-800"><div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl" style="background:${c.color}22">${c.icon}</div><div class="flex-1"><div class="font-black text-sm">${esc(LANG==='ar'?c.name_ar:c.name_en)}</div><div class="text-[11px] text-slate-400 font-bold">${c.slug} • ${c.type} • ${n} items</div></div><button onclick="openEditModal('category','${c.id}')" class="text-lg">✏️</button><button onclick="delItem('category','${c.id}')" class="text-lg">🗑️</button></div>`}).join('')}</div></div>`}
+function adminRatings(){const all=[...DB.ratings].reverse().slice(0,50);
+return`<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-4">⭐ ${t('m_ratings')} (${DB.ratings.length})</h3>
+${all.length?`<div class="grid gap-2">${all.map(r=>{const it=findItem(r.itemType,r.itemId);const nm=it?(it.name_ar||it.title_ar||'?'):'(deleted)';return`<div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800"><span class="text-2xl">${r.itemType==='app'?'📱':r.itemType==='video'?'🎬':'🌐'}</span><div class="flex-1 min-w-0"><div class="font-black text-sm truncate">${esc(nm)}</div><div class="text-[11px] text-slate-400">${timeAgo(r.createdAt)}</div></div><div class="text-amber-400 font-black">${'★'.repeat(r.stars)}<span class="text-slate-300">${'★'.repeat(5-r.stars)}</span></div><button onclick="delRating('${r.id}')" class="text-rose-500 font-black">🗑️</button></div>`}).join('')}</div>`:`<p class="text-center text-slate-400 font-bold py-8">No manual ratings yet — averages shown are seeded demo data.</p>`}</div>`}
+function delRating(id){DB.ratings=DB.ratings.filter(r=>r.id!==id);saveDB();toast(t('deleted'));renderAdmin()}
+function adminMessages(){return`<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-4">💌 ${t('messages')} (${DB.messages.length})</h3>
+${DB.messages.length?`<div class="grid gap-3">${[...DB.messages].reverse().map(m=>`<div class="p-4 rounded-2xl border border-slate-100 dark:border-slate-800"><div class="flex items-center justify-between gap-2"><div class="font-black text-sm">👤 ${esc(m.name)} <span class="text-xs text-slate-400 font-normal">${esc(m.email)}</span></div><button onclick="delMsg('${m.id}')" class="text-rose-500">🗑️</button></div><p class="text-sm mt-2 text-slate-600 dark:text-slate-300">${esc(m.msg)}</p><div class="text-[11px] text-slate-400 mt-2">${timeAgo(m.createdAt)}</div></div>`).join('')}</div>`:`<p class="text-center text-slate-400 font-bold py-8">📭 ${t('no_messages')}</p>`}</div>`}
+function delMsg(id){DB.messages=DB.messages.filter(m=>m.id!==id);saveDB();renderAdmin()}
+function adminSettings(){const s=DB.settings;
+const inp=(k,l,v,typ='text')=>`<div><label class="text-xs font-black text-slate-500">${l}</label><input id="st-${k}" type="${typ}" value="${esc(v||'')}" class="input mt-1" ${typ==='color'?'class="mt-1 w-full h-11 rounded-xl cursor-pointer"':''}></div>`;
+return`<div class="grid gap-4">
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-4">🎛️ ${t('general')}</h3><div class="grid md:grid-cols-2 gap-3">
+${inp('siteName_ar','Site Name (AR)',s.siteName_ar)}${inp('siteName_en','Site Name (EN)',s.siteName_en)}${inp('logoIcon','Logo Icon/Letter',s.logoIcon)}
+<div><label class="text-xs font-black text-slate-500">🖼️ Hero Image URL + Upload</label><div class="flex gap-2 mt-1"><input id="st-heroImage" value="${esc(s.heroImage)}" class="input"><label class="btn-p px-4 rounded-xl font-black text-sm flex items-center cursor-pointer whitespace-nowrap">📤<input type="file" accept="image/*" class="hidden" onchange="uploadTo('st-heroImage',event)"></label></div><img src="${esc(s.heroImage)}" class="mt-2 h-20 w-full object-cover rounded-xl" onerror="this.style.display='none'"></div>
+${inp('heroTitle_ar','Hero Title (AR)',s.heroTitle_ar)}${inp('heroTitle_en','Hero Title (EN)',s.heroTitle_en)}
+<div class="md:col-span-2"><label class="text-xs font-black text-slate-500">Hero Desc (AR)</label><textarea id="st-heroDesc_ar" rows="2" class="input mt-1">${esc(s.heroDesc_ar)}</textarea></div>
+<div class="md:col-span-2"><label class="text-xs font-black text-slate-500">Footer Desc (AR)</label><textarea id="st-footerDesc_ar" rows="2" class="input mt-1">${esc(s.footerDesc_ar)}</textarea></div>
+</div></div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-4">🎨 ${t('colors')}</h3><div class="grid grid-cols-3 gap-3">
+<div><label class="text-xs font-black">Primary</label><input id="st-primary" type="color" value="${esc(s.primary)}" class="w-full h-12 rounded-xl cursor-pointer mt-1"></div>
+<div><label class="text-xs font-black">Secondary</label><input id="st-secondary" type="color" value="${esc(s.secondary)}" class="w-full h-12 rounded-xl cursor-pointer mt-1"></div>
+<div><label class="text-xs font-black">Buttons</label><input id="st-btn" type="color" value="${esc(s.btn)}" class="w-full h-12 rounded-xl cursor-pointer mt-1"></div>
+</div></div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-4">📱 ${t('social')}</h3><div class="grid md:grid-cols-2 gap-3">
+${inp('facebook','Facebook',s.facebook)}${inp('instagram','Instagram',s.instagram)}${inp('youtube','YouTube',s.youtube)}${inp('telegram','Telegram',s.telegram)}${inp('whatsapp','WhatsApp',s.whatsapp)}${inp('email','Email',s.email)}<div class="md:col-span-2">${inp('phone','Phone',s.phone)}</div></div></div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-4">🔍 ${t('seo')}</h3><div class="grid gap-3">${inp('seoTitle','SEO Title',s.seoTitle)}${inp('seoDesc','SEO Description',s.seoDesc)}${inp('seoKeywords','SEO Keywords',s.seoKeywords)}</div></div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-1">💰 ${t('ads')} <span class="text-[11px] font-normal text-slate-400">(Google AdSense - paste script codes)</span></h3><div class="grid gap-3 mt-3">
+<div><label class="text-xs font-black">Header Ad</label><textarea id="st-ads_header" rows="2" class="input mt-1 font-mono text-xs" dir="ltr" placeholder="<script> AdSense...">${esc(s.ads_header)}</textarea></div>
+<div><label class="text-xs font-black">Sidebar Ad</label><textarea id="st-ads_sidebar" rows="2" class="input mt-1 font-mono text-xs" dir="ltr">${esc(s.ads_sidebar)}</textarea></div>
+<div><label class="text-xs font-black">In-Content Ad</label><textarea id="st-ads_content" rows="2" class="input mt-1 font-mono text-xs" dir="ltr">${esc(s.ads_content)}</textarea></div>
+</div></div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-4">📄 ${t('pages')}</h3><div class="grid gap-3"><div><label class="text-xs font-black">Privacy (AR)</label><textarea id="st-privacy_ar" rows="3" class="input mt-1">${esc(s.privacy_ar)}</textarea></div><div><label class="text-xs font-black">Terms (AR)</label><textarea id="st-terms_ar" rows="3" class="input mt-1">${esc(s.terms_ar)}</textarea></div></div></div>
+<div class="flex flex-wrap gap-2"><button onclick="saveSettings()" class="btn-p px-10 py-3.5 rounded-2xl font-black">💾 ${t('save')}</button><button onclick="exportDB()" class="px-6 py-3.5 rounded-2xl bg-slate-100 dark:bg-slate-800 font-black text-sm">📥 ${t('export')}</button><label class="px-6 py-3.5 rounded-2xl bg-slate-100 dark:bg-slate-800 font-black text-sm cursor-pointer">📤 ${t('import')}<input type="file" accept=".json" class="hidden" onchange="importDB(event)"></label><button onclick="resetData()" class="px-6 py-3.5 rounded-2xl bg-rose-100 text-rose-600 font-black text-sm">♻️ ${t('reset_data')}</button></div>
+</div>`}
+function saveSettings(){['siteName_ar','siteName_en','logoIcon','heroImage','heroTitle_ar','heroTitle_en','heroDesc_ar','footerDesc_ar','primary','secondary','btn','facebook','instagram','youtube','telegram','whatsapp','email','phone','seoTitle','seoDesc','seoKeywords','ads_header','ads_sidebar','ads_content','privacy_ar','terms_ar'].forEach(k=>{const el=$('#st-'+k);if(el)DB.settings[k]=el.value});saveDB();applySettings();renderHeader();renderFooter();toast(t('saved'))}
+function adminApi(){const rows=[['POST','/api/auth/login','Admin login → JWT token','🔓'],['GET','/api/categories','List categories','🟢'],['POST','/api/categories','Create (JWT)','🔒'],['PUT','/api/categories/:id','Update (JWT)','🔒'],['DELETE','/api/categories/:id','Delete (JWT)','🔒'],['GET','/api/apps','List apps ?type ?cat ?sort','🟢'],['POST','/api/apps','Create (JWT + Multer)','🔒'],['PUT','/api/apps/:id','Update (JWT)','🔒'],['DELETE','/api/apps/:id','Delete (JWT)','🔒'],['GET/POST/PUT/DELETE','/api/videos','Videos CRUD','🔒'],['GET/POST/PUT/DELETE','/api/websites','Websites CRUD','🔒'],['GET/POST/DELETE','/api/ratings','Ratings','🟢'],['GET/PUT','/api/settings','Site settings','🔒'],['GET','/api/stats','Dashboard stats (JWT)','🔒']];
+return`<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-1">🔌 RESTful API</h3><p class="text-xs text-slate-500 mb-4">${t('api_desc')} • Base: <code class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">https://api.appzone.com</code></p>
+<div class="grid gap-2">${rows.map(r=>`<div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800 font-mono text-xs"><span class="font-black px-2 py-1 rounded-lg ${r[0]==='GET'?'bg-emerald-100 text-emerald-700':r[0]==='POST'?'bg-blue-100 text-blue-700':r[0]==='DELETE'?'bg-rose-100 text-rose-700':'bg-amber-100 text-amber-700'}">${r[0]}</span><span class="flex-1 font-bold break-all" dir="ltr">${r[1]}</span><span class="hidden md:block font-sans font-bold text-slate-500">${r[2]}</span><span>${r[3]}</span></div>`).join('')}</div>
+<div class="mt-4 p-4 rounded-2xl bg-slate-900 text-emerald-300 font-mono text-xs overflow-x-auto" dir="ltr">// Login example<br>fetch('/api/auth/login',{method:'POST',<br>&nbsp;&nbsp;headers:{'Content-Type':'application/json'},<br>&nbsp;&nbsp;body:JSON.stringify({email, password})})<br>// → { token: "eyJhbGciOi..." }</div></div>`}
+function adminDb(){return`<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-1">🗄️ MySQL Database</h3><p class="text-xs text-slate-500 mb-4">${t('db_desc')}</p>
+<div class="flex flex-wrap gap-2 mb-4"><button onclick="exportDB()" class="btn-p px-6 py-2.5 rounded-xl font-black text-sm">📥 ${t('export')} JSON</button><label class="px-6 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-black text-sm cursor-pointer">📤 ${t('import')}<input type="file" accept=".json" class="hidden" onchange="importDB(event)"></label><button onclick="showSql()" class="px-6 py-2.5 rounded-xl bg-amber-100 text-amber-700 font-black text-sm">📜 ${t('sql')}</button><button onclick="resetData()" class="px-6 py-2.5 rounded-xl bg-rose-100 text-rose-600 font-black text-sm">♻️ ${t('reset_data')}</button></div>
+<div class="grid sm:grid-cols-4 gap-3 text-center">${[['admins',DB.admins.length],['categories',DB.categories.length],['apps',DB.apps.length],['videos',DB.videos.length],['websites',DB.websites.length],['ratings',DB.ratings.length],['favorites','local'],['settings','1']].map(x=>`<div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800"><div class="font-black text-xl">${x[1]}</div><div class="text-xs font-bold text-slate-500 font-mono">${x[0]}</div></div>`).join('')}</div></div>`}
+
+/* CRUD */
+function toggleFeat(ty,id){const it=findItem(ty,id)||DB.categories.find(c=>c.id===id);if(it){it.featured=!it.featured;saveDB();renderAdmin()}}
+function toggleActive(ty,id){let it=ty==='category'?DB.categories.find(c=>c.id===id):findItem(ty,id);if(it){it.active=it.active===false?true:false;if(ty==='category')it.active=!it.active;saveDB();renderAdmin()}}
+function delItem(ty,id){if(!confirm(t('confirm_delete')))return;if(ty==='app')DB.apps=DB.apps.filter(x=>x.id!==id);if(ty==='video')DB.videos=DB.videos.filter(x=>x.id!==id);if(ty==='website')DB.websites=DB.websites.filter(x=>x.id!==id);if(ty==='category')DB.categories=DB.categories.filter(x=>x.id!==id);saveDB();toast(t('deleted'));renderAdmin();renderHeader()}
+function exportDB(){const b=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='appzone-backup-'+todayStr()+'.json';a.click();toast(t('saved'))}
+function importDB(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{DB=JSON.parse(r.result);saveDB();applySettings();toast(t('saved'));renderAdmin()}catch(err){toast('Invalid file','error')}};r.readAsText(f)}
+function resetData(){if(!confirm(t('confirm_delete')))return;DB=seedDB();saveDB();applySettings();toast(t('saved'));renderAdmin()}
+function uploadTo(fieldId,e){const f=e.target.files[0];if(!f)return;if(f.size>2*1024*1024){toast(LANG==='ar'?'الملف كبير (الحد 2MB)':'File too large (max 2MB)','error');return}const r=new FileReader();r.onload=()=>{$('#'+fieldId).value=r.result;toast(t('saved'))};r.readAsDataURL(f)}
+function handleFileUpload(e,field){uploadTo(field,e)}
+
+function openAddModal(ty){openEditModal(ty,null)}
+function openEditModal(ty,id){
+let item=null;
+if(ty==='app')item=id?DB.apps.find(x=>x.id===id):{type:'app',category:'social',icon:'📱',color:'from-indigo-500 to-purple-600',version:'1.0.0',size:'50 MB',os:'Android',featured:false,active:true,screenshots:[],externalLinks:[]};
+if(ty==='video')item=id?DB.videos.find(x=>x.id===id):{category:'tech-videos',duration:'10:00',featured:false,active:true};
+if(ty==='website')item=id?DB.websites.find(x=>x.id===id):{category:'web-tools',logo:'🌐',featured:false,active:true};
+if(ty==='category')item=id?DB.categories.find(x=>x.id===id):{icon:'📁',color:'#6366f1',type:'app'};
+const F=(k,l,v,typ='text')=>`<div><label class="text-xs font-black text-slate-500">${l}</label><input id="fm-${k}" type="${typ}" value="${esc(v??'')}" class="input mt-1"></div>`;
+const TA=(k,l,v)=>`<div><label class="text-xs font-black text-slate-500">${l}</label><textarea id="fm-${k}" rows="3" class="input mt-1">${esc(v??'')}</textarea></div>`;
+let body='';
+if(ty==='app')body=`<div class="grid md:grid-cols-2 gap-3">${F('name_ar','Name (AR) *',item.name_ar)}${F('name_en','Name (EN)',item.name_en)}
+<div><label class="text-xs font-black text-slate-500">Type</label><select id="fm-type" class="input mt-1">${['app','game','ai','tool'].map(x=>`<option ${item.type===x?'selected':''}>${x}</option>`).join('')}</select></div>
+<div><label class="text-xs font-black text-slate-500">Category</label><select id="fm-category" class="input mt-1">${DB.categories.map(c=>`<option value="${c.slug}" ${item.category===c.slug?'selected':''}>${c.icon} ${c.name_ar}</option>`).join('')}</select></div>
+${F('icon','Icon (emoji)',item.icon)}<div><label class="text-xs font-black text-slate-500">Gradient</label><select id="fm-color" class="input mt-1">${['from-indigo-500 to-purple-600','from-green-500 to-emerald-600','from-pink-500 to-rose-600','from-amber-500 to-orange-600','from-sky-500 to-blue-700','from-violet-500 to-purple-700','from-orange-600 to-red-700','from-cyan-500 to-teal-600'].map(g=>`<option value="${g}" ${item.color===g?'selected':''}>${g}</option>`).join('')}</select></div>
+${F('version',t('version'),item.version)}${F('size',t('size'),item.size)}${F('os',t('os'),item.os)}${F('developer',t('developer'),item.developer)}
+<div class="md:col-span-2">${F('downloadUrl','Download URL *',item.downloadUrl)}</div>
+<div class="md:col-span-2"><label class="text-xs font-black text-slate-500">Screenshots (comma separated URLs)</label><div class="flex gap-2 mt-1"><input id="fm-screenshots" value="${esc((item.screenshots||[]).join(', '))}" class="input" dir="ltr"><label class="btn-p px-4 rounded-xl text-sm flex items-center cursor-pointer">📤<input type="file" accept="image/*" class="hidden" onchange="appendShot(event)"></label></div></div>
+<div class="md:col-span-2">${TA('desc_ar','Description (AR) *',item.desc_ar)}</div><div class="md:col-span-2">${TA('desc_en','Description (EN)',item.desc_en)}</div>
+<label class="flex items-center gap-2 font-black text-sm"><input id="fm-featured" type="checkbox" ${item.featured?'checked':''} class="w-5 h-5 accent-indigo-600"> ⭐ Featured</label>
+<label class="flex items-center gap-2 font-black text-sm"><input id="fm-active" type="checkbox" ${item.active!==false?'checked':''} class="w-5 h-5 accent-emerald-600"> ✅ Active</label></div>`;
+if(ty==='video')body=`<div class="grid md:grid-cols-2 gap-3">${F('title_ar','Title (AR) *',item.title_ar)}${F('title_en','Title (EN)',item.title_en)}
+<div><label class="text-xs font-black text-slate-500">Category</label><select id="fm-category" class="input mt-1">${DB.categories.map(c=>`<option value="${c.slug}" ${item.category===c.slug?'selected':''}>${c.icon} ${c.name_ar}</option>`).join('')}</select></div>${F('duration',t('duration'),item.duration)}
+<div class="md:col-span-2"><label class="text-xs font-black text-slate-500">Thumbnail URL</label><div class="flex gap-2 mt-1"><input id="fm-thumbnail" value="${esc(item.thumbnail||'')}" class="input" dir="ltr"><label class="btn-p px-4 rounded-xl text-sm flex items-center cursor-pointer">📤<input type="file" accept="image/*" class="hidden" onchange="uploadTo('fm-thumbnail',event)"></label></div></div>
+<div class="md:col-span-2">${F('youtubeUrl','YouTube Embed/Watch URL',item.youtubeUrl)}</div>
+<div class="md:col-span-2">${F('videoUrl','Direct MP4 URL (optional)',item.videoUrl)}</div>
+<div class="md:col-span-2">${TA('desc_ar','Description (AR)',item.desc_ar)}</div><div class="md:col-span-2">${TA('desc_en','Description (EN)',item.desc_en)}</div>
+<label class="flex items-center gap-2 font-black text-sm"><input id="fm-featured" type="checkbox" ${item.featured?'checked':''} class="w-5 h-5 accent-indigo-600"> ⭐ Featured</label>
+<label class="flex items-center gap-2 font-black text-sm"><input id="fm-active" type="checkbox" ${item.active!==false?'checked':''} class="w-5 h-5 accent-emerald-600"> ✅ Active</label></div>`;
+if(ty==='website')body=`<div class="grid md:grid-cols-2 gap-3">${F('name_ar','Name (AR) *',item.name_ar)}${F('name_en','Name (EN)',item.name_en)}
+<div><label class="text-xs font-black text-slate-500">Category</label><select id="fm-category" class="input mt-1">${DB.categories.map(c=>`<option value="${c.slug}" ${item.category===c.slug?'selected':''}>${c.icon} ${c.name_ar}</option>`).join('')}</select></div>${F('logo','Logo (emoji)',item.logo)}
+<div class="md:col-span-2"><label class="text-xs font-black text-slate-500">Cover Image URL</label><div class="flex gap-2 mt-1"><input id="fm-image" value="${esc(item.image||'')}" class="input" dir="ltr"><label class="btn-p px-4 rounded-xl text-sm flex items-center cursor-pointer">📤<input type="file" accept="image/*" class="hidden" onchange="uploadTo('fm-image',event)"></label></div></div>
+<div class="md:col-span-2">${F('url','Website URL *',item.url)}</div>
+<div class="md:col-span-2">${TA('desc_ar','Description (AR)',item.desc_ar)}</div><div class="md:col-span-2">${TA('desc_en','Description (EN)',item.desc_en)}</div>
+<label class="flex items-center gap-2 font-black text-sm"><input id="fm-featured" type="checkbox" ${item.featured?'checked':''} class="w-5 h-5 accent-indigo-600"> ⭐ Featured</label>
+<label class="flex items-center gap-2 font-black text-sm"><input id="fm-active" type="checkbox" ${item.active!==false?'checked':''} class="w-5 h-5 accent-emerald-600"> ✅ Active</label></div>`;
+if(ty==='category')body=`<div class="grid md:grid-cols-2 gap-3">${F('name_ar','Name (AR) *',item.name_ar)}${F('name_en','Name (EN)',item.name_en)}${F('slug','Slug',item.slug||'')} <div><label class="text-xs font-black text-slate-500">Type</label><select id="fm-type" class="input mt-1">${['app','game','ai','tool','video','website'].map(x=>`<option ${item.type===x?'selected':''}>${x}</option>`).join('')}</select></div>${F('icon','Icon',item.icon)}${F('color','Color',item.color,'color')}</div>`;
+showModal(`<div class="p-6"><div class="flex items-center justify-between mb-5"><h3 class="font-black text-lg">${id?'✏️ '+t('edit'):'＋ '+t('add_new')} — ${ty}</h3><button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800">✕</button></div>${body}<div class="flex gap-2 mt-5"><button onclick="saveItem('${ty}','${id||''}')" class="btn-p flex-1 py-3 rounded-2xl font-black">💾 ${t('save')}</button><button onclick="closeModal()" class="px-6 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 font-black text-sm">${t('cancel')}</button></div></div>`,'max-w-3xl');
+}
+function appendShot(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const el=$('#fm-screenshots');el.value=(el.value?el.value+', ':'')+r.result;toast(t('saved'))};r.readAsDataURL(f)}
+function saveItem(ty,id){
+const g=k=>($('#fm-'+k)?.value||'').trim();
+try{
+if(ty==='app'){const nm=g('name_ar');if(!nm||!g('downloadUrl')){toast(LANG==='ar'?'أكمل الحقول المطلوبة':'Required fields missing','error');return}
+const data={name_ar:nm,name_en:g('name_en')||nm,type:$('#fm-type').value,category:$('#fm-category').value,icon:g('icon')||'📱',color:$('#fm-color').value,version:g('version')||'1.0.0',size:g('size')||'50 MB',os:g('os')||'Android',developer:g('developer')||'APPZONE',downloadUrl:g('downloadUrl'),screenshots:g('screenshots').split(',').map(s=>s.trim()).filter(Boolean),desc_ar:g('desc_ar'),desc_en:g('desc_en'),featured:$('#fm-featured').checked,active:$('#fm-active').checked,updatedAt:todayStr()};
+if(id){Object.assign(DB.apps.find(x=>x.id===id),data)}else{DB.apps.unshift({id:uid(),slug:slugify(nm)+'-'+Math.random().toString(36).slice(2,6),downloads:0,views:0,ratingAvg:0,ratingsCount:0,externalLinks:[],createdAt:new Date().toISOString(),...data})}}
+if(ty==='video'){const nm=g('title_ar');if(!nm){toast('Title required','error');return}
+const data={title_ar:nm,title_en:g('title_en')||nm,category:$('#fm-category').value,duration:g('duration')||'10:00',thumbnail:g('thumbnail')||('https://picsum.photos/seed/'+uid()+'/600/340'),youtubeUrl:g('youtubeUrl'),videoUrl:g('videoUrl'),desc_ar:g('desc_ar'),desc_en:g('desc_en'),featured:$('#fm-featured').checked,active:$('#fm-active').checked};
+if(id){Object.assign(DB.videos.find(x=>x.id===id),data)}else{DB.videos.unshift({id:uid(),slug:slugify(nm)+'-'+Math.random().toString(36).slice(2,6),views:0,ratingAvg:0,ratingsCount:0,createdAt:todayStr(),...data})}}
+if(ty==='website'){const nm=g('name_ar');if(!nm||!g('url')){toast('Required fields','error');return}
+const data={name_ar:nm,name_en:g('name_en')||nm,category:$('#fm-category').value,logo:g('logo')||'🌐',image:g('image')||('https://picsum.photos/seed/'+uid()+'/600/340'),url:g('url'),desc_ar:g('desc_ar'),desc_en:g('desc_en'),featured:$('#fm-featured').checked,active:$('#fm-active').checked};
+if(id){Object.assign(DB.websites.find(x=>x.id===id),data)}else{DB.websites.unshift({id:uid(),slug:slugify(nm)+'-'+Math.random().toString(36).slice(2,6),views:0,ratingAvg:0,ratingsCount:0,createdAt:todayStr(),...data})}}
+if(ty==='category'){const nm=g('name_ar');if(!nm){toast('Name required','error');return}
+const data={name_ar:nm,name_en:g('name_en')||nm,slug:g('slug')||slugify(nm),type:$('#fm-type').value,icon:g('icon')||'📁',color:g('color')||'#6366f1'};
+if(id){Object.assign(DB.categories.find(x=>x.id===id),data)}else{DB.categories.push({id:uid(),...data})}}
+saveDB();closeModal();toast(t('saved'));renderAdmin();renderHeader();
+}catch(err){toast('Error: '+err.message,'error')}
+}
+
+/* ---------- README / SITEMAP / ROBOTS / SQL ---------- */
+function showReadme(){showModal(`<div class="p-6 md:p-8 prose-ar max-w-none" dir="${LANG==='ar'?'rtl':'ltr'}">
+<div class="flex items-center justify-between mb-4"><h2 class="font-black text-xl">📖 APPZONE — README (Full-Stack Guide)</h2><button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800">✕</button></div>
+<div class="text-sm grid gap-4 leading-relaxed max-h-[65vh] overflow-y-auto pe-1">
+<div class="p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20"><b>📦 Tech Stack:</b> React + Vite + React Router + Tailwind (Frontend) • Node.js + Express + JWT + bcrypt + Multer (Backend) • MySQL (Database). هذه النسخة Single-File تحاكي نفس البنية بـ LocalStorage API للعرض الفوري.</div>
+<div><b>📁 Project Structure (للنشر الحقيقي):</b><pre class="mt-2 p-3 rounded-xl bg-slate-900 text-emerald-300 text-xs overflow-x-auto" dir="ltr">appzone/\n├── client/ (React+Vite)\n│   ├── src/pages, components, context\n│   └── .env → VITE_API_URL\n├── server/ (Express)\n│   ├── routes/, controllers/, middleware/\n│   ├── uploads/ (Multer)\n│   └── .env → DB, JWT_SECRET, BCRYPT_ROUNDS\n└── database/schema.sql</pre></div>
+<div><b>⚙️ .env (Backend):</b><pre class="mt-2 p-3 rounded-xl bg-slate-900 text-amber-300 text-xs overflow-x-auto" dir="ltr">PORT=5000\nDB_HOST=localhost\nDB_USER=root\nDB_PASS=****\nDB_NAME=appzone\nJWT_SECRET=super_secret_key\nJWT_EXPIRE=24h</pre></div>
+<div><b>🚀 Run Locally:</b><pre class="mt-2 p-3 rounded-xl bg-slate-900 text-sky-300 text-xs overflow-x-auto" dir="ltr"># Backend\ncd server && npm install && npm run dev\n# Frontend\ncd client && npm install && npm run dev\n# Build: npm run build → dist/</pre></div>
+<div><b>🌍 Deploy:</b> Frontend → Vercel/Netlify • Backend → Railway/Render/VPS • DB → PlanetScale/Railway MySQL • ارفع مجلد uploads على S3 أو VPS.</div>
+<div><b>🔐 Security:</b> bcrypt (12 rounds) • JWT httpOnly • Multer file filter + 5MB limit • express-validator • prepared statements ضد SQL Injection • helmet + cors + rate-limit.</div>
+<div><b>👤 Admin Demo:</b> <code class="bg-slate-100 dark:bg-slate-800 px-2 rounded" dir="ltr">admin@appzone.com / admin123</code></div>
+</div></div>`,'max-w-3xl')}
+function showSitemap(){const urls=['/','/apps','/games','/videos','/websites','/ai','/tools',...DB.apps.map(a=>'/apps/'+a.slug),...DB.videos.map(v=>'/videos/'+v.slug),...DB.websites.map(w=>'/websites/'+w.slug)];
+showModal(`<div class="p-6"><div class="flex items-center justify-between mb-4"><h2 class="font-black text-lg">🗺️ sitemap.xml</h2><button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800">✕</button></div><pre class="p-4 rounded-2xl bg-slate-900 text-emerald-300 text-[11px] overflow-auto max-h-[60vh]" dir="ltr">${esc('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(u=>`  <url><loc>https://appzone.com${u}</loc><changefreq>daily</changefreq></url>`).join('\n')+'\n</urlset>')}</pre><button onclick="dlSitemap()" class="btn-p w-full mt-3 py-3 rounded-2xl font-black text-sm">📥 Download sitemap.xml</button></div>`)}
+function dlSitemap(){const urls=['/','/apps','/games','/videos','/websites',...DB.apps.map(a=>'/apps/'+a.slug)];const xml='<?xml version="1.0"?><urlset>'+urls.map(u=>`<url><loc>https://appzone.com${u}</loc></url>`).join('')+'</urlset>';const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([xml],{type:'text/xml'}));a.download='sitemap.xml';a.click()}
+function showRobots(){showModal(`<div class="p-6"><div class="flex items-center justify-between mb-4"><h2 class="font-black text-lg">🤖 robots.txt</h2><button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800">✕</button></div><pre class="p-4 rounded-2xl bg-slate-900 text-amber-300 text-xs" dir="ltr">User-agent: *\nAllow: /\nDisallow: /admin\nSitemap: https://appzone.com/sitemap.xml</pre></div>`)}
+function showSql(){showModal(`<div class="p-6"><div class="flex items-center justify-between mb-4"><h2 class="font-black text-lg">🗄️ MySQL Schema</h2><button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800">✕</button></div><pre class="p-4 rounded-2xl bg-slate-900 text-sky-300 text-[11px] overflow-auto max-h-[60vh]" dir="ltr">${esc(`CREATE DATABASE appzone CHARACTER SET utf8mb4;
+USE appzone;
+CREATE TABLE admins(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), email VARCHAR(150) UNIQUE, password VARCHAR(255), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE categories(id INT AUTO_INCREMENT PRIMARY KEY, slug VARCHAR(100) UNIQUE, name_ar VARCHAR(150), name_en VARCHAR(150), icon VARCHAR(20), color VARCHAR(20), type ENUM('app','game','ai','tool','video','website'), INDEX(slug));
+CREATE TABLE apps(id INT AUTO_INCREMENT PRIMARY KEY, slug VARCHAR(150) UNIQUE, type ENUM('app','game','ai','tool'), name_ar VARCHAR(200), name_en VARCHAR(200), description_ar TEXT, description_en TEXT, category_id INT, icon VARCHAR(20), version VARCHAR(20), size VARCHAR(20), os VARCHAR(100), developer VARCHAR(150), download_url TEXT, screenshots JSON, views INT DEFAULT 0, downloads INT DEFAULT 0, rating_avg DECIMAL(3,2) DEFAULT 0, ratings_count INT DEFAULT 0, featured BOOLEAN DEFAULT 0, active BOOLEAN DEFAULT 1, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(category_id) REFERENCES categories(id), FULLTEXT(name_ar,name_en,description_ar));
+CREATE TABLE videos(id INT AUTO_INCREMENT PRIMARY KEY, slug VARCHAR(150) UNIQUE, title_ar VARCHAR(250), title_en VARCHAR(250), description TEXT, category_id INT, thumbnail VARCHAR(500), youtube_url VARCHAR(500), video_url VARCHAR(500), duration VARCHAR(20), views INT DEFAULT 0, rating_avg DECIMAL(3,2) DEFAULT 0, featured BOOLEAN DEFAULT 0, active BOOLEAN DEFAULT 1, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(category_id) REFERENCES categories(id));
+CREATE TABLE websites(id INT AUTO_INCREMENT PRIMARY KEY, slug VARCHAR(150) UNIQUE, name_ar VARCHAR(200), name_en VARCHAR(200), description TEXT, category_id INT, logo VARCHAR(20), image VARCHAR(500), url VARCHAR(500), views INT DEFAULT 0, rating_avg DECIMAL(3,2) DEFAULT 0, featured BOOLEAN DEFAULT 0, active BOOLEAN DEFAULT 1, FOREIGN KEY(category_id) REFERENCES categories(id));
+CREATE TABLE ratings(id INT AUTO_INCREMENT PRIMARY KEY, item_type ENUM('app','video','website'), item_id INT, stars TINYINT, ip VARCHAR(45), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, UNIQUE(item_type,item_id,ip));
+CREATE TABLE favorites(id INT AUTO_INCREMENT PRIMARY KEY, device_id VARCHAR(100), item_type VARCHAR(20), item_id INT);
+CREATE TABLE settings(id INT PRIMARY KEY, data JSON);
+-- Default admin: INSERT INTO admins(name,email,password) VALUES('Admin','admin@appzone.com', bcrypt_hash);`)}</pre></div>`,'max-w-3xl')}
+
+/* ============================================================ ROUTER */
+function render(){
+applyLang();applyTheme();applySettings();renderHeader();renderFooter();
+const raw=(location.hash||'#/').slice(1);const [pathQ]=[raw];const [path] = pathQ.split('?');const parts=path.split('/').filter(Boolean);
+window.scrollTo({top:0});
+if(parts.length===0){DB.stats.visits++;saveDB();renderHome()}
+else if(parts[0]==='apps'&&!parts[1])renderListing('apps');
+else if(parts[0]==='games'&&!parts[1])renderListing('games');
+else if(parts[0]==='ai'&&!parts[1])renderListing('ai');
+else if(parts[0]==='tools'&&!parts[1])renderListing('tools');
+else if(parts[0]==='videos'&&!parts[1])renderListing('videos');
+else if(parts[0]==='websites'&&!parts[1])renderListing('websites');
+else if(['apps','games','ai','tools'].includes(parts[0])&&parts[1])renderAppDetail(decodeURIComponent(parts[1]));
+else if(parts[0]==='videos'&&parts[1])renderVideoDetail(decodeURIComponent(parts[1]));
+else if(parts[0]==='websites'&&parts[1])renderWebsiteDetail(decodeURIComponent(parts[1]));
+else if(parts[0]==='category'&&parts[1])renderCategory(decodeURIComponent(parts[1]));
+else if(parts[0]==='search')renderSearch();
+else if(parts[0]==='favorites')renderFavorites();
+else if(['privacy','terms','contact'].includes(parts[0]))renderStatic(parts[0]);
+else if(parts[0]==='admin')renderAdmin();
+else render404();
+renderHeader();
+}
+window.addEventListener('hashchange',render);
+window.addEventListener('scroll',()=>{const b=$('#toTop');if(window.scrollY>500){b.classList.remove('hidden');b.classList.add('flex')}else{b.classList.add('hidden');b.classList.remove('flex')}});
+/* init */
+if(!location.hash)location.hash='#/';
+render();
+setTimeout(()=>{const p=$('#preloader');p.style.opacity='0';setTimeout(()=>p.remove(),450)},900);
+</script>
+</body>
+</html>
