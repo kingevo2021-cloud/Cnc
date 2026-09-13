@@ -70,6 +70,44 @@ table.admin-table th{font-size:.75rem;text-transform:uppercase;letter-spacing:.0
 @keyframes mq{to{transform:translateX(50%)}}[dir="ltr"] .marquee{animation-name:mq2}@keyframes mq2{to{transform:translateX(-50%)}}
 .bottom-nav{box-shadow:0 -8px 30px rgba(0,0,0,.12)}
 .prose-ar p{margin-bottom:.8rem;line-height:1.9}
+
+/* CNC HOME BUILDER */
+.cnc-home{background:#faf7f2}
+.cnc-home .section-title{color:#2f241d}
+.cnc-home .gold-line{background:#c8953e}
+.cnc-hero{background:linear-gradient(120deg,#0b1620 0%,#142633 55%,#2b1d16 100%);min-height:420px}
+.cnc-hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(215,164,77,.16),transparent 35%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.06),transparent 30%);pointer-events:none}
+.cnc-logo-frame{background:rgba(255,255,255,.96);border:3px solid rgba(210,164,83,.75);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.cnc-section-card{background:#fffdf9;border:1px solid #eadfce;box-shadow:0 8px 30px rgba(65,45,30,.07)}
+.cnc-category-card{overflow:hidden;background:#12202a;border-radius:18px;border:1px solid rgba(200,149,62,.25)}
+.cnc-admin-section{border:1px solid #e8dfd3;background:#fffdf9}
+.cnc-drag{cursor:grab}
+
+/* === CNC STORE VISUAL OVERHAUL === */
+:root{--cnc-navy:#071521;--cnc-navy2:#0d2432;--cnc-gold:#d6a64b;--cnc-cream:#fbf8f2;--cnc-brown:#5a3820}
+body{background:var(--cnc-cream)!important;color:#152536}
+.cnc-site{background:var(--cnc-cream)}
+.cnc-hero-new{position:relative;min-height:430px;background:#091923;overflow:hidden;border-bottom:4px solid var(--cnc-gold)}
+.cnc-hero-new:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,15,23,.88) 0%,rgba(5,15,23,.58) 42%,rgba(5,15,23,.18) 100%);pointer-events:none}
+.cnc-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.82}
+.cnc-hero-content{position:relative;z-index:2;max-width:1280px;margin:auto;padding:55px 28px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:28px}
+.cnc-hero-copy{color:#fff;text-align:right}
+.cnc-hero-copy h1{font-size:clamp(2.2rem,4vw,4.1rem);line-height:1.18;margin:0;font-weight:900}
+.cnc-hero-copy h1 span{color:#f1c35d}
+.cnc-hero-copy p{font-size:1.05rem;line-height:2;margin:18px 0;color:rgba(255,255,255,.84);max-width:650px}
+.cnc-hero-logo{justify-self:start;background:rgba(255,255,255,.94);border:3px solid rgba(214,166,75,.85);border-radius:26px;padding:16px;width:min(360px,85vw);height:300px;display:flex;align-items:center;justify-content:center;box-shadow:0 25px 70px rgba(0,0,0,.35)}
+.cnc-hero-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.cnc-gold-btn{display:inline-flex;align-items:center;gap:8px;background:#f2c45f;color:#17202a;padding:13px 26px;border-radius:999px;font-weight:900;border:1px solid #f8d77f;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.cnc-feature-strip{background:#fff;border-bottom:1px solid #eadfce;display:grid;grid-template-columns:repeat(4,1fr);max-width:100%;}
+.cnc-feature{padding:20px;text-align:center;border-inline-start:1px solid #eadfce}.cnc-feature:first-child{border-inline-start:0}.cnc-feature .ico{font-size:30px}.cnc-feature b{display:block;font-size:18px;margin-top:5px}.cnc-feature small{color:#6d7780}
+.cnc-wrap{max-width:1280px;margin:auto;padding:0 28px}.cnc-section-title{display:flex;align-items:end;justify-content:space-between;margin:28px 0 16px}.cnc-section-title h2{font-size:27px;font-weight:900;margin:0;color:#202a34}.cnc-section-title h2:before{content:'';display:inline-block;width:5px;height:28px;background:#efbd54;border-radius:8px;margin-left:10px;vertical-align:-4px}
+.cnc-cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.cnc-cat-card2{background:#fff;border:1px solid #e4ddd2;border-radius:10px;overflow:hidden;box-shadow:0 5px 18px rgba(71,52,34,.07);transition:.25s}.cnc-cat-card2:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(71,52,34,.13)}.cnc-cat-card2 img{width:100%;height:150px;object-fit:cover;display:block}.cnc-cat-body{text-align:center;padding:14px}.cnc-cat-icon{width:54px;height:54px;border-radius:50%;background:#fff;border:2px solid #ead3a4;display:flex;align-items:center;justify-content:center;font-size:25px;margin:-40px auto 8px;position:relative;box-shadow:0 4px 12px rgba(0,0,0,.12)}.cnc-cat-body h3{margin:4px 0 10px;font-size:16px;font-weight:900}.cnc-outline-btn{display:inline-flex;border:1px solid #e1b957;color:#6b4a1c;border-radius:999px;padding:7px 16px;font-weight:800;font-size:12px;background:#fff}
+.cnc-cta{margin:34px 0;background:linear-gradient(90deg,#102735,#07151f);border-radius:12px;min-height:130px;position:relative;overflow:hidden;color:#fff;border:1px solid #b48635}.cnc-cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}.cnc-cta>div{position:relative;z-index:2;padding:28px;text-align:right}.cnc-cta h3{font-size:25px;font-weight:900;margin:0 0 8px}.cnc-products{background:#0b1b26;margin-top:35px;padding:28px 0 34px;border-top:1px solid #d2a44e;border-bottom:1px solid #d2a44e}.cnc-products .cnc-section-title h2{color:#fff}.cnc-product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.cnc-product{background:#fff;border-radius:9px;overflow:hidden;border:1px solid #e5ddd2}.cnc-product img{width:100%;height:150px;object-fit:cover}.cnc-product-body{padding:12px;text-align:center}.cnc-product-body h3{font-size:14px;font-weight:900}.cnc-price{font-weight:900;margin:5px 0 10px}.cnc-buy{border:1px solid #e3b95b;border-radius:999px;padding:7px 16px;background:#fff;font-weight:800}
+@media(max-width:900px){.cnc-hero-content{grid-template-columns:1fr}.cnc-hero-logo{justify-self:center;order:-1;height:220px}.cnc-cat-grid,.cnc-product-grid{grid-template-columns:repeat(2,1fr)}.cnc-feature-strip{grid-template-columns:repeat(2,1fr)}.cnc-feature:nth-child(3){border-inline-start:0;border-top:1px solid #eadfce}.cnc-feature:nth-child(4){border-top:1px solid #eadfce}}
+@media(max-width:560px){.cnc-wrap{padding:0 12px}.cnc-cat-grid,.cnc-product-grid{grid-template-columns:1fr}.cnc-hero-content{padding:35px 15px}.cnc-hero-logo{width:230px}.cnc-hero-copy{text-align:center}.cnc-hero-copy p{font-size:.9rem}.cnc-section-title h2{font-size:21px}}
+/* Never place decorative images over the logo */
+.cnc-hero-new .cnc-hero-logo,.cnc-header-logo{position:relative;z-index:5}
+
 </style>
 </head>
 <body class="font-cairo text-slate-800 dark:text-slate-100">
@@ -171,14 +209,21 @@ websites:[
 {id:'w6',slug:'coursera',name_ar:'كورسيرا - شهادات معتمدة',name_en:'Coursera',desc_ar:'كورسات من أفضل جامعات العالم: ستانفورد، جوجل، ميتا. احصل على شهادات معتمدة في الذكاء الاصطناعي وعلوم البيانات ترفع قيمة سيرتك الذاتية.',desc_en:'Courses from top universities with accredited certificates.',category:'web-learn',logo:'📜',image:U('photo-1523050854058-8df90110c9f1'),url:'https://coursera.org',ratingAvg:4.7,ratingsCount:6800,views:310000,featured:false,active:true,createdAt:'2026-05-10'}],
 ratings:[],messages:[],
 admins:[{id:'admin1',name:'Super Admin',email:'admin@appzone.com',pass:'admin123'}],
-settings:{siteName_ar:'متجر CNC لأعمال النجارة والديكورات',siteName_en:'CNC Woodworking & Decorations Store',logoIcon:'CNC',logoImage:'1000900527.png',heroImage:'1000900527.png',heroTitle_ar:'متجر CNC لأعمال النجارة والديكورات 🪵⚙️',heroTitle_en:'CNC Woodworking & Decorations Store 🪵⚙️',heroDesc_ar:'متجر CNC متخصص في أعمال النجارة والديكورات وتصاميم ومنتجات CNC، مع إمكانية إدارة كامل محتوى الصفحة بسهولة.',heroDesc_en:'Your Arabic hub for apps, games, videos, top websites and AI tools — free and safe.',footerDesc_ar:'منصة عربية حديثة تجمع لك أفضل التطبيقات والألعاب والفيديوهات والمواقع والأدوات الرقمية في مكان واحد.',footerDesc_en:'CNC woodworking, furniture and decoration designs and services.',primary:'#6366f1',secondary:'#a855f7',btn:'#4f46e5',facebook:'https://facebook.com',instagram:'https://instagram.com',youtube:'https://youtube.com',telegram:'https://t.me',whatsapp:'https://wa.me/123456789',email:'info@appzone.com',phone:'+201000000000',seoTitle:'متجر CNC لأعمال النجارة والديكورات',seoDesc:'متجر CNC لأعمال النجارة والديكورات وتصاميم ومنتجات وخدمات CNC.',seoKeywords:'تطبيقات, العاب, فيديوهات, مواقع, ذكاء اصطناعي',ads_header:'',ads_sidebar:'',ads_footer:'',ads_content:'',privacy_ar:'نحترم خصوصيتك. لا نجمع بيانات شخصية دون موافقتك. ملفات تعريف الارتباط تُستخدم لتحسين التجربة فقط.',privacy_en:'We respect your privacy. No personal data collected without consent.',terms_ar:'باستخدامك المنصة فأنت توافق على: الاستخدام الشخصي للمحتوى، عدم إعادة النشر دون إذن، واحترام حقوق الملكية.',terms_en:'By using the platform you agree to personal use and respect of IP rights.'},
+settings:{siteName_ar:'متجر CNC لأعمال النجارة والديكورات',siteName_en:'CNC Woodworking & Decorations Store',logoIcon:'CNC',logoImage:'1000900527.png',heroImage:'',heroTitle_ar:'متجر CNC لأعمال النجارة والديكورات 🪵⚙️',heroTitle_en:'CNC Woodworking & Decorations Store 🪵⚙️',heroDesc_ar:'متجر CNC متخصص في أعمال النجارة والديكورات وتصاميم ومنتجات CNC، مع إمكانية إدارة كامل محتوى الصفحة بسهولة.',heroDesc_en:'CNC woodworking, furniture, custom designs and decorations with precision and professional finishing.',footerDesc_ar:'متجر متخصص في أعمال النجارة والديكورات وتصاميم CNC وتنفيذ المنتجات حسب الطلب.',footerDesc_en:'CNC woodworking, furniture, decoration designs and custom services.',primary:'#6366f1',secondary:'#a855f7',btn:'#4f46e5',facebook:'https://facebook.com',instagram:'https://instagram.com',youtube:'https://youtube.com',telegram:'https://t.me',whatsapp:'https://wa.me/123456789',email:'info@appzone.com',phone:'+201000000000',seoTitle:'متجر CNC لأعمال النجارة والديكورات',seoDesc:'متجر CNC لأعمال النجارة والديكورات وتصاميم ومنتجات وخدمات CNC.',seoKeywords:'تطبيقات, العاب, فيديوهات, مواقع, ذكاء اصطناعي',ads_header:'',ads_sidebar:'',ads_footer:'',ads_content:'',privacy_ar:'نحترم خصوصيتك. لا نجمع بيانات شخصية دون موافقتك. ملفات تعريف الارتباط تُستخدم لتحسين التجربة فقط.',privacy_en:'We respect your privacy. No personal data collected without consent.',terms_ar:'باستخدامك المنصة فأنت توافق على: الاستخدام الشخصي للمحتوى، عدم إعادة النشر دون إذن، واحترام حقوق الملكية.',terms_en:'By using the platform you agree to personal use and respect of IP rights.'},
 stats:{visits:15234,history:[{date:'2026-09-07',views:1200,downloads:340},{date:'2026-09-08',views:1580,downloads:420},{date:'2026-09-09',views:1320,downloads:380},{date:'2026-09-10',views:1890,downloads:510},{date:'2026-09-11',views:2100,downloads:620},{date:'2026-09-12',views:2450,downloads:700},{date:'2026-09-13',views:980,downloads:290}]}
 }}
 let DB;
 try{DB=JSON.parse(localStorage.getItem(DB_KEY))||seedDB()}catch(e){DB=seedDB()}
 if(!DB.apps)DB=seedDB();
+// Preserve existing content but force the CNC identity for old LocalStorage copies.
+DB.settings=DB.settings||{};
+if(!DB.settings.siteName_ar || DB.settings.siteName_ar==='APPZONE') DB.settings.siteName_ar='متجر CNC لأعمال النجارة والديكورات';
+if(!DB.settings.siteName_en || DB.settings.siteName_en==='APPZONE') DB.settings.siteName_en='CNC Woodworking & Decorations Store';
+if(!DB.settings.logoImage) DB.settings.logoImage='1000900527.png';
+saveDB();
 function saveDB(){try{localStorage.setItem(DB_KEY,JSON.stringify(DB))}catch(e){toast(LANG==='ar'?'مساحة التخزين ممتلئة':'Storage full','error')}}
 saveDB();
+if(!Array.isArray(DB.homeSections)||!DB.homeSections.length){DB.homeSections=defaultHomeSections();saveDB()}
 
 /* ---------- SERVER API BRIDGE ---------- */
 async function serverLogin(email,password){const r=await azApi('/auth/login',{method:'POST',body:JSON.stringify({email,password})});localStorage.setItem('az_jwt',r.token);localStorage.setItem('az_token',btoa(JSON.stringify({email:r.admin.email,exp:Date.now()+7*864e5})));return r}
@@ -321,61 +366,85 @@ ${w.featured?'<span class="absolute top-2 end-2 badge-feat text-white text-[10px
 function sectionHead(icon,title,sub,link){return`<div class="flex items-end justify-between mb-5"><div><h2 class="text-xl md:text-2xl font-black flex items-center gap-2">${icon} ${title}</h2><p class="text-xs md:text-sm text-slate-500 mt-1">${sub||''}</p></div>${link?`<a href="${link}" class="text-sm font-black text-indigo-600 dark:text-indigo-400 hover:gap-3 gap-1 flex items-center transition-all">${t('view_all')} ←</a>`:''}</div>`}
 
 /* ============================================================ PUBLIC PAGES */
-function renderHome(){
-const s=DB.settings;
-const featApps=DB.apps.filter(a=>a.active&&a.featured);
-const featVids=DB.videos.filter(v=>v.active&&v.featured);
-const featSites=DB.websites.filter(w=>w.active&&w.featured);
-const featured=[...featApps.map(x=>({...x,_t:'app'})),...featVids.map(x=>({...x,_t:'video'})),...featSites.map(x=>({...x,_t:'website'}))].slice(0,4);
-const latest=[...DB.apps.filter(a=>a.active).map(x=>({...x,_t:'app',_d:x.createdAt})),...DB.videos.filter(v=>v.active).map(x=>({...x,_t:'video',_d:x.createdAt})),...DB.websites.filter(w=>w.active).map(x=>({...x,_t:'website',_d:x.createdAt}))].sort((a,b)=>new Date(b._d)-new Date(a._d)).slice(0,8);
-const mostViewed=[...DB.apps.filter(a=>a.active).map(x=>({...x,_t:'app'})),...DB.videos.filter(v=>v.active).map(x=>({...x,_t:'video'})),...DB.websites.filter(w=>w.active).map(x=>({...x,_t:'website'}))].sort((a,b)=>b.views-a.views).slice(0,4);
-const mostDl=DB.apps.filter(a=>a.active).sort((a,b)=>b.downloads-a.downloads).slice(0,4);
-const apps=DB.apps.filter(a=>a.active&&a.type==='app').slice(0,4);
-const games=DB.apps.filter(a=>a.active&&a.type==='game').slice(0,4);
-const ai=DB.apps.filter(a=>a.active&&a.type==='ai').slice(0,4);
-const tools=DB.apps.filter(a=>a.active&&a.type==='tool').slice(0,4);
-const vids=DB.videos.filter(v=>v.active).slice(0,3);
-const sites=DB.websites.filter(w=>w.active).slice(0,3);
-$('#view').innerHTML=`
-<section class="relative overflow-hidden grad-bg hero-pattern">
-<img src="${esc(s.heroImage)}" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover opacity-20" alt="">
-<div class="absolute -top-20 -start-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
-<div class="absolute -bottom-24 -end-16 w-96 h-96 bg-black/10 rounded-full blur-3xl"></div>
-<div class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20 relative grid md:grid-cols-2 gap-8 items-center">
-<div class="anim text-center md:text-start">
-<span class="inline-block bg-white/20 backdrop-blur text-white text-xs font-black px-4 py-2 rounded-full border border-white/20">${t('hero_badge')}</span>
-<h1 class="text-3xl md:text-5xl font-black text-white leading-tight mt-4">${esc(LANG==='ar'?s.heroTitle_ar:s.heroTitle_en)}</h1>
-<p class="text-white/85 mt-4 leading-relaxed text-sm md:text-lg">${esc(LANG==='ar'?s.heroDesc_ar:s.heroDesc_en)}</p>
-<form onsubmit="return heroSearch(event)" class="mt-6 flex gap-2 bg-white rounded-2xl p-2 shadow-2xl max-w-lg mx-auto md:mx-0"><input id="hero-q" class="flex-1 px-4 bg-transparent text-slate-800 text-sm font-bold" placeholder="${t('hero_search_ph')}"><button class="grad-bg text-white px-6 py-3 rounded-xl font-black text-sm">🔍 ${t('search')}</button></form>
-<div class="flex flex-wrap justify-center md:justify-start gap-2 mt-4 text-[11px] font-bold text-white/90"><span class="opacity-70">🔥 ${t('trending')}:</span>${['ببجي','ChatGPT','فلاتر','كانفا'].map(k=>`<a href="#/search?q=${encodeURIComponent(k)}" class="bg-white/15 hover:bg-white/30 px-3 py-1 rounded-full border border-white/20 transition">${k}</a>`).join('')}</div>
-<div class="grid grid-cols-4 gap-2 mt-6 max-w-lg mx-auto md:mx-0">${[[DB.apps.length,'📱'],[DB.videos.length,'🎬'],[DB.websites.length,'🌐'],[fmt(DB.apps.reduce((x,a)=>x+a.downloads,0))+'+','⬇️']].map(x=>`<div class="bg-white/15 backdrop-blur border border-white/20 rounded-2xl py-3 text-center text-white"><div class="font-black text-lg">${x[0]}</div><div class="text-xl">${x[1]}</div></div>`).join('')}</div>
-</div>
-<div class="hidden md:grid grid-cols-2 gap-4 anim anim-2">
-<div class="float bg-white/15 backdrop-blur border border-white/20 rounded-3xl p-5 text-white"><div class="text-4xl mb-2">📱</div><div class="font-black">+${DB.apps.length} ${t('apps')}</div><div class="text-xs opacity-80 mt-1">آمنة ومحدثة يومياً</div></div>
-<div class="float bg-white/15 backdrop-blur border border-white/20 rounded-3xl p-5 text-white mt-8" style="animation-delay:1s"><div class="text-4xl mb-2">🤖</div><div class="font-black">${t('ai_tools')}</div><div class="text-xs opacity-80 mt-1">أحدث أدوات الذكاء الاصطناعي</div></div>
-<div class="float bg-white/15 backdrop-blur border border-white/20 rounded-3xl p-5 text-white -mt-4" style="animation-delay:.5s"><div class="text-4xl mb-2">🎬</div><div class="font-black">+${DB.videos.length} ${t('videos')}</div><div class="text-xs opacity-80 mt-1">شروحات ومراجعات حصرية</div></div>
-<div class="float bg-white/15 backdrop-blur border border-white/20 rounded-3xl p-5 text-white mt-4" style="animation-delay:1.5s"><div class="text-4xl mb-2">🌐</div><div class="font-black">+${DB.websites.length} ${t('websites')}</div><div class="text-xs opacity-80 mt-1">نخبة مواقع الويب</div></div>
-</div></div>
-<svg class="block w-full text-[#f6f7fb] dark:text-[#0b1020] -mb-px" viewBox="0 0 1440 60" fill="currentColor"><path d="M0,30 C360,70 1080,-10 1440,30 L1440,60 L0,60 Z"/></svg>
-</section>
-<div class="max-w-7xl mx-auto px-4 md:px-6 -mt-2">
-<div class="flex gap-2 overflow-x-auto no-scrollbar py-4">${DB.categories.map(c=>`<a href="#/category/${c.slug}" class="chip shrink-0 flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-full px-4 py-2.5 text-sm font-bold shadow-sm hover:shadow-lg"><span class="w-7 h-7 rounded-full flex items-center justify-center text-sm" style="background:${c.color}22">${c.icon}</span>${LANG==='ar'?c.name_ar:c.name_en}</a>`).join('')}</div>
-<div class="mt-6">${sectionHead('⭐',t('featured'),t('manage_all'))}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${featured.map((f,i)=>f._t==='app'?appCard(f,i):f._t==='video'?videoCard(f,i):siteCard(f,i)).join('')}</div></div>
-${DB.settings.ads_content?`<div class="mt-8 rounded-2xl p-3 text-center bg-slate-100 dark:bg-slate-800 text-xs">${DB.settings.ads_content}</div>`:''}
-<div class="mt-10">${sectionHead('🆕',t('latest'),'أحدث الإضافات على المنصة')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${latest.map((f,i)=>f._t==='app'?appCard(f,i):f._t==='video'?videoCard(f,i):siteCard(f,i)).join('')}</div></div>
-<div class="grid lg:grid-cols-2 gap-8 mt-10">
-<div>${sectionHead('👁️',t('most_viewed'))}<div class="grid sm:grid-cols-2 gap-4">${mostViewed.map((f,i)=>f._t==='app'?appCard(f,i):f._t==='video'?videoCard(f,i):siteCard(f,i)).join('')}</div></div>
-<div>${sectionHead('⬇️',t('most_downloaded'))}<div class="grid sm:grid-cols-2 gap-4">${mostDl.map((a,i)=>appCard(a,i)).join('')}</div></div>
-</div>
-<div class="mt-10">${sectionHead('📱',t('top_apps'),'','#/apps')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${apps.map((a,i)=>appCard(a,i)).join('')}</div></div>
-<div class="mt-10">${sectionHead('🎮',t('top_games'),'','#/games')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${games.map((a,i)=>appCard(a,i)).join('')||emptyBox()}</div></div>
-<div class="mt-10">${sectionHead('🤖',t('top_ai'),'','#/ai')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${ai.map((a,i)=>appCard(a,i)).join('')}</div></div>
-<div class="mt-10">${sectionHead('🎬',t('top_videos'),'','#/videos')}<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${vids.map((v,i)=>videoCard(v,i)).join('')}</div></div>
-<div class="mt-10">${sectionHead('🌐',t('top_sites'),'','#/websites')}<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${sites.map((w,i)=>siteCard(w,i)).join('')}</div></div>
-<div class="mt-10">${sectionHead('🧰',t('top_tools'),'','#/tools')}<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${tools.map((a,i)=>appCard(a,i)).join('')}</div></div>
-</div>`;
-setSEO(DB.settings.seoTitle,DB.settings.seoDesc);
+function defaultHomeSections(){
+return[
+{id:'hs1',type:'featured',title_ar:'المحتوى المميز',title_en:'Featured Content',subtitle_ar:'اختياراتنا الأفضل',subtitle_en:'Our best picks',icon:'⭐',limit:4,active:true,columns:4},
+{id:'hs2',type:'latest',title_ar:'أحدث المحتويات',title_en:'Latest Content',subtitle_ar:'أحدث الإضافات على المتجر',subtitle_en:'Latest additions',icon:'🆕',limit:8,active:true,columns:4},
+{id:'hs3',type:'views',title_ar:'الأكثر مشاهدة',title_en:'Most Viewed',subtitle_ar:'المحتوى الأكثر زيارة',subtitle_en:'Most visited content',icon:'👁️',limit:4,active:true,columns:4},
+{id:'hs4',type:'downloads',title_ar:'الأكثر تحميلاً',title_en:'Most Downloaded',subtitle_ar:'التطبيقات الأكثر تحميلاً',subtitle_en:'Most downloaded apps',icon:'⬇️',limit:4,active:true,columns:4},
+{id:'hs5',type:'apps',title_ar:'أفضل التطبيقات',title_en:'Top Apps',subtitle_ar:'',subtitle_en:'',icon:'📱',limit:4,active:true,columns:4},
+{id:'hs6',type:'games',title_ar:'أفضل الألعاب',title_en:'Top Games',subtitle_ar:'',subtitle_en:'',icon:'🎮',limit:4,active:true,columns:4},
+{id:'hs7',type:'ai',title_ar:'أدوات الذكاء الاصطناعي',title_en:'AI Tools',subtitle_ar:'',subtitle_en:'',icon:'🤖',limit:4,active:true,columns:4},
+{id:'hs8',type:'videos',title_ar:'أحدث الفيديوهات',title_en:'Latest Videos',subtitle_ar:'',subtitle_en:'',icon:'🎬',limit:3,active:true,columns:3},
+{id:'hs9',type:'websites',title_ar:'مواقع مميزة',title_en:'Featured Sites',subtitle_ar:'',subtitle_en:'',icon:'🌐',limit:3,active:true,columns:3},
+{id:'hs10',type:'tools',title_ar:'أدوات مفيدة',title_en:'Useful Tools',subtitle_ar:'',subtitle_en:'',icon:'🧰',limit:4,active:true,columns:4}
+]}
+function ensureHomeSections(){
+if(!Array.isArray(DB.homeSections)||!DB.homeSections.length){
+DB.homeSections=defaultHomeSections();
+saveDB();
 }
+return DB.homeSections;
+}
+function homeSectionItems(type,limit){
+const all=[...DB.apps.filter(a=>a.active).map(x=>({...x,_t:'app',_d:x.createdAt})),...DB.videos.filter(v=>v.active).map(x=>({...x,_t:'video',_d:x.createdAt})),...DB.websites.filter(w=>w.active).map(x=>({...x,_t:'website',_d:x.createdAt}))];
+if(type==='featured')return[...DB.apps.filter(a=>a.active&&a.featured).map(x=>({...x,_t:'app'})),...DB.videos.filter(v=>v.active&&v.featured).map(x=>({...x,_t:'video'})),...DB.websites.filter(w=>w.active&&w.featured).map(x=>({...x,_t:'website'}))].slice(0,limit);
+if(type==='latest')return all.sort((a,b)=>new Date(b._d)-new Date(a._d)).slice(0,limit);
+if(type==='views')return all.sort((a,b)=>(+b.views||0)-(+a.views||0)).slice(0,limit);
+if(type==='downloads')return DB.apps.filter(a=>a.active).sort((a,b)=>(+b.downloads||0)-(+a.downloads||0)).slice(0,limit).map(x=>({...x,_t:'app'}));
+const map={apps:a=>a.type==='app',games:a=>a.type==='game',ai:a=>a.type==='ai',tools:a=>a.type==='tool'};
+if(map[type])return DB.apps.filter(a=>a.active&&map[type](a)).slice(0,limit).map(x=>({...x,_t:'app'}));
+if(type==='videos')return DB.videos.filter(v=>v.active).slice(0,limit).map(x=>({...x,_t:'video'}));
+if(type==='websites')return DB.websites.filter(w=>w.active).slice(0,limit).map(x=>({...x,_t:'website'}));
+return[];
+}
+function renderHomeSection(sec){
+if(!sec||sec.active===false)return'';
+const title=LANG==='ar'?(sec.title_ar||sec.title_en):(sec.title_en||sec.title_ar);
+const sub=LANG==='ar'?(sec.subtitle_ar||sec.subtitle_en):(sec.subtitle_en||sec.subtitle_ar);
+const items=homeSectionItems(sec.type,Math.max(1,Math.min(24,+sec.limit||4)));
+const cols=sec.columns===3?'lg:grid-cols-3':sec.columns===2?'lg:grid-cols-2':'lg:grid-cols-4';
+const linkMap={apps:'#/apps',games:'#/games',ai:'#/ai',tools:'#/tools',videos:'#/videos',websites:'#/websites'};
+const link=linkMap[sec.type];
+const cards=items.map((f,i)=>f._t==='app'?appCard(f,i):f._t==='video'?videoCard(f,i):siteCard(f,i)).join('');
+return`<section class="mt-10 cnc-section-card rounded-[26px] p-4 md:p-6">
+<div class="flex items-end justify-between gap-3 mb-5">
+<div class="flex items-start gap-3"><span class="w-1.5 h-10 rounded-full gold-line shrink-0"></span><div><h2 class="section-title text-xl md:text-2xl font-black">${sec.icon||'▣'} ${esc(title||'قسم')}</h2>${sub?`<p class="text-xs md:text-sm text-slate-500 mt-1">${esc(sub)}</p>`:''}</div></div>
+${link?`<a href="${link}" class="text-xs md:text-sm font-black text-amber-700 hover:text-amber-900 whitespace-nowrap">عرض الكل ←</a>`:''}
+</div>
+<div class="grid sm:grid-cols-2 ${cols} gap-4">${cards||emptyBox()}</div>
+</section>`;
+}
+function getHomeConfig(){
+const d={
+heroTitle_ar:'فن الخشب بدقة CNC',heroTitle_en:'CNC Woodworking with Precision',heroAccent_ar:'تصاميمك .. على أرض الواقع',heroAccent_en:'Your designs .. brought to life',heroDesc_ar:'نقدم لك أفضل خدمات وأعمال النجارة والديكورات باستخدام أحدث تقنيات CNC وبجودة عالية واحترافية في التنفيذ.',heroDesc_en:'Premium CNC woodworking and decoration services with precision and professional execution.',heroImage:'https://images.unsplash.com/photo-1601058268499-e52658c8bb88?w=1600&q=85&auto=format&fit=crop',ctaTitle_ar:'اطلب تصميمك الخاص',ctaTitle_en:'Request Your Custom Design',ctaDesc_ar:'سنحوّل فكرتك إلى واقع باستخدام أحدث تقنيات CNC.',ctaDesc_en:'We turn your idea into reality with modern CNC technology.',ctaImage:'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=1400&q=85&auto=format&fit=crop',features:[{icon:'🛡️',title_ar:'جودة عالية',sub_ar:'في كل التفاصيل'},{icon:'⚙️',title_ar:'دقة متناهية',sub_ar:'بأحدث تقنيات CNC'},{icon:'🎨',title_ar:'تصاميم مخصصة',sub_ar:'حسب رغبتك'},{icon:'🛠️',title_ar:'تنفيذ احترافي',sub_ar:'بأيدي خبراء'}],storeCategories:[
+{id:'sc1',name_ar:'المطابخ الخشبية',name_en:'Wooden Kitchens',icon:'▦',image:'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=700&q=85&auto=format&fit=crop'},
+{id:'sc2',name_ar:'لوحة جدارية',name_en:'Wall Panels',icon:'▤',image:'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=700&q=85&auto=format&fit=crop'},
+{id:'sc3',name_ar:'مكتبة تلفزيون خشب',name_en:'Wood TV Unit',icon:'▣',image:'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=700&q=85&auto=format&fit=crop'},
+{id:'sc4',name_ar:'باب خشب CNC',name_en:'CNC Wooden Doors',icon:'▥',image:'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=700&q=85&auto=format&fit=crop'},
+{id:'sc5',name_ar:'سقف خشبي مزخرف',name_en:'Decorative Ceiling',icon:'⌂',image:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=85&auto=format&fit=crop'},
+{id:'sc6',name_ar:'خدمات CNC',name_en:'CNC Services',icon:'⚙',image:'https://images.unsplash.com/photo-1565600221266-4f9f0a4f0b1a?w=700&q=85&auto=format&fit=crop'},
+{id:'sc7',name_ar:'أبواب ونوافذ خشبية',name_en:'Wood Doors & Windows',icon:'▥',image:'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700&q=85&auto=format&fit=crop'},
+{id:'sc8',name_ar:'أثاث وديكورات منزلية',name_en:'Home Furniture',icon:'🛋️',image:'https://images.unsplash.com/photo-1600210491369-e753d80a41f3?w=700&q=85&auto=format&fit=crop'}]};
+if(!DB.homeConfig)DB.homeConfig=d; else DB.homeConfig={...d,...DB.homeConfig,features:Array.isArray(DB.homeConfig.features)&&DB.homeConfig.features.length?DB.homeConfig.features:d.features,storeCategories:Array.isArray(DB.homeConfig.storeCategories)&&DB.homeConfig.storeCategories.length?DB.homeConfig.storeCategories:d.storeCategories};
+return DB.homeConfig;
+}
+function renderStoreCategoryCard(c,i){return `<a href="#/category/${esc(c.slug||'')}" class="cnc-cat-card2 anim anim-${(i%4)+1}"><img loading="lazy" src="${esc(c.image||'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=700&q=80')}" onerror="this.src='https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=700&q=80'" alt="${esc(c.name_ar||'قسم')}"><div class="cnc-cat-body"><div class="cnc-cat-icon">${esc(c.icon||'▦')}</div><h3>${esc(LANG==='ar'?c.name_ar:c.name_en||c.name_ar)}</h3><span class="cnc-outline-btn">تصفح القسم ←</span></div></a>`}
+function renderHome(){
+const s=DB.settings,c=getHomeConfig(),sections=ensureHomeSections(),logo=s.logoImage||'1000900527.png';
+const heroImg=c.heroImage||s.heroImage||'https://images.unsplash.com/photo-1601058268499-e52658c8bb88?w=1600&q=85&auto=format&fit=crop';
+$('#view').innerHTML=`<div class="cnc-site">
+<section class="cnc-hero-new"><img class="cnc-hero-bg" src="${esc(heroImg)}" alt="" onerror="this.style.display='none'"><div class="cnc-hero-content" dir="rtl"><div class="cnc-hero-copy"><h1>${esc(LANG==='ar'?c.heroTitle_ar:c.heroTitle_en)}<br><span>${esc(LANG==='ar'?c.heroAccent_ar:c.heroAccent_en)}</span></h1><p>${esc(LANG==='ar'?c.heroDesc_ar:c.heroDesc_en)}</p><a class="cnc-gold-btn" href="#/apps">تصفح الأقسام ←</a></div><div class="cnc-hero-logo"><img src="${esc(logo)}" alt="${esc(s.siteName_ar||'متجر CNC')}"></div></div></section>
+<div class="cnc-feature-strip" dir="rtl">${(c.features||[]).slice(0,4).map(f=>`<div class="cnc-feature"><div class="ico">${esc(f.icon||'★')}</div><b>${esc(LANG==='ar'?f.title_ar:f.title_en||f.title_ar)}</b><small>${esc(LANG==='ar'?(f.sub_ar||''):f.sub_en||f.sub_ar||'')}</small></div>`).join('')}</div>
+<div class="cnc-wrap" dir="rtl"><div class="cnc-section-title"><div><h2>أقسام المتجر</h2><p class="text-xs text-slate-500 mt-1">تصفح جميع الأقسام واختر ما يناسبك</p></div><button onclick="location.hash='#/admin';setTimeout(()=>{ADMIN_TAB='home';renderAdmin()},50)" class="px-4 py-2 rounded-full bg-[#102735] text-white text-xs font-black">⚙️ إدارة الأقسام</button></div>
+<div class="cnc-cat-grid">${(c.storeCategories||[]).map(renderStoreCategoryCard).join('')}</div>
+<div class="cnc-cta"><img src="${esc(c.ctaImage||heroImg)}" alt=""><div><h3>${esc(LANG==='ar'?c.ctaTitle_ar:c.ctaTitle_en)}</h3><p class="text-sm text-white/75">${esc(LANG==='ar'?c.ctaDesc_ar:c.ctaDesc_en)}</p><a class="cnc-gold-btn mt-4" href="#/contact">تواصل معنا ←</a></div></div></div>
+${sections.map(renderHomeSection).join('')}
+<div class="cnc-products"><div class="cnc-wrap" dir="rtl"><div class="cnc-section-title"><div><h2>أحدث المنتجات</h2><p class="text-xs text-white/60 mt-1">تصفح أحدث أعمالنا ومنتجاتنا</p></div><a href="#/apps" class="cnc-outline-btn">عرض الكل ←</a></div><div class="cnc-product-grid">${DB.apps.filter(a=>a.active).slice(0,4).map((a,i)=>`<div class="cnc-product"><img loading="lazy" src="${esc((a.screenshots&&a.screenshots[0])||'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=700&q=80')}" alt=""><div class="cnc-product-body"><h3>${esc(L(a,'name'))}</h3><div class="cnc-price">${esc(a.price||'اطلب السعر')}</div><button class="cnc-buy" onclick="location.hash='#/apps/${esc(a.slug)}'">عرض المنتج 🛒</button></div></div>`).join('')}</div></div></div>
+</div>`;
+setSEO(s.seoTitle||s.siteName_ar,s.seoDesc||s.heroDesc_ar);
+}
+
 function emptyBox(){return`<div class="col-span-full text-center py-10 text-slate-400 font-bold">📭 ${t('no_results')}</div>`}
 function heroSearch(e){e.preventDefault();const v=$('#hero-q').value.trim();location.hash='#/search'+(v?'?q='+encodeURIComponent(v):'');return false}
 
@@ -554,9 +623,10 @@ if(!isAdmin()){$('#view').innerHTML=`<div class="min-h-[70vh] flex items-center 
 <div class="text-center mb-6"><div class="w-16 h-16 grad-bg rounded-3xl mx-auto flex items-center justify-center text-3xl shadow-xl">🔐</div><h1 class="text-2xl font-black mt-4">${t('login')}</h1><p class="text-xs text-slate-500 font-bold mt-1">JWT Protected • أدخل بيانات المدير التي قمت بتعيينها</p></div>
 <form onsubmit="return adminLogin(event)" class="grid gap-4"><div><label class="text-xs font-black">📧 ${t('email')}</label><input id="al-email" type="email" required value="admin@appzone.com" class="input mt-1" dir="ltr"></div><div><label class="text-xs font-black">🔑 ${t('password')}</label><input id="al-pass" type="password" required value="" class="input mt-1" dir="ltr"></div><button class="btn-p py-3.5 rounded-2xl font-black">🚀 ${t('login_btn')}</button></form>
 <a href="#/" class="block text-center mt-4 text-xs font-bold text-slate-500 hover:text-indigo-600">← ${t('back_home')}</a></div></div>`;return}
-const tabs=[['dashboard','📊',t('dashboard')],['apps','📱',t('m_apps')],['videos','🎬',t('m_videos')],['websites','🌐',t('m_websites')],['categories','📂',t('m_cats')],['ratings','⭐',t('m_ratings')],['messages','💌',t('m_messages')],['settings','⚙️',t('m_settings')],['api','🔌',t('m_api')],['db','🗄️',t('m_db')]];
+const tabs=[['dashboard','📊',t('dashboard')],['home','🏠','الصفحة الرئيسية'],['apps','📱',t('m_apps')],['videos','🎬',t('m_videos')],['websites','🌐',t('m_websites')],['categories','📂',t('m_cats')],['ratings','⭐',t('m_ratings')],['messages','💌',t('m_messages')],['settings','⚙️',t('m_settings')],['api','🔌',t('m_api')],['db','🗄️',t('m_db')]];
 let content='';
 if(ADMIN_TAB==='dashboard')content=adminDashboard();
+else if(ADMIN_TAB==='home')content=adminHomeSections();
 else if(ADMIN_TAB==='apps')content=adminApps();
 else if(ADMIN_TAB==='videos')content=adminVideos();
 else if(ADMIN_TAB==='websites')content=adminWebsites();
@@ -569,7 +639,7 @@ else if(ADMIN_TAB==='db')content=adminDb();
 $('#view').innerHTML=`<div class="max-w-7xl mx-auto px-3 md:px-6 py-6">
 <div class="anim flex flex-wrap items-center gap-3 mb-6 bg-white dark:bg-slate-900 rounded-3xl border p-4">
 <div class="w-12 h-12 rounded-2xl grad-bg flex items-center justify-center text-2xl">👨‍💼</div>
-<div class="flex-1"><h1 class="font-black text-lg">⚙️ ${t('admin')}</h1><p class="text-xs text-slate-500 font-bold">✅ JWT Verified • admin@appzone.com</p></div>
+<div class="flex-1"><h1 class="font-black text-lg">⚙️ ${t('admin')} — ${esc(siteName())}</h1><p class="text-xs text-slate-500 font-bold">✅ JWT Verified • admin@appzone.com</p></div>
 <input value="${esc(ADMIN_SEARCH)}" oninput="ADMIN_SEARCH=this.value;renderAdminTable()" placeholder="🔍 ${t('search')}..." class="input !w-48 hidden md:block">
 <a href="#/" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-black text-xs">🌐 ${t('view_site')}</a>
 <button onclick="adminLogout()" class="px-4 py-2.5 rounded-xl bg-rose-500 text-white font-black text-xs">🚪 ${t('logout')}</button>
@@ -626,6 +696,27 @@ function delRating(id){DB.ratings=DB.ratings.filter(r=>r.id!==id);saveDB();toast
 function adminMessages(){return`<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-4">💌 ${t('messages')} (${DB.messages.length})</h3>
 ${DB.messages.length?`<div class="grid gap-3">${[...DB.messages].reverse().map(m=>`<div class="p-4 rounded-2xl border border-slate-100 dark:border-slate-800"><div class="flex items-center justify-between gap-2"><div class="font-black text-sm">👤 ${esc(m.name)} <span class="text-xs text-slate-400 font-normal">${esc(m.email)}</span></div><button onclick="delMsg('${m.id}')" class="text-rose-500">🗑️</button></div><p class="text-sm mt-2 text-slate-600 dark:text-slate-300">${esc(m.msg)}</p><div class="text-[11px] text-slate-400 mt-2">${timeAgo(m.createdAt)}</div></div>`).join('')}</div>`:`<p class="text-center text-slate-400 font-bold py-8">📭 ${t('no_messages')}</p>`}</div>`}
 function delMsg(id){DB.messages=DB.messages.filter(m=>m.id!==id);saveDB();renderAdmin()}
+
+function adminHomeSections(){
+const secs=ensureHomeSections(),c=getHomeConfig();
+const inp=(id,label,val)=>`<div><label class="text-xs font-black text-slate-500">${label}</label><input id="hc-${id}" value="${esc(val||'')}" class="input mt-1"></div>`;
+return `<div class="grid gap-4">
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><div class="flex flex-wrap items-center justify-between gap-3"><div><h3 class="font-black text-lg">🏠 محرر الصفحة الرئيسية</h3><p class="text-xs text-slate-500 mt-1">تحكم في كل النصوص والصور والمزايا وأقسام المتجر وترتيب أقسام المحتوى.</p></div><button onclick="openHomeSectionModal()" class="btn-p px-5 py-3 rounded-xl font-black">＋ إضافة قسم محتوى</button></div>
+<div class="grid md:grid-cols-2 gap-3 mt-5">${inp('heroTitle_ar','عنوان البانر',c.heroTitle_ar)}${inp('heroAccent_ar','السطر الذهبي',c.heroAccent_ar)}${inp('heroDesc_ar','وصف البانر',c.heroDesc_ar)}${inp('heroImage','صورة البانر',c.heroImage)}${inp('ctaTitle_ar','عنوان دعوة الطلب',c.ctaTitle_ar)}${inp('ctaDesc_ar','وصف دعوة الطلب',c.ctaDesc_ar)}${inp('ctaImage','صورة دعوة الطلب',c.ctaImage)}</div>
+<div class="flex gap-2 mt-4"><button onclick="saveHomeConfig()" class="btn-p px-8 py-3 rounded-2xl font-black">💾 حفظ الصفحة الرئيسية</button><button onclick="resetHomeConfig()" class="px-6 py-3 rounded-2xl bg-amber-100 text-amber-800 font-black">↩️ إعادة التصميم الافتراضي</button></div></div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><div class="flex items-center justify-between"><h3 class="font-black">⭐ مزايا المتجر</h3><button onclick="addHomeFeature()" class="px-4 py-2 rounded-xl bg-slate-100 font-black text-sm">＋ إضافة ميزة</button></div><div class="grid md:grid-cols-2 gap-3 mt-4">${(c.features||[]).map((f,i)=>`<div class="border rounded-2xl p-3"><div class="grid grid-cols-[70px_1fr] gap-2">${inp('fi'+i,'الأيقونة',f.icon)}${inp('ft'+i,'اسم الميزة',f.title_ar)}${inp('fs'+i,'الوصف',f.sub_ar)}<button onclick="removeHomeFeature(${i})" class="px-3 py-2 rounded-xl bg-rose-100 text-rose-600 font-black text-xs">🗑️ حذف الميزة</button></div></div>`).join('')}</div></div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><div class="flex items-center justify-between"><div><h3 class="font-black">📂 أقسام المتجر الظاهرة في الصفحة الرئيسية</h3><p class="text-xs text-slate-500 mt-1">أضف أو عدّل أو احذف أو غيّر ترتيب أقسام المتجر.</p></div><button onclick="addStoreCategory()" class="btn-p px-5 py-2.5 rounded-xl font-black">＋ إضافة قسم متجر</button></div><div class="grid md:grid-cols-2 gap-3 mt-4">${(c.storeCategories||[]).map((x,i)=>`<div class="border rounded-2xl p-3"><div class="flex gap-3"><img src="${esc(x.image)}" class="w-24 h-20 object-cover rounded-xl" onerror="this.style.opacity=.2"><div class="flex-1">${inp('scn'+i,'اسم القسم',x.name_ar)}${inp('sci'+i,'الأيقونة',x.icon)}${inp('scim'+i,'رابط الصورة',x.image)}</div></div><div class="flex gap-2 mt-2"><button onclick="saveStoreCategory(${i})" class="flex-1 px-3 py-2 rounded-xl bg-emerald-100 text-emerald-700 font-black text-xs">💾 حفظ</button><button onclick="moveStoreCategory(${i},-1)" class="px-3 rounded-xl bg-slate-100">↑</button><button onclick="moveStoreCategory(${i},1)" class="px-3 rounded-xl bg-slate-100">↓</button><button onclick="deleteStoreCategory(${i})" class="px-3 rounded-xl bg-rose-100 text-rose-600">🗑️</button></div></div>`).join('')}</div></div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl border p-5"><h3 class="font-black mb-4">🧱 أقسام المحتوى القابلة للإدارة</h3><div class="grid gap-3">${secs.map((s,i)=>`<div class="cnc-admin-section rounded-2xl p-4 flex flex-wrap items-center gap-3"><div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-black">${i+1}</div><div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-xl">${esc(s.icon||'▣')}</div><div class="flex-1"><b>${esc(s.title_ar||'قسم')}</b><div class="text-[11px] text-slate-500">${esc(s.type)} • ${s.limit||4} عناصر • ${s.columns||4} أعمدة</div></div><button onclick="moveHomeSection('${s.id}',-1)" class="px-3 py-2 rounded-xl bg-slate-100">↑</button><button onclick="moveHomeSection('${s.id}',1)" class="px-3 py-2 rounded-xl bg-slate-100">↓</button><button onclick="toggleHomeSection('${s.id}')" class="px-3 py-2 rounded-xl ${s.active===false?'bg-slate-200':'bg-emerald-100 text-emerald-700'} font-black">${s.active===false?'隐藏':'显示'}</button><button onclick="openHomeSectionModal('${s.id}')" class="px-3 py-2 rounded-xl bg-indigo-100 text-indigo-700 font-black">✏️</button><button onclick="deleteHomeSection('${s.id}')" class="px-3 py-2 rounded-xl bg-rose-100 text-rose-700 font-black">🗑️</button></div>`).join('')}</div></div></div>`;
+}
+function saveHomeConfig(){const c=getHomeConfig(),v=k=>($('#hc-'+k)?.value||'').trim();c.heroTitle_ar=v('heroTitle_ar');c.heroAccent_ar=v('heroAccent_ar');c.heroDesc_ar=v('heroDesc_ar');c.heroImage=v('heroImage');c.ctaTitle_ar=v('ctaTitle_ar');c.ctaDesc_ar=v('ctaDesc_ar');c.ctaImage=v('ctaImage');(c.features||[]).forEach((f,i)=>{f.icon=($('#hc-fi'+i)?.value||f.icon);f.title_ar=($('#hc-ft'+i)?.value||f.title_ar);f.sub_ar=($('#hc-fs'+i)?.value||f.sub_ar)});saveDB();renderHome();renderAdmin();toast('تم حفظ الصفحة الرئيسية بالكامل ✅')}
+function addHomeFeature(){getHomeConfig().features.push({icon:'★',title_ar:'ميزة جديدة',sub_ar:'وصف الميزة'});saveDB();renderAdmin()}
+function removeHomeFeature(i){getHomeConfig().features.splice(i,1);saveDB();renderAdmin()}
+function addStoreCategory(){getHomeConfig().storeCategories.push({id:'sc'+Date.now(),name_ar:'قسم جديد',name_en:'New Category',icon:'▦',image:'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=700&q=80'});saveDB();renderAdmin()}
+function saveStoreCategory(i){const c=getHomeConfig().storeCategories[i];if(!c)return;c.name_ar=$('#hc-scn'+i)?.value||c.name_ar;c.icon=$('#hc-sci'+i)?.value||c.icon;c.image=$('#hc-scim'+i)?.value||c.image;saveDB();renderHome();renderAdmin();toast('تم حفظ القسم ✅')}
+function moveStoreCategory(i,d){const a=getHomeConfig().storeCategories,j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];saveDB();renderAdmin();renderHome()}
+function deleteStoreCategory(i){if(!confirm('حذف قسم المتجر؟'))return;getHomeConfig().storeCategories.splice(i,1);saveDB();renderAdmin();renderHome()}
+function resetHomeConfig(){if(!confirm('إعادة إعدادات الصفحة الرئيسية؟'))return;delete DB.homeConfig;saveDB();renderAdmin();renderHome();toast('تمت إعادة الصفحة الرئيسية')}
+
 function adminSettings(){const s=DB.settings;
 const inp=(k,l,v,typ='text')=>`<div><label class="text-xs font-black text-slate-500">${l}</label><input id="st-${k}" type="${typ}" value="${esc(v||'')}" class="input mt-1" ${typ==='color'?'class="mt-1 w-full h-11 rounded-xl cursor-pointer"':''}></div>`;
 return`<div class="grid gap-4">
